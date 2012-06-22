@@ -20,11 +20,11 @@ require_once ($CFG->dirroot.'/course/moodleform_mod.php');
 class mod_aspirelists_mod_form extends moodleform_mod {
 
 	function definition() {
-        global $CFG, $OUTPUT;
+        global $CFG, $OUTPUT, $COURSE;
+
+        $config = get_config('aspirelists');
 
         $mform =& $this->_form;
-
-        $config = get_config('streamingvideo');
 
         //-------------------------------------------------------
         $mform->addElement('header', 'general', get_string('general', 'form'));
@@ -39,9 +39,31 @@ class mod_aspirelists_mod_form extends moodleform_mod {
 
         //-------------------------------------------------------
 
+        $options=array();
+        $options['all']    = 'All';
+
+
+        $shortname_full = explode(' ', $COURSE->shortname);
+        $shortnames = explode('/', strtolower($shortname_full[0]));
+
+        foreach ($shortnames as $shortname) {
+            $url = "$config->baseurl/$config->group/$shortname/lists.json";
+
+            $data = curlSource($url);
+            $list_url = $data["$config->baseurl/$config->group/$shortname"]['http://purl.org/vocab/resourcelist/schema#usesList'][0]['value'];
+        
+            $level = 0;
+            $d = getCats($list_url, $options, $level, $shortname);
+        }
+        
+        $mform->addElement('select', 'category', 'Category', $options, array('size'=>20));
+
         // add standard buttons, common to all modules
         $this->standard_coursemodule_elements();
         $this->add_action_buttons();
         return;
     }
+
+
+
 }

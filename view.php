@@ -53,13 +53,16 @@ if (is_integer($id)) {
     }
 } else throw new Exception("A module ID or resource id must be specified");
 
+$config = get_config('aspirelists');
+
+if($readinglist->category != 'all') {
+    redirect($config->baseurl . '/sections/' . $readinglist->category);
+}
 
 add_to_log($course->id, 'aspirelist', 'view', "view.php?id={$id}", '');
 
 $context = get_context_instance(CONTEXT_COURSE, $course->id);
 $PAGE->set_context($context);
-
-$config = get_config('aspirelists');
 
 //Set page params and layout
 $PAGE->set_url('/mod/aspirelists/view.php', array('id'=>$id));
@@ -101,45 +104,47 @@ foreach($shortnames as $shortname){
 
     if ($response) // if we get a valid response from curl...
     {
-            $data = json_decode($response,true); // decode the returned JSON data
-            if(isset($data["$config->baseurl/$config->group/$shortname"]) && isset($data["$config->baseurl/$config->group/$shortname"]['http://purl.org/vocab/resourcelist/schema#usesList'])) // if there are any lists...
-            {
-                    foreach ($data["$config->baseurl/$config->group/$shortname"]['http://purl.org/vocab/resourcelist/schema#usesList'] as $usesList) // for each list this module uses...
-                    {
-                            $list = array();
-                            $list["url"] = $usesList["value"]; // extract the list URL
-                            $list["name"] = $data[$list["url"]]['http://rdfs.org/sioc/spec/name'][0]['value']; // extract the list name
 
-                            // let's try and get a last updated date
-                            if (isset($data[$list["url"]]['http://purl.org/vocab/resourcelist/schema#lastUpdated'])) // if there is a last updated date...
-                            {
-                                    // set up the timezone 
-                                    date_default_timezone_set('Europe/London');
+        $data = json_decode($response,true); // decode the returned JSON data
 
-                                    // ..and extract the date in a friendly, human readable format...
-                                    $list['lastUpdatedDate'] = date('l j F Y',
-                                            strtotime($data[$list["url"]]['http://purl.org/vocab/resourcelist/schema#lastUpdated'][0]['value'])); 
-                            }
+        if(isset($data["$config->baseurl/$config->group/$shortname"]) && isset($data["$config->baseurl/$config->group/$shortname"]['http://purl.org/vocab/resourcelist/schema#usesList'])) // if there are any lists...
+        {
+                foreach ($data["$config->baseurl/$config->group/$shortname"]['http://purl.org/vocab/resourcelist/schema#usesList'] as $usesList) // for each list this module uses...
+                {
+                        $list = array();
+                        $list["url"] = $usesList["value"]; // extract the list URL
+                        $list["name"] = $data[$list["url"]]['http://rdfs.org/sioc/spec/name'][0]['value']; // extract the list name
 
-                            // now let's count the number of items
-                            $itemCount = 0; 
-                            if (isset($data[$list["url"]]['http://purl.org/vocab/resourcelist/schema#contains'])) // if the list contains anything...
-                            {
-                                    foreach ($data[$list["url"]]['http://purl.org/vocab/resourcelist/schema#contains'] as $things) // loop through the list of things the list contains...
-                                    {
-                                            if (preg_match('/\/items\//',$things['value'])) // if the thing is an item, incrememt the item count (lists can contain sections, too)
-                                            {
-                                                    $itemCount++; 
-                                            }
-                                    }
-                            }
-                            $list['count'] = $itemCount;
-                            //array_push($lists,$list);
-                            $lists[$list["url"]] = $list;
-                    }
-                    uasort($lists,'sortByName');
+                        // let's try and get a last updated date
+                        if (isset($data[$list["url"]]['http://purl.org/vocab/resourcelist/schema#lastUpdated'])) // if there is a last updated date...
+                        {
+                                // set up the timezone 
+                                date_default_timezone_set('Europe/London');
 
-            }
+                                // ..and extract the date in a friendly, human readable format...
+                                $list['lastUpdatedDate'] = date('l j F Y',
+                                        strtotime($data[$list["url"]]['http://purl.org/vocab/resourcelist/schema#lastUpdated'][0]['value'])); 
+                        }
+
+                        // now let's count the number of items
+                        $itemCount = 0; 
+                        if (isset($data[$list["url"]]['http://purl.org/vocab/resourcelist/schema#contains'])) // if the list contains anything...
+                        {
+                                foreach ($data[$list["url"]]['http://purl.org/vocab/resourcelist/schema#contains'] as $things) // loop through the list of things the list contains...
+                                {
+                                        if (preg_match('/\/items\//',$things['value'])) // if the thing is an item, incrememt the item count (lists can contain sections, too)
+                                        {
+                                                $itemCount++; 
+                                        }
+                                }
+                        }
+                        $list['count'] = $itemCount;
+                        //array_push($lists,$list);
+                        $lists[$list["url"]] = $list;
+                }
+                uasort($lists,'sortByName');
+
+        }
     } else {
         //If we had no response from the CURL request, then set a suitable message.
         $output = "<p>Could not communicate with reading list system for $COURSE->fullname.  Please check again later.</p>";
