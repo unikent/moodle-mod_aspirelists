@@ -1,3 +1,16 @@
+/**********************************************************************
+ *                      @package Kent aspirelists                     *
+ *                                                                    *
+ *              University of Kent aspirelists resource               *
+ *                                                                    *
+ *                       Authors: jwk8, fg30, jw26                    *
+ *                                                                    *
+ *--------------------------------------------------------------------*
+ *                                                                    *
+ *                              Mod styles                            *
+ *                                                                    *
+ **********************************************************************/
+
 .list_item_inset {
 	width: 100%;
 	background: #efefef;
@@ -40,7 +53,7 @@
 						font-size: 34px;
 						color: #6f6f6f;
 						padding: 25px 10px 0 0;
-						text-shadow:1px 1px 0px #fff
+
 					}
 
 					.list_item_dets span {
@@ -66,15 +79,15 @@
 					text-decoration: none;
 				}
 
-			.list_update {
+			.list_item table td.list_update {
 				width: 10%;
+				padding: 10px 5px;
+				background: #fafafa;
+				border-left: 1px solid #e3e3e3;
 			}
 
 				.list_item_update {
 					margin: 0px;
-					padding: 10px;
-					background: #fafafa;
-					border-left: 1px solid #e3e3e3;
 				}
 
 					.list_item_update li {
@@ -92,6 +105,7 @@
 						font-size: 16px;
 						font-weight: bold;
 						color: #6f6f6f;
+						width: 90px;
 					}
 
 					.list_item_update .day {

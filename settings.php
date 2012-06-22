@@ -33,4 +33,7 @@ if ($ADMIN->fulltree) {
 
     $settings->add(new admin_setting_configselect('aspirelists/group', get_string('settings:group', 'aspirelists'),
                        get_string('settings:configgroup', 'aspirelists'), 'modules', $options));
+
+    $settings->add(new admin_setting_configcheckbox('aspirelists/redirect',
+        get_string('settings:redirect', 'aspirelists'), get_string('settings:configredirect', 'aspirelists'), 1));
 }

@@ -1,5 +1,19 @@
 <?php
 
+
+/**********************************************************************
+ *                      @package Kent aspirelists                     *
+ *                                                                    *
+ *              University of Kent aspirelists resource               *
+ *                                                                    *
+ *                       Authors: jwk8, fg30, jw26                    *
+ *                                                                    *
+ *--------------------------------------------------------------------*
+ *                                                                    *
+ *                              Item view                             *
+ *                                                                    *
+ **********************************************************************/
+
 require('../../config.php');
 require_once("lib.php");
 global $CFG, $USER, $DB, $PAGE;
@@ -134,50 +148,58 @@ foreach($shortnames as $shortname){
 
 if(!empty($lists)){
 
+
+    if(count($lists) === 1 && $config->redirect === '1') {
+        reset($lists);
+        $firstkey = key($lists);
+        redirect($lists[$firstkey]['url']) ;
+    } else {
+
         $output .= '<link rel="stylesheet" href="fontello.css">';
         $output .= '<ul class="list_item_inset">';
 
-    foreach ($lists as $list)
-    {
-        $itemNoun = ($list['count'] == 1) ? "item" : "items"; // get a friendly, human readable noun for the items
-        
-        
-        // finally, we're ready to output information to the browser#
-            $output .= '<li class="list_item">';
-                $output .= '<table>';
-                    $output .= '<tr>';
-                        $output .= '<td  class="list_item_dets">';
-                            $output .= '<a href="'.$list['url'].'" target="_blank">';
-                                $output .= '<i class="icon-right-circle2"></i>';
-                                $output .= '<span class="list_item_link">'.$list['name'].'</span>';
-                                
-                                // add the item count if there are any...
-                                if ($list['count'] > 0) 
-                                {
-                                    $output .= '<span class="list_item_count">';
-                                        $output .= $list['count'] . ' ' .  $itemNoun;
-                                    $output .= '</span>';
-                                }
-                                $output .= '</a>';
+        foreach ($lists as $list)
+        {
+            $itemNoun = ($list['count'] == 1) ? "item" : "items"; // get a friendly, human readable noun for the items
+            
+            
+            // finally, we're ready to output information to the browser#
+                $output .= '<li class="list_item">';
+                    $output .= '<table>';
+                        $output .= '<tr>';
+                            $output .= '<td  class="list_item_dets">';
+                                $output .= '<a href="'.$list['url'].'" target="_blank">';
+                                    $output .= '<i class="icon-right-circle2"></i>';
+                                    $output .= '<span class="list_item_link">'.$list['name'].'</span>';
+                                    
+                                    // add the item count if there are any...
+                                    if ($list['count'] > 0) 
+                                    {
+                                        $output .= '<span class="list_item_count">';
+                                            $output .= $list['count'] . ' ' .  $itemNoun;
+                                        $output .= '</span>';
+                                    }
+                                    $output .= '</a>';
 
-                        $output .= '</td>';
-                        // add update text if we have it
-                        if (isset($list["lastUpdatedDate"]))
-                        {
-                            $output .= '<td class="list_update">';
-                                $output .= '<ul class="list_item_update">';
-                                    $output .= '<li class="title">last updated</li>';
-                                    $output .= '<li class="month">' . date('F', strtotime($list["lastUpdatedDate"])) . '</li>';
-                                    $output .= '<li class="day">' . date('j', strtotime($list['lastUpdatedDate'])) . '</li>';
-                                    $output .= '<li class="year">' . date('Y', strtotime($list['lastUpdatedDate'])) . '</li>';
-                                $output .= '</ul>';
                             $output .= '</td>';
-                        }
-                    $output .= '</tr>';
-                $output .= '</table>';
-            $output .= '</li>';
-    }
+                            // add update text if we have it
+                            if (isset($list["lastUpdatedDate"]))
+                            {
+                                $output .= '<td class="list_update">';
+                                    $output .= '<ul class="list_item_update">';
+                                        $output .= '<li class="title">last updated</li>';
+                                        $output .= '<li class="month">' . date('F', strtotime($list["lastUpdatedDate"])) . '</li>';
+                                        $output .= '<li class="day">' . date('j', strtotime($list['lastUpdatedDate'])) . '</li>';
+                                        $output .= '<li class="year">' . date('Y', strtotime($list['lastUpdatedDate'])) . '</li>';
+                                    $output .= '</ul>';
+                                $output .= '</td>';
+                            }
+                        $output .= '</tr>';
+                    $output .= '</table>';
+                $output .= '</li>';
+        }
         $output .= '</ul>';
+    }
 
     if ($output=='') {
         echo aspirelists_resource_not_ready($context);

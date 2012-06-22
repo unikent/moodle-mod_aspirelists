@@ -45,6 +45,9 @@ $string['settings:group:units'] = 'Units';
 $string['settings:group:programmes'] = 'Programmes';
 $string['settings:group:subjects'] = 'Subjects';
 
+$string['settings:redirect'] = 'Redirect';
+$string['settings:configredirect'] = 'Redirect on single reading lists';
+
 /*********************************
  *             Errors            * 
  *********************************/

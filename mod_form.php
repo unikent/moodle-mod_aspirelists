@@ -1,5 +1,18 @@
 <?php
 
+/**********************************************************************
+ *                      @package Kent aspirelists                     *
+ *                                                                    *
+ *              University of Kent aspirelists resource               *
+ *                                                                    *
+ *                       Authors: jwk8, fg30, jw26                    *
+ *                                                                    *
+ *--------------------------------------------------------------------*
+ *                                                                    *
+ *                            Add/update form                         *
+ *                                                                    *
+ **********************************************************************/
+
 defined('MOODLE_INTERNAL') || die;
 
 require_once ($CFG->dirroot.'/course/moodleform_mod.php');
