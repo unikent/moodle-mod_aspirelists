@@ -147,7 +147,7 @@ if(!empty($lists)){
                         $output .= '<tr>';
                             $output .= '<td  class="list_item_dets">';
                                 $output .= '<a href="'.$list['url'].'" target="_blank">';
-                                    $output .= '<i class="icon-right-circle2" align="middle"></i>';
+                                    $output .= '<i class="icon-right-circle2"></i>';
                                     $output .= '<span class="list_item_link">'.$list['name'].'</span>';
                                     
                                     // add the item count if there are any...
@@ -183,11 +183,11 @@ if(!empty($lists)){
         $role = get_user_roles($context, $USER->id);
         
         if($role[1]->shortname == 'student' || $role[1]->shortname == 'sds_student') {
-            $this->content->text   = "<p>This Moodle course is not yet linked to the resource lists system.  You may be able to find your list through searching the resource lists system, or you can consult your Moodle module or lecturer for further information.</p>";    
+            echo "<p>This Moodle course is not yet linked to the resource lists system.  You may be able to find your list through searching the resource lists system, or you can consult your Moodle module or lecturer for further information.</p>";    
         } else  if (has_capability('moodle/course:update', $context)){
-            $this->content->text   = "<p>If your list is available on the <a href='http://resourcelists.kent.ac.uk'>resource list</a> system and you would like assistance in linking it to Moodle please contact <a href='mailto:helpdesk@kent.ac.uk'>helpdesk</a>.</p>";
+            echo "<p>If your list is available on the <a href='http://resourcelists.kent.ac.uk'>resource list</a> system and you would like assistance in linking it to Moodle please contact <a href='mailto:helpdesk@kent.ac.uk'>helpdesk</a>.</p>";
         } else {
-            $this->content->text = "This Moodle course is not yet linked to the resource lists system.  You may be able to find your list through searching the <a href='http://resourcelists.kent.ac.uk'>resource lists</a> system, or you can consult your Moodle module or lecturer for further information.";
+            echo "<p>This Moodle course is not yet linked to the resource lists system.  You may be able to find your list through searching the <a href='http://resourcelists.kent.ac.uk'>resource lists</a> system, or you can consult your Moodle module or lecturer for further information.<p>";
         }
             
     } else {
