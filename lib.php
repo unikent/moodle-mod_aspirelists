@@ -53,7 +53,8 @@ function aspirelists_update_instance($data, $mform) {
     $data->timemodified = time();
     $data->id           = $data->instance;
 
-    aspirelists_check_reading_lists();
+    // This will preven the resource being added if the item is empty
+    // aspirelists_check_reading_lists();
 
     $DB->update_record('aspirelists', $data);
     return true;
@@ -62,7 +63,8 @@ function aspirelists_update_instance($data, $mform) {
 function aspirelists_add_instance($data, $mform) {
 	global $CFG, $DB;
 
-    aspirelists_check_reading_lists();
+    // This will preven the resource being added if the item is empty
+    // aspirelists_check_reading_lists();
     
     $data->id = $DB->insert_record('aspirelists', $data);
 
