@@ -29,32 +29,31 @@ defined('MOODLE_INTERNAL') || die;
  /**
  * Define the complete url structure for backup, with file and id annotations
  */
-class backup_streamingvideo_activity_structure_step extends backup_activity_structure_step {
+class backup_aspirelists_activity_structure_step extends backup_activity_structure_step {
 
     protected function define_structure() {
 
         //the URL module stores no user info
 
         // Define each element separated
-        $streamingvideo = new backup_nested_element('streamingvideo', array('id'), array(
-            'name', 'intro', 'introformat', 'alttext',
-            'serveraddress', 'fileaddress', 'width', 'height', 'timemodified'));
+        $aspirelists = new backup_nested_element('aspirelists', array('id'), array(
+            'name', 'intro', 'introformat', 'timemodified'));
 
 
         // Build the tree
         //nothing here for URLs
 
         // Define sources
-        $streamingvideo->set_source_table('streamingvideo', array('id' => backup::VAR_ACTIVITYID));
+        $aspirelists->set_source_table('aspirelists', array('id' => backup::VAR_ACTIVITYID));
 
         // Define id annotations
         //module has no id annotations
 
         // Define file annotations
-        $streamingvideo->annotate_files('mod_streamingvideo', 'intro', null); // This file area hasn't itemid
+        $aspirelists->annotate_files('mod_aspirelists', 'intro', null); // This file area hasn't itemid
 
         // Return the root element (url), wrapped into standard activity structure
-        return $this->prepare_activity_structure($streamingvideo);
+        return $this->prepare_activity_structure($aspirelists);
 
     }
 }

@@ -2,9 +2,9 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-require_once($CFG->dirroot . '/mod/streamingvideo/backup/moodle2/restore_streamingvideo_stepslib.php');
+require_once($CFG->dirroot . '/mod/aspirelists/backup/moodle2/restore_aspirelists_stepslib.php');
 
-class restore_streamingvideo_activity_task extends restore_activity_task {
+class restore_aspirelists_activity_task extends restore_activity_task {
 
 	/**
      * Define (add) particular settings this activity can have
@@ -18,7 +18,7 @@ class restore_streamingvideo_activity_task extends restore_activity_task {
      */
     protected function define_my_steps() {
         // url only has one structure step
-        $this->add_step(new restore_streamingvideo_activity_structure_step('streamingvideo_structure', 'streamingvideo.xml'));
+        $this->add_step(new restore_aspirelists_activity_structure_step('aspirelists_structure', 'aspirelists.xml'));
     }
 
     /**
@@ -28,7 +28,7 @@ class restore_streamingvideo_activity_task extends restore_activity_task {
     static public function define_decode_contents() {
         $contents = array();
 
-        $contents[] = new restore_decode_content('streamingvideo', array('intro'), 'streamingvideo');
+        $contents[] = new restore_decode_content('aspirelists', array('intro'), 'aspirelists');
 
         return $contents;
     }
@@ -40,8 +40,8 @@ class restore_streamingvideo_activity_task extends restore_activity_task {
     static public function define_decode_rules() {
         $rules = array();
 
-        $rules[] = new restore_decode_rule('STREAMINGVIDEOINDEX', '/mod/streamingvideo/index.php?id=$1', 'course');
-        $rules[] = new restore_decode_rule('STREAMINGVIDEOVIEWBYID', '/mod/streamingvideo/view.php?id=$1', 'course_module');
+        $rules[] = new restore_decode_rule('ASPIRELISTSINDEX', '/mod/aspirelists/index.php?id=$1', 'course');
+        $rules[] = new restore_decode_rule('ASPIRELISTSVIEWBYID', '/mod/aspirelists/view.php?id=$1', 'course_module');
 
         return $rules;
 
@@ -50,15 +50,15 @@ class restore_streamingvideo_activity_task extends restore_activity_task {
     /**
      * Define the restore log rules that will be applied
      * by the {@link restore_logs_processor} when restoring
-     * streamingvideo logs. It must return one array
+     * aspirelists logs. It must return one array
      * of {@link restore_log_rule} objects
      */
     static public function define_restore_log_rules() {
         $rules = array();
 
-        $rules[] = new restore_log_rule('streamingvideo', 'add', 'view.php?id={course_module}', '{streamingvideo}');
-        $rules[] = new restore_log_rule('streamingvideo', 'update', 'view.php?id={course_module}', '{streamingvideo}');
-        $rules[] = new restore_log_rule('streamingvideo', 'view', 'view.php?id={course_module}', '{streamingvideo}');
+        $rules[] = new restore_log_rule('aspirelists', 'add', 'view.php?id={course_module}', '{aspirelists}');
+        $rules[] = new restore_log_rule('aspirelists', 'update', 'view.php?id={course_module}', '{aspirelists}');
+        $rules[] = new restore_log_rule('aspirelists', 'view', 'view.php?id={course_module}', '{aspirelists}');
 
         return $rules;
     }
@@ -76,7 +76,7 @@ class restore_streamingvideo_activity_task extends restore_activity_task {
     static public function define_restore_log_rules_for_course() {
         $rules = array();
 
-        $rules[] = new restore_log_rule('streamingvideo', 'view all', 'index.php?id={course}', null);
+        $rules[] = new restore_log_rule('aspirelists', 'view all', 'index.php?id={course}', null);
 
         return $rules;
     }

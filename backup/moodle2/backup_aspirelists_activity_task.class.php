@@ -28,13 +28,13 @@ defined('MOODLE_INTERNAL') || die;
  // backup_activity_task so here there isn't any class definition, like the ones
  // existing in /backup/moodle2/backup_settingslib.php (activities section)
 
-require_once($CFG->dirroot . '/mod/streamingvideo/backup/moodle2/backup_streamingvideo_stepslib.php'); // Because it exists (must)
+require_once($CFG->dirroot . '/mod/aspirelists/backup/moodle2/backup_aspirelists_stepslib.php'); // Because it exists (must)
 
 /**
  * URL backup task that provides all the settings and steps to perform one
  * complete backup of the activity
  */
-class backup_streamingvideo_activity_task extends backup_activity_task {
+class backup_aspirelists_activity_task extends backup_activity_task {
 
     /**
      * Define (add) particular settings this activity can have
@@ -47,7 +47,7 @@ class backup_streamingvideo_activity_task extends backup_activity_task {
      * Define (add) particular steps this activity can have
      */
     protected function define_my_steps() {
-        $this->add_step(new backup_streamingvideo_activity_structure_step('streamingvideo_structure', 'streamingvideo.xml'));
+        $this->add_step(new backup_aspirelists_activity_structure_step('aspirelists_structure', 'aspirelists.xml'));
     }
 
     /**
@@ -57,21 +57,21 @@ class backup_streamingvideo_activity_task extends backup_activity_task {
     static public function encode_content_links($content) {
         global $CFG;
 
-        $base = preg_quote($CFG->wwwroot.'/mod/streamingvideo','#');
+        $base = preg_quote($CFG->wwwroot.'/mod/aspirelists','#');
 
         //Access a list of all links in a course
         $pattern = '#('.$base.'/index\.php\?id=)([0-9]+)#';
-        $replacement = '$@STREAMINGVIDEOINDEX*$2@$';
+        $replacement = '$@ASPIRELISTINDEX*$2@$';
         $content = preg_replace($pattern, $replacement, $content);
 
         //Access the link supplying a course module id
         $pattern = '#('.$base.'/view\.php\?id=)([0-9]+)#';
-        $replacement = '$@STREAMINGVIDEOVIEWBYID*$2@$';
+        $replacement = '$@ASPIRELISTVIEWBYID*$2@$';
         $content = preg_replace($pattern, $replacement, $content);
 
         //Access the link supplying an instance id
         $pattern = '#('.$base.'/view\.php\?u=)([0-9]+)#';
-        $replacement = '$@STREAMINGVIDEOVIEWBYU*$2@$';
+        $replacement = '$@ASPIRELISTVIEWBYU*$2@$';
         $content = preg_replace($pattern, $replacement, $content);
 
         return $content;

@@ -180,23 +180,34 @@ if(!empty($lists)){
         $output .= '</ul>';
 
     if ($output=='') {
-        
-        $role = get_user_roles($context, $USER->id);
-        
-        if($role[1]->shortname == 'student' || $role[1]->shortname == 'sds_student') {
-            echo "<p>This Moodle course is not yet linked to the resource lists system.  You may be able to find your list through searching the resource lists system, or you can consult your Moodle module or lecturer for further information.</p>";    
-        } else  if (has_capability('moodle/course:update', $context)){
-            echo "<p>If your list is available on the <a href='http://resourcelists.kent.ac.uk'>resource list</a> system and you would like assistance in linking it to Moodle please contact <a href='mailto:helpdesk@kent.ac.uk'>helpdesk</a>.</p>";
-        } else {
-            echo "<p>This Moodle course is not yet linked to the resource lists system.  You may be able to find your list through searching the <a href='http://resourcelists.kent.ac.uk'>resource lists</a> system, or you can consult your Moodle module or lecturer for further information.<p>";
-        }
-            
+        echo aspirelists_resource_not_ready($context);
     } else {
        echo $output;
     }
+} else {
+    echo aspirelists_resource_not_ready($context);
 }
 
 echo $OUTPUT->footer();
+
+
+
+function aspirelists_resource_not_ready($context){
+    global $USER;
+    $output = "";
+    $role = get_user_roles($context, $USER->id);
+
+    if(isset($role[1]) && ($role[1]->shortname == 'student' || $role[1]->shortname == 'sds_student')) {
+        $output .= get_string('error:studentnolist', 'aspirelists');
+    } else  if (has_capability('moodle/course:update', $context)){
+        $output .= get_string('error:staffnolist', 'aspirelists');
+    } else {
+        $output .= get_string('error:defaultnolist', 'aspirelists');
+    }
+    
+    return $output;
+}
+
 
 function contextualTime($small_ts, $large_ts=false) {
   if(!$large_ts) $large_ts = time();
