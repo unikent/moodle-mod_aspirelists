@@ -55,10 +55,6 @@ if (is_integer($id)) {
 
 $config = get_config('aspirelists');
 
-if($readinglist->category != 'all') {
-    redirect($config->baseurl . '/sections/' . $readinglist->category);
-}
-
 add_to_log($course->id, 'aspirelist', 'view', "view.php?id={$id}", '');
 
 $context = get_context_instance(CONTEXT_COURSE, $course->id);
@@ -83,136 +79,139 @@ $shortnames = explode('/', strtolower($shortname_full[0]));
 $output = '';
 $lists = array();
 
-foreach($shortnames as $shortname){
+//Check to see if a specific category has been picked
+if($readinglist->category != 'all') {
 
-    // get the code from the global course object, lowercasing it in the process
+    $url = $config->baseurl . '/sections/' . $readinglist->category;
 
-    $url = "$config->baseurl/$config->group/$shortname/lists.json"; // build the target URL of the JSON data we'll be requesting from Aspire
-    // using php curl, we'll now request the JSON data from Aspire
-    $ch = curl_init();
-    $options = array(
-          CURLOPT_URL            => $url, // tell curl the URL
-          CURLOPT_HEADER         => false,
-          CURLOPT_RETURNTRANSFER => true,
-          CURLOPT_CONNECTTIMEOUT => $config->timeout,
-          CURLOPT_TIMEOUT => $config->timeout,
-          CURLOPT_HTTP_VERSION   => CURL_HTTP_VERSION_1_1
-    );
-    curl_setopt_array($ch, $options);
-
-    $response = curl_exec($ch); // execute the request and get a response
-
-    if ($response) // if we get a valid response from curl...
-    {
-
-        $data = json_decode($response,true); // decode the returned JSON data
-
-        if(isset($data["$config->baseurl/$config->group/$shortname"]) && isset($data["$config->baseurl/$config->group/$shortname"]['http://purl.org/vocab/resourcelist/schema#usesList'])) // if there are any lists...
-        {
-                foreach ($data["$config->baseurl/$config->group/$shortname"]['http://purl.org/vocab/resourcelist/schema#usesList'] as $usesList) // for each list this module uses...
-                {
-                        $list = array();
-                        $list["url"] = $usesList["value"]; // extract the list URL
-                        $list["name"] = $data[$list["url"]]['http://rdfs.org/sioc/spec/name'][0]['value']; // extract the list name
-
-                        // let's try and get a last updated date
-                        if (isset($data[$list["url"]]['http://purl.org/vocab/resourcelist/schema#lastUpdated'])) // if there is a last updated date...
-                        {
-                                // set up the timezone 
-                                date_default_timezone_set('Europe/London');
-
-                                // ..and extract the date in a friendly, human readable format...
-                                $list['lastUpdatedDate'] = date('l j F Y',
-                                        strtotime($data[$list["url"]]['http://purl.org/vocab/resourcelist/schema#lastUpdated'][0]['value'])); 
-                        }
-
-                        // now let's count the number of items
-                        $itemCount = 0; 
-                        if (isset($data[$list["url"]]['http://purl.org/vocab/resourcelist/schema#contains'])) // if the list contains anything...
-                        {
-                                foreach ($data[$list["url"]]['http://purl.org/vocab/resourcelist/schema#contains'] as $things) // loop through the list of things the list contains...
-                                {
-                                        if (preg_match('/\/items\//',$things['value'])) // if the thing is an item, incrememt the item count (lists can contain sections, too)
-                                        {
-                                                $itemCount++; 
-                                        }
-                                }
-                        }
-                        $list['count'] = $itemCount;
-                        //array_push($lists,$list);
-                        $lists[$list["url"]] = $list;
-                }
-                uasort($lists,'sortByName');
-
-        }
+    if(isset($CFG->aspirelists_resourcelist)) {
+        aspirelists_getResources($url);
     } else {
-        //If we had no response from the CURL request, then set a suitable message.
-        $output = "<p>Could not communicate with reading list system for $COURSE->fullname.  Please check again later.</p>";
+        redirect($url . '.html') ;
     }
-}
+    
 
-if(!empty($lists)){
+} else { // if not then display reading lists for any short codes given
+    foreach($shortnames as $shortname){
 
+        // get the code from the global course object, lowercasing it in the process
 
-    if(count($lists) === 1 && $config->redirect === '1') {
-        reset($lists);
-        $firstkey = key($lists);
-        redirect($lists[$firstkey]['url']) ;
-    } else {
+        $url = "$config->baseurl/$config->group/$shortname/lists.json"; // build the target URL of the JSON data we'll be requesting from Aspire
+        // using php curl, we'll now request the JSON data from Aspire
+        $data = curlSource($url);
 
-        $output .= '<link rel="stylesheet" href="fontello.css">';
-        $output .= '<ul class="list_item_inset">';
-
-        foreach ($lists as $list)
+        if ($data) // if we get a valid response from curl...
         {
-            $itemNoun = ($list['count'] == 1) ? "item" : "items"; // get a friendly, human readable noun for the items
-            
-            
-            // finally, we're ready to output information to the browser#
-                $output .= '<li class="list_item">';
-                    $output .= '<table>';
-                        $output .= '<tr>';
-                            $output .= '<td  class="list_item_dets">';
-                                $output .= '<a href="'.$list['url'].'" target="_blank">';
-                                    $output .= '<i class="icon-right-circle2"></i>';
-                                    $output .= '<span class="list_item_link">'.$list['name'].'</span>';
-                                    
-                                    // add the item count if there are any...
-                                    if ($list['count'] > 0) 
-                                    {
-                                        $output .= '<span class="list_item_count">';
-                                            $output .= $list['count'] . ' ' .  $itemNoun;
-                                        $output .= '</span>';
-                                    }
-                                    $output .= '</a>';
 
-                            $output .= '</td>';
-                            // add update text if we have it
-                            if (isset($list["lastUpdatedDate"]))
+            if(isset($data["$config->baseurl/$config->group/$shortname"]) && isset($data["$config->baseurl/$config->group/$shortname"]['http://purl.org/vocab/resourcelist/schema#usesList'])) // if there are any lists...
+            {
+                    foreach ($data["$config->baseurl/$config->group/$shortname"]['http://purl.org/vocab/resourcelist/schema#usesList'] as $usesList) // for each list this module uses...
+                    {
+                            $list = array();
+                            $list["url"] = $usesList["value"]; // extract the list URL
+                            $list["name"] = $data[$list["url"]]['http://rdfs.org/sioc/spec/name'][0]['value']; // extract the list name
+
+                            // let's try and get a last updated date
+                            if (isset($data[$list["url"]]['http://purl.org/vocab/resourcelist/schema#lastUpdated'])) // if there is a last updated date...
                             {
-                                $output .= '<td class="list_update">';
-                                    $output .= '<ul class="list_item_update">';
-                                        $output .= '<li class="title">last updated</li>';
-                                        $output .= '<li class="month">' . date('F', strtotime($list["lastUpdatedDate"])) . '</li>';
-                                        $output .= '<li class="day">' . date('j', strtotime($list['lastUpdatedDate'])) . '</li>';
-                                        $output .= '<li class="year">' . date('Y', strtotime($list['lastUpdatedDate'])) . '</li>';
-                                    $output .= '</ul>';
-                                $output .= '</td>';
+                                    // set up the timezone 
+                                    date_default_timezone_set('Europe/London');
+
+                                    // ..and extract the date in a friendly, human readable format...
+                                    $list['lastUpdatedDate'] = date('l j F Y',
+                                            strtotime($data[$list["url"]]['http://purl.org/vocab/resourcelist/schema#lastUpdated'][0]['value'])); 
                             }
-                        $output .= '</tr>';
-                    $output .= '</table>';
-                $output .= '</li>';
+
+                            // now let's count the number of items
+                            $itemCount = 0; 
+                            if (isset($data[$list["url"]]['http://purl.org/vocab/resourcelist/schema#contains'])) // if the list contains anything...
+                            {
+                                    foreach ($data[$list["url"]]['http://purl.org/vocab/resourcelist/schema#contains'] as $things) // loop through the list of things the list contains...
+                                    {
+                                            if (preg_match('/\/items\//',$things['value'])) // if the thing is an item, incrememt the item count (lists can contain sections, too)
+                                            {
+                                                    $itemCount++; 
+                                            }
+                                    }
+                            }
+                            $list['count'] = $itemCount;
+                            //array_push($lists,$list);
+                            $lists[$list["url"]] = $list;
+                    }
+                    uasort($lists,'sortByName');
+
+            }
+        } else {
+            //If we had no response from the CURL request, then set a suitable message.
+            $output = "<p>Could not communicate with reading list system for $COURSE->fullname.  Please check again later.</p>";
         }
-        $output .= '</ul>';
     }
 
-    if ($output=='') {
-        echo aspirelists_resource_not_ready($context);
+    if(!empty($lists)){
+
+
+        if(count($lists) === 1 && $config->redirect === '1') {
+
+            reset($lists);
+            $firstkey = key($lists);
+            redirect($lists[$firstkey]['url']) ;
+
+        } else {
+
+            $output .= '<link rel="stylesheet" href="fontello.css">';
+            $output .= '<ul class="list_item_inset">';
+
+            foreach ($lists as $list)
+            {
+                $itemNoun = ($list['count'] == 1) ? "item" : "items"; // get a friendly, human readable noun for the items
+                
+                
+                // finally, we're ready to output information to the browser#
+                    $output .= '<li class="list_item">';
+                        $output .= '<table>';
+                            $output .= '<tr>';
+                                $output .= '<td  class="list_item_dets">';
+                                    $output .= '<a href="'.$list['url'].'" target="_blank">';
+                                        $output .= '<i class="icon-right-circle2"></i>';
+                                        $output .= '<span class="list_item_link">'.$list['name'].'</span>';
+                                        
+                                        // add the item count if there are any...
+                                        if ($list['count'] > 0) 
+                                        {
+                                            $output .= '<span class="list_item_count">';
+                                                $output .= $list['count'] . ' ' .  $itemNoun;
+                                            $output .= '</span>';
+                                        }
+                                        $output .= '</a>';
+
+                                $output .= '</td>';
+                                // add update text if we have it
+                                if (isset($list["lastUpdatedDate"]))
+                                {
+                                    $output .= '<td class="list_update">';
+                                        $output .= '<ul class="list_item_update">';
+                                            $output .= '<li class="title">last updated</li>';
+                                            $output .= '<li class="month">' . date('F', strtotime($list["lastUpdatedDate"])) . '</li>';
+                                            $output .= '<li class="day">' . date('j', strtotime($list['lastUpdatedDate'])) . '</li>';
+                                            $output .= '<li class="year">' . date('Y', strtotime($list['lastUpdatedDate'])) . '</li>';
+                                        $output .= '</ul>';
+                                    $output .= '</td>';
+                                }
+                            $output .= '</tr>';
+                        $output .= '</table>';
+                    $output .= '</li>';
+            }
+            $output .= '</ul>';
+        }
+
+        if ($output=='') {
+            echo aspirelists_resource_not_ready($context);
+        } else {
+           echo $output;
+        }
     } else {
-       echo $output;
+        echo aspirelists_resource_not_ready($context);
     }
-} else {
-    echo aspirelists_resource_not_ready($context);
 }
 
 echo $OUTPUT->footer();

@@ -134,6 +134,7 @@ function aspirelists_check_reading_lists() {
       }
 }
 
+// Curls a url and json decodes the response
 function curlSource($url) {
 
     $config = get_config('aspirelists');
@@ -149,11 +150,14 @@ function curlSource($url) {
     );
     curl_setopt_array($ch, $options);
 
-    return json_decode(curl_exec($ch), true); // execute the request and get a response
+    $response = curl_exec($ch);
+
+    return $response ? json_decode($response, true) : false;
 }
 
-
-function getCats($baseurl, &$o, &$level, $shortname) {
+//This gets an associative array of categories set out in a manner to be used
+//with the mod_form
+function aspirelists_getCats($baseurl, &$o, &$level, $shortname) {
 
     $p = curlSource($baseurl . '.json');
 
@@ -163,8 +167,53 @@ function getCats($baseurl, &$o, &$level, $shortname) {
             $level ++;
             $cn = curlSource($c['value'] . '.json');
             $o[substr($c['value'], strrpos($c['value'], '/') + 1)] = str_repeat('--', $level). ' ' .$shortname . ': ' .$cn[$c['value']]['http://rdfs.org/sioc/spec/name'][0]['value'];
-            getCats($c['value'], $o, $level, $shortname);
+            aspirelists_getCats($c['value'], $o, $level, $shortname);
             $level --;
         }
     }
+}
+
+// Given a page or category url this will get all of the resources from it and its children
+// And print links out in a list
+// warning: this is experimental for demo purposes and may pone talis and the server your
+// running from
+function aspirelists_getResources($baseurl) {
+
+  $data = curlSource($baseurl . '.json');
+
+  echo '<ul>';
+        if(!empty($data[$baseurl]['http://rdfs.org/sioc/spec/container_of'])) {
+            foreach($data[$baseurl]['http://rdfs.org/sioc/spec/container_of'] as $r) {
+                $resurl = $r['value'];
+                $rdata = curlSource($resurl . '.json');
+
+                if(!empty($rdata[$resurl]['http://purl.org/vocab/resourcelist/schema#resource'])){
+
+                    $tempurl = $rdata[$resurl]['http://purl.org/vocab/resourcelist/schema#resource'][0]['value'];
+
+                    $rdets = curlSource($tempurl . '.json');
+
+                    if(!empty($rdets[$tempurl]['http://purl.org/dc/terms/title'])) {
+                        echo '<li><a href="' . $resurl . '">' . $rdets[$tempurl]['http://purl.org/dc/terms/title'][0]['value'] . '</a></li>';
+                    }
+                }
+            }
+        }
+
+        if(!empty($data[$baseurl]['http://rdfs.org/sioc/spec/parent_of'])) {
+
+          foreach ($data[$baseurl]['http://rdfs.org/sioc/spec/parent_of'] as $c) {
+            $caturl = $c['value'];
+            $cn = curlSource($c['value'] . '.json');
+            echo '<li>';
+            echo $cn[$caturl]['http://rdfs.org/sioc/spec/name'][0]['value'];
+
+            aspirelists_getResources($caturl);
+
+            echo '</li>';
+          }
+
+        }
+
+    echo '</ul>';
 }

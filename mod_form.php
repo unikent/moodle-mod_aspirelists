@@ -53,7 +53,7 @@ class mod_aspirelists_mod_form extends moodleform_mod {
             $list_url = $data["$config->baseurl/$config->group/$shortname"]['http://purl.org/vocab/resourcelist/schema#usesList'][0]['value'];
         
             $level = 0;
-            $d = getCats($list_url, $options, $level, $shortname);
+            $d = aspirelists_getCats($list_url, $options, $level, $shortname);
         }
         
         $mform->addElement('select', 'category', 'Category', $options, array('size'=>20));
