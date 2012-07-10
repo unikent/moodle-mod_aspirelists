@@ -1,6 +1,6 @@
 <?php  // $Id$
 /**
- * Capability definitions for the cla module.
+ * Capability definitions for the aspire module.
  *
  * For naming conventions, see lib/db/access.php.
  */
