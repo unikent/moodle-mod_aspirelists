@@ -69,9 +69,6 @@ $PAGE->navbar->add($course->shortname,"{$CFG->wwwroot}/course/view.php?id=$cours
 $PAGE->navbar->add(get_string('modulename', 'aspirelists'));
 $PAGE->set_pagelayout('admin');
 
-echo $OUTPUT->header();
-
-echo $OUTPUT->heading("$readinglist->name", 2, 'aspirelists_main', '');
 
 $shortname_full = explode(' ', $course->shortname);
 $shortnames = explode('/', strtolower($shortname_full[0]));
@@ -92,6 +89,10 @@ if($readinglist->category != 'all') {
     
 
 } else { // if not then display reading lists for any short codes given
+
+    echo $OUTPUT->header();
+    echo $OUTPUT->heading("$readinglist->name", 2, 'aspirelists_main', '');
+    
     foreach($shortnames as $shortname){
 
         // get the code from the global course object, lowercasing it in the process
@@ -149,60 +150,51 @@ if($readinglist->category != 'all') {
 
     if(!empty($lists)){
 
+        $output .= '<link rel="stylesheet" href="fontello.css">';
+        $output .= '<ul class="list_item_inset">';
 
-        if(count($lists) === 1 && $config->redirect === '1') {
+        foreach ($lists as $list)
+        {
+            $itemNoun = ($list['count'] == 1) ? "item" : "items"; // get a friendly, human readable noun for the items
 
-            reset($lists);
-            $firstkey = key($lists);
-            redirect($lists[$firstkey]['url']) ;
 
-        } else {
+            // finally, we're ready to output information to the browser#
+                $output .= '<li class="list_item">';
+                    $output .= '<table>';
+                        $output .= '<tr>';
+                            $output .= '<td  class="list_item_dets">';
+                                $output .= '<a href="'.$list['url'].'" target="_blank">';
+                                    $output .= '<i class="icon-right-circle2"></i>';
+                                    $output .= '<span class="list_item_link">'.$list['name'].'</span>';
 
-            $output .= '<link rel="stylesheet" href="fontello.css">';
-            $output .= '<ul class="list_item_inset">';
+                                    // add the item count if there are any...
+                                    if ($list['count'] > 0)
+                                    {
+                                        $output .= '<span class="list_item_count">';
+                                            $output .= $list['count'] . ' ' .  $itemNoun;
+                                        $output .= '</span>';
+                                    }
+                                    $output .= '</a>';
 
-            foreach ($lists as $list)
-            {
-                $itemNoun = ($list['count'] == 1) ? "item" : "items"; // get a friendly, human readable noun for the items
-                
-                
-                // finally, we're ready to output information to the browser#
-                    $output .= '<li class="list_item">';
-                        $output .= '<table>';
-                            $output .= '<tr>';
-                                $output .= '<td  class="list_item_dets">';
-                                    $output .= '<a href="'.$list['url'].'" target="_blank">';
-                                        $output .= '<i class="icon-right-circle2"></i>';
-                                        $output .= '<span class="list_item_link">'.$list['name'].'</span>';
-                                        
-                                        // add the item count if there are any...
-                                        if ($list['count'] > 0) 
-                                        {
-                                            $output .= '<span class="list_item_count">';
-                                                $output .= $list['count'] . ' ' .  $itemNoun;
-                                            $output .= '</span>';
-                                        }
-                                        $output .= '</a>';
-
+                            $output .= '</td>';
+                            // add update text if we have it
+                            if (isset($list["lastUpdatedDate"]))
+                            {
+                                $output .= '<td class="list_update">';
+                                    $output .= '<ul class="list_item_update">';
+                                        $output .= '<li class="title">last updated</li>';
+                                        $output .= '<li class="month">' . date('F', strtotime($list["lastUpdatedDate"])) . '</li>';
+                                        $output .= '<li class="day">' . date('j', strtotime($list['lastUpdatedDate'])) . '</li>';
+                                        $output .= '<li class="year">' . date('Y', strtotime($list['lastUpdatedDate'])) . '</li>';
+                                    $output .= '</ul>';
                                 $output .= '</td>';
-                                // add update text if we have it
-                                if (isset($list["lastUpdatedDate"]))
-                                {
-                                    $output .= '<td class="list_update">';
-                                        $output .= '<ul class="list_item_update">';
-                                            $output .= '<li class="title">last updated</li>';
-                                            $output .= '<li class="month">' . date('F', strtotime($list["lastUpdatedDate"])) . '</li>';
-                                            $output .= '<li class="day">' . date('j', strtotime($list['lastUpdatedDate'])) . '</li>';
-                                            $output .= '<li class="year">' . date('Y', strtotime($list['lastUpdatedDate'])) . '</li>';
-                                        $output .= '</ul>';
-                                    $output .= '</td>';
-                                }
-                            $output .= '</tr>';
-                        $output .= '</table>';
-                    $output .= '</li>';
-            }
-            $output .= '</ul>';
+                            }
+                        $output .= '</tr>';
+                    $output .= '</table>';
+                $output .= '</li>';
         }
+        $output .= '</ul>';
+
 
         if ($output=='') {
             echo aspirelists_resource_not_ready($context);
@@ -212,9 +204,15 @@ if($readinglist->category != 'all') {
     } else {
         echo aspirelists_resource_not_ready($context);
     }
+
+    echo $OUTPUT->footer();
+    if ($redirectpage != false){
+        redirect($redirectpage);
+    }
+
 }
 
-echo $OUTPUT->footer();
+
 
 
 

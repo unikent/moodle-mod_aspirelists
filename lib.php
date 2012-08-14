@@ -217,3 +217,34 @@ function aspirelists_getResources($baseurl) {
 
     echo '</ul>';
 }
+
+
+/**
+ * Given a course_module object, this function returns any
+ * "extra" information that may be needed when printing
+ * this activity in a course listing.
+ *
+ * See {@link get_array_of_activities()} in course/lib.php
+ *
+ * @param object $coursemodule
+ * @return object info
+ */
+function aspirelists_get_coursemodule_info($coursemodule) {
+    global $CFG, $DB;
+
+    //Get the resource
+    if (!$aspireresource = $DB->get_record('aspirelists', array('id'=>$coursemodule->instance),
+            'id, category')) {
+        return NULL;
+    }
+
+    $info = new cached_cm_info();
+
+    //If we are not showing all categories then set the link to direct to a new tab.
+    if($aspireresource->category != 'all'){
+        $fullurl = "$CFG->wwwroot/mod/aspirelists/view.php?id=$coursemodule->id&amp;redirect=1";
+        $info->onclick = "window.open('$fullurl'); return false;";
+    }
+
+    return $info;
+}
