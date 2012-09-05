@@ -81,7 +81,7 @@ if($readinglist->category != 'all') {
 
     $url = $config->baseurl . '/sections/' . $readinglist->category;
 
-    if(isset($CFG->aspirelists_resourcelist)) {
+    if(isset($CFG->aspirelists_resourcelist) && $CFG->aspirelists_resourcelist === true) {
         aspirelists_getResources($url);
     } else {
         redirect($url . '.html') ;
