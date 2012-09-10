@@ -36,4 +36,6 @@ if ($ADMIN->fulltree) {
 
     $settings->add(new admin_setting_configcheckbox('aspirelists/redirect',
         get_string('settings:redirect', 'aspirelists'), get_string('settings:configredirect', 'aspirelists'), 1));
+
+    $settings->add(new admin_setting_configtext('aspirelists/modTimePeriod',get_string('config_timePeriod', 'aspirelists'),get_string('config_timePeriod_desc', 'aspirelists'),get_string('config_timePeriod_ex', 'aspirelists')));
 }

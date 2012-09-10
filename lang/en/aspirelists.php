@@ -48,6 +48,10 @@ $string['settings:group:subjects'] = 'Subjects';
 $string['settings:redirect'] = 'Redirect';
 $string['settings:configredirect'] = 'Redirect on single reading lists';
 
+$string['config_timePeriod'] = 'Display time period';
+$string['config_timePeriod_desc'] = 'Enter the time period you want to display (1 = 2011/2012, 2 = 2012/2013, etc)';
+$string['config_timePeriod_ex'] = '2';
+
 /*********************************
  *             Errors            * 
  *********************************/

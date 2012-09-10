@@ -108,6 +108,13 @@ if($readinglist->category != 'all') {
             {
                     foreach ($data["$config->baseurl/$config->group/$shortname"]['http://purl.org/vocab/resourcelist/schema#usesList'] as $usesList) // for each list this module uses...
                     {
+
+                        $tp = strrev($data[$usesList['value']]['http://lists.talis.com/schema/temp#hasTimePeriod'][0]['value']);
+
+                        $timep = get_config('aspirelists', 'modTimePeriod');
+
+                        if($tp[0] === $timep) {
+
                             $list = array();
                             $list["url"] = $usesList["value"]; // extract the list URL
                             $list["name"] = $data[$list["url"]]['http://rdfs.org/sioc/spec/name'][0]['value']; // extract the list name
@@ -138,6 +145,7 @@ if($readinglist->category != 'all') {
                             $list['count'] = $itemCount;
                             //array_push($lists,$list);
                             $lists[$list["url"]] = $list;
+                        }
                     }
                     uasort($lists,'aspirelists_sortByName');
 
