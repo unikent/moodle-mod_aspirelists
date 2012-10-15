@@ -231,7 +231,7 @@ function aspirelists_resource_not_ready($context){
 
     if(isset($role[1]) && ($role[1]->shortname == 'student' || $role[1]->shortname == 'sds_student')) {
         $output .= get_string('error:studentnolist', 'aspirelists');
-    } else  if (has_capability('moodle/course:update', $context)){
+    } else if (has_capability('moodle/course:update', $context)){
         $output .= get_string('error:staffnolist', 'aspirelists');
     } else {
         $output .= get_string('error:defaultnolist', 'aspirelists');
