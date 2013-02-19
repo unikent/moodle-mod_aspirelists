@@ -139,7 +139,7 @@ if($readinglist->category != 'all') {
                             //array_push($lists,$list);
                             $lists[$list["url"]] = $list;
                     }
-                    uasort($lists,'sortByName');
+                    uasort($lists,'aspirelists_sortByName');
 
             }
         } else {
@@ -233,7 +233,7 @@ function aspirelists_resource_not_ready($context){
 }
 
 
-function contextualTime($small_ts, $large_ts=false) {
+function aspirelists_contextualTime($small_ts, $large_ts=false) {
   if(!$large_ts) $large_ts = time();
   $n = $large_ts - $small_ts;
   if($n <= 1) return 'less than 1 second ago';
@@ -256,7 +256,7 @@ function contextualTime($small_ts, $large_ts=false) {
 }
 
 
-function sortByName($a,$b)
+function aspirelists_sortByName($a,$b)
 {
     return strcmp($a["name"], $b["name"]);
 }

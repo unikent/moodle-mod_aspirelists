@@ -240,8 +240,9 @@ function aspirelists_get_coursemodule_info($coursemodule) {
 
     $info = new cached_cm_info();
 
-    $info->content = format_module_intro(get_string('modulename', 'aspirelists'), $aspireresource, $coursemodule->id, false);
-
+    if($coursemodule->showdescription == 1) {
+      $info->content = format_module_intro(get_string('modulename', 'aspirelists'), $aspireresource, $coursemodule->id, false);
+    }
     //If we are not showing all categories then set the link to direct to a new tab.
     if($aspireresource->category != 'all'){
         $fullurl = "$CFG->wwwroot/mod/aspirelists/view.php?id=$coursemodule->id&amp;redirect=1";
