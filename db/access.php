@@ -6,6 +6,18 @@
  */
 $capabilities = array(
 
+    'mod/aspirelists:addinstance' => array(
+        'riskbitmask' => RISK_XSS,
+
+        'captype' => 'write',
+        'contextlevel' => CONTEXT_COURSE,
+        'archetypes' => array(
+            'editingteacher' => CAP_ALLOW,
+            'manager' => CAP_ALLOW
+        ),
+        'clonepermissionsfrom' => 'moodle/course:manageactivities'
+    ),
+
     // Ability to manage/publish reading lists
     'mod/talis:pub' => array(
         'riskbitmask' => RISK_MANAGETRUST & RISK_CONFIG,
