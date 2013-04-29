@@ -17,6 +17,7 @@ defined('MOODLE_INTERNAL') || die;
 
 function aspirelists_supports($feature) {
     switch($feature) {
+        case FEATURE_MOD_ARCHETYPE:           return MOD_ARCHETYPE_RESOURCE;
         case FEATURE_GROUPS:                  return false;
         case FEATURE_GROUPINGS:               return false;
         case FEATURE_GROUPMEMBERSONLY:        return true;
@@ -85,14 +86,15 @@ function aspirelists_delete_instance($id) {
     return true;
 }
 
-function aspirelists_get_types() {
-    $readinglist = new object;
-    $readinglist->modclass = MOD_CLASS_RESOURCE;
-    $readinglist->type="aspirelists&amp;type=readinglist";
-    $readinglist->typestr = "Reading list";
+//Kent - Apparently no longer needed in 2.4
+//function aspirelists_get_types() {
+//    $readinglist = new object;
+//    $readinglist->modclass = MOD_CLASS_RESOURCE;
+//    $readinglist->type="aspirelists&amp;type=readinglist";
+//    $readinglist->typestr = "Reading list";
 
-    return array($readinglist);
-}
+//    return array($readinglist);
+//}
 
 function aspirelists_check_reading_lists() {
     global $DB, $CFG, $COURSE;
