@@ -214,7 +214,7 @@ if($readinglist->category != 'all') {
     }
 
     echo $OUTPUT->footer();
-    if ($redirectpage != false){
+    if (isset($redirectpage) && $redirectpage != false){
         redirect($redirectpage);
     }
 
