@@ -40,26 +40,40 @@ class mod_aspirelists_mod_form extends moodleform_mod {
         //-------------------------------------------------------
 
         $options=array();
-        $options['all']    = 'All';
+        $options['misc']['all']    = 'All';
+        $options['canterbury'] = array();
+        $options['medway'] = array();
 
 
         $shortname_full = explode(' ', $COURSE->shortname);
         $shortnames = explode('/', strtolower($shortname_full[0]));
 
         foreach ($shortnames as $shortname) {
-            $url = "$config->baseurl/$config->group/$shortname/lists.json";
+            $mainUrl = "$config->baseurl/$config->group/$shortname/lists.json";
+            $altUrl = "$config->altBaseurl/$config->group/$shortname/lists.json";
 
-            $data = curlSource($url);
+            $mainData = curlSource($mainUrl);
+            $mainData = json_decode($mainData, true);
 
-            if(isset($data["$config->baseurl/$config->group/$shortname"]['http://purl.org/vocab/resourcelist/schema#usesList'][0]['value'])) {
-                $list_url = $data["$config->baseurl/$config->group/$shortname"]['http://purl.org/vocab/resourcelist/schema#usesList'][0]['value'];
+
+            if(isset($mainData["$config->baseurl/$config->group/$shortname"]['http://purl.org/vocab/resourcelist/schema#usesList'][0]['value'])) {
+                $list_url = $mainData["$config->baseurl/$config->group/$shortname"]['http://purl.org/vocab/resourcelist/schema#usesList'][0]['value'];
                 $level = 0;
-                $d = aspirelists_getCats($list_url, $options, $level, $shortname);
+                $d = aspirelists_getCats($list_url, $options, $level, $shortname, 'canterbury');
+            }
+
+            $altData = curlSource($altUrl);
+            $altData = json_decode($altData, true);
+
+            if(isset($altData["$config->altBaseurl/$config->group/$shortname"]['http://purl.org/vocab/resourcelist/schema#usesList'][0]['value'])) {
+                $list_url = $altData["$config->altBaseurl/$config->group/$shortname"]['http://purl.org/vocab/resourcelist/schema#usesList'][0]['value'];
+                $level = 0;
+                $d = aspirelists_getCats($list_url, $options, $level, $shortname, 'medway');
             }
 
         }
         
-        $mform->addElement('select', 'category', 'Category', $options, array('size'=>20));
+        $mform->addElement('selectgroups', 'category', 'Category', $options, array('size'=>20));
 
         // add standard buttons, common to all modules
         $this->standard_coursemodule_elements();

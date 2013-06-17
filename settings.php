@@ -24,6 +24,9 @@ if ($ADMIN->fulltree) {
     $settings->add(new admin_setting_configtext('aspirelists/baseurl',
         get_string('settings:baseurl', 'aspirelists'), get_string('settings:configbaseurl', 'aspirelists'), 'http://resourcelists.kent.ac.uk'));
 
+     $settings->add(new admin_setting_configtext('aspirelists/altBaseurl',
+        get_string('settings:altbaseurl', 'aspirelists'),get_string('settings:altconfigbaseurl', 'aspirelists'), 'http://medwaylists.kent.ac.uk'));
+
     $options = array();
     $options['courses']         = get_string('settings:group:courses', 'aspirelists');
     $options['modules']         = get_string('settings:group:modules', 'aspirelists');

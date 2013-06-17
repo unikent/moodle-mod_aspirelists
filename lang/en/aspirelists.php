@@ -36,8 +36,11 @@ $string['pluginname'] = 'Reading lists';
 $string['settings:timeout'] = 'Timeout';
 $string['settings:configtimeout'] = 'Set timeout value for the request';
 
-$string['settings:baseurl'] = 'Timeout';
+$string['settings:baseurl'] = 'Base URL';
 $string['settings:configbaseurl'] = 'Target Aspire base URL (e.g. http://lists.broadminsteruniversity.org)';
+
+$string['settings:altbaseurl'] = 'Alt Base URL';
+$string['settings:altconfigbaseurl'] = 'Target Aspire base URL (e.g. http://lists.broadminsteruniversity.org)';
 
 $string['settings:group'] = 'Target knowledge group';
 $string['settings:configgroup'] = 'Choose target knowledge group';
