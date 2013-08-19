@@ -177,7 +177,7 @@ function aspirelists_getCats($baseurl, &$o, &$level, $shortname, $group) {
     }
 }
 
-function aspirelists_getLists($site, $targetKG, $code) {
+function aspirelists_getLists($site, $targetKG, $code, $timep) {
   global $COURSE;
 
   $config = get_config('aspirelists');
@@ -199,7 +199,7 @@ function aspirelists_getLists($site, $targetKG, $code) {
 
         $tp = strrev($data[$usesList['value']]['http://lists.talis.com/schema/temp#hasTimePeriod'][0]['value']);
 
-        $timep = get_config('aspirelists', 'modTimePeriod');
+        //$timep = get_config('aspirelists', 'modTimePeriod');
 
         if($tp[0] === $timep) {
 

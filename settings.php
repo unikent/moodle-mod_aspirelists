@@ -41,4 +41,5 @@ if ($ADMIN->fulltree) {
         get_string('settings:redirect', 'aspirelists'), get_string('settings:configredirect', 'aspirelists'), 1));
 
     $settings->add(new admin_setting_configtext('aspirelists/modTimePeriod',get_string('config_timePeriod', 'aspirelists'),get_string('config_timePeriod_desc', 'aspirelists'),get_string('config_timePeriod_ex', 'aspirelists')));
+    $settings->add(new admin_setting_configtext('aspirelists/altModTimePeriod',get_string('config_altTimePeriod', 'aspirelists'),get_string('config_altTimePeriod_desc', 'aspirelists'),get_string('config_altTimePeriod_ex', 'aspirelists')));
 }

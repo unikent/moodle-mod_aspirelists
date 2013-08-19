@@ -107,10 +107,10 @@ if($readinglist->category != 'all') {
     
     foreach($shortnames as $shortname){
 
-        $m = aspirelists_getLists($config->baseurl, $config->group, $shortname);
+        $m = aspirelists_getLists($config->baseurl, $config->group, $shortname,$config->get_config('aspirelists', 'modTimePeriod'));
         if(!empty($m)) {$main[] = $m; }
 
-        $a = aspirelists_getLists($config->altBaseurl, $config->group, $shortname);
+        $a = aspirelists_getLists($config->altBaseurl, $config->group, $shortname,$config->get_config('aspirelists', 'altModTimePeriod'));
         if(!empty($a)) {$alt[] = $a; }
 
         if(!empty($main)) {

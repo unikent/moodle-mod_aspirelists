@@ -58,6 +58,10 @@ $string['config_timePeriod'] = 'Display time period';
 $string['config_timePeriod_desc'] = 'Enter the time period you want to display (1 = 2011/2012, 2 = 2012/2013, etc)';
 $string['config_timePeriod_ex'] = '2';
 
+$string['config_altTimePeriod'] = 'Display alternate time period';
+$string['config_altTimePeriod_desc'] = 'Enter the alternate time period you want to display (1 = 2012/2013, 2 = 2013/2014, etc)';
+$string['config_altTimePeriod_ex'] = '1';
+
 /*********************************
  *             Errors            * 
  *********************************/

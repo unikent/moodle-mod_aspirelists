@@ -70,8 +70,9 @@ class mod_aspirelists_mod_form extends moodleform_mod {
                 $level = 0;
                 $d = aspirelists_getCats($list_url, $options, $level, $shortname, 'medway');
             }
-
+            debugging(var_dump(ARRAY('maindata'=>$mainData,'altdata'=>$altData,'data'=>$d),DEBUG_DEVELOPER));
         }
+        debugging(var_dump(ARRAY('options'=>$options),DEBUG_DEVELOPER));
         
         $mform->addElement('selectgroups', 'category', 'Category', $options, array('size'=>20));
 
