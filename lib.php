@@ -163,6 +163,7 @@ function aspirelists_getCats($baseurl, &$o, &$level, $shortname, $group) {
 
     $p = curlSource($baseurl . '.json');
     $p = json_decode($p, true);
+    debugging(var_dump(ARRAY('p'=>$p, 'q'=>$q, 'o'=>$o),DEBUG_DEVELOPER));
 
     if(!empty($p[$baseurl]['http://rdfs.org/sioc/spec/parent_of'])) {
 
