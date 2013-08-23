@@ -92,7 +92,9 @@ if($readinglist->category != 'all') {
     }
 
     $url = $base_url . '/sections/' . $category[1];
-
+    
+    debugging(var_dump(ARRAY('call'=>'view-not-all','category'=>$category,'url'=>$url)),DEBUG_DEVELOPER);
+    
     if(isset($CFG->aspirelists_resourcelist) && $CFG->aspirelists_resourcelist === true) {
         aspirelists_getResources($url);
     } else {
@@ -107,10 +109,10 @@ if($readinglist->category != 'all') {
     
     foreach($shortnames as $shortname){
 
-        $m = aspirelists_getLists($config->baseurl, $config->group, $shortname,$config->get_config('aspirelists', 'modTimePeriod'));
+        $m = aspirelists_getLists($config->baseurl, $config->group, $shortname,$config->modTimePeriod);
         if(!empty($m)) {$main[] = $m; }
 
-        $a = aspirelists_getLists($config->altBaseurl, $config->group, $shortname,$config->get_config('aspirelists', 'altModTimePeriod'));
+        $a = aspirelists_getLists($config->altBaseurl, $config->group, $shortname,$config->altModTimePeriod);
         if(!empty($a)) {$alt[] = $a; }
 
         if(!empty($main)) {

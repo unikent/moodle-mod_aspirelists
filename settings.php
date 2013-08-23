@@ -42,4 +42,6 @@ if ($ADMIN->fulltree) {
 
     $settings->add(new admin_setting_configtext('aspirelists/modTimePeriod',get_string('config_timePeriod', 'aspirelists'),get_string('config_timePeriod_desc', 'aspirelists'),get_string('config_timePeriod_ex', 'aspirelists')));
     $settings->add(new admin_setting_configtext('aspirelists/altModTimePeriod',get_string('config_altTimePeriod', 'aspirelists'),get_string('config_altTimePeriod_desc', 'aspirelists'),get_string('config_altTimePeriod_ex', 'aspirelists')));
+    $settings->add(new admin_setting_configtext('aspirelists/cacheDelay',get_string('config_cacheDelay', 'aspirelists'),get_string('config_cacheDelay_desc', 'aspirelists'),get_string('config_cacheDelay_ex', 'aspirelists')));
+    $settings->add(new admin_setting_configtext('aspirelists/cacheMaxDelay',get_string('config_cacheMaxDelay', 'aspirelists'),get_string('config_cacheMaxDelay_desc', 'aspirelists'),get_string('config_cacheMaxDelay_ex', 'aspirelists')));
 }
