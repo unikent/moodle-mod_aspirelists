@@ -192,7 +192,7 @@ function curlSource($url) {
         $value['data']=$response;
         $ASPIRE_CACHE[$url]=$value;
     }
-    debugging(var_dump(ARRAY('call'=>'curlSource','cache'=>array_keys($ASPIRE_CACHE),'expunge'=>$expunge, 'url'=>$url, 'response'=>strlen($response), 'cache_hit'=>$cache_hit)),DEBUG_DEVELOPER);
+    debugging(var_export(ARRAY('call'=>'curlSource','cache'=>array_keys($ASPIRE_CACHE),'expunge'=>$expunge, 'url'=>$url, 'response'=>strlen($response), 'cache_hit'=>$cache_hit), TRUE),DEBUG_DEVELOPER);
 
     return $response;
 }
@@ -203,7 +203,7 @@ function aspirelists_getCats($baseurl, &$o, &$level, $shortname, $group) {
 
     $p = curlSource($baseurl . '.json');
     $p = json_decode($p, true);
-    debugging(var_dump(ARRAY('call'=>'aspirelists_getCats','baseurl'=>$baseurl,'p'=>$p, 'o'=>$o,'level'=>$level)),DEBUG_DEVELOPER);
+    debugging(var_export(ARRAY('call'=>'aspirelists_getCats','baseurl'=>$baseurl,'p'=>$p, 'o'=>$o,'level'=>$level), TRUE),DEBUG_DEVELOPER);
 
     if(!empty($p[$baseurl]['http://rdfs.org/sioc/spec/parent_of'])) {
 
@@ -212,7 +212,7 @@ function aspirelists_getCats($baseurl, &$o, &$level, $shortname, $group) {
             $cn = curlSource($c['value'] . '.json');
             $cn = json_decode($cn, true);
             $o[$group][$group . '/' . substr($c['value'], strrpos($c['value'], '/') + 1)] = str_repeat('--', $level). ' ' .$shortname . ': ' .$cn[$c['value']]['http://rdfs.org/sioc/spec/name'][0]['value'];
-	    debugging(var_dump(ARRAY('call'=>'aspirelists_getCats-inner','c[value]'=>$c['value'],'cn'=>$cn, 'o'=>$o )),DEBUG_DEVELOPER);
+	    debugging(var_export(ARRAY('call'=>'aspirelists_getCats-inner','c[value]'=>$c['value'],'cn'=>$cn, 'o'=>$o ), TRUE),DEBUG_DEVELOPER);
             aspirelists_getCats($c['value'], $o, $level, $shortname, $group);
             $level --;
         }
@@ -233,7 +233,7 @@ function aspirelists_getLists($site, $targetKG, $code, $timep) {
   {
 
     $data = json_decode($data, true);
-    debugging(var_dump(ARRAY('call'=>'aspirelists_getLists', 'url'=>$url, 'data'=>$data)),DEBUG_DEVELOPER);
+    debugging(var_export(ARRAY('call'=>'aspirelists_getLists', 'url'=>$url, 'data'=>$data), TRUE),DEBUG_DEVELOPER);
 
     if(isset($data["$site/$targetKG/$code"]) && isset($data["$site/$targetKG/$code"]['http://purl.org/vocab/resourcelist/schema#usesList'])) // if there are any lists...
     {
@@ -243,7 +243,7 @@ function aspirelists_getLists($site, $targetKG, $code, $timep) {
         $tp = strrev($data[$usesList['value']]['http://lists.talis.com/schema/temp#hasTimePeriod'][0]['value']);
 
         //$timep = get_config('aspirelists', 'modTimePeriod');
-        debugging(var_dump(ARRAY('call'=>'aspirelists_getLists-inner','timep'=>$timep,'tp'=>$tp)),DEBUG_DEVELOPER);
+        debugging(var_export(ARRAY('call'=>'aspirelists_getLists-inner','timep'=>$timep,'tp'=>$tp), TRUE),DEBUG_DEVELOPER);
 
         if($tp[0] === $timep) {
 

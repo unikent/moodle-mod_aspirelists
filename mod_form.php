@@ -60,7 +60,7 @@ class mod_aspirelists_mod_form extends moodleform_mod {
                 $list_url = $mainData["$config->baseurl/$config->group/$shortname"]['http://purl.org/vocab/resourcelist/schema#usesList'][0]['value'];
                 $level = 0;
                 $d = aspirelists_getCats($list_url, $options, $level, $shortname, 'canterbury');
-	        debugging(var_dump(ARRAY('call'=>'mod_form-inner-canterbury','list_url'=>$list_url,'shortname'=>$shortname,'d'=>$d)),DEBUG_DEVELOPER);
+	        debugging(var_export(ARRAY('call'=>'mod_form-inner-canterbury','list_url'=>$list_url,'shortname'=>$shortname,'d'=>$d), TRUE),DEBUG_DEVELOPER);
             }
 
             $altData = curlSource($altUrl);
@@ -70,11 +70,11 @@ class mod_aspirelists_mod_form extends moodleform_mod {
                 $list_url = $altData["$config->altBaseurl/$config->group/$shortname"]['http://purl.org/vocab/resourcelist/schema#usesList'][0]['value'];
                 $level = 0;
                 $d = aspirelists_getCats($list_url, $options, $level, $shortname, 'medway');
-	        debugging(var_dump(ARRAY('call'=>'mod_form-inner-medway','list_url'=>$list_url,'shortname'=>$shortname,'d'=>$d)),DEBUG_DEVELOPER);
+	        debugging(var_export(ARRAY('call'=>'mod_form-inner-medway','list_url'=>$list_url,'shortname'=>$shortname,'d'=>$d), TRUE),DEBUG_DEVELOPER);
             }
-            debugging(var_dump(ARRAY('call'=>'mod_form-inner','mainUrl'=>$mainUrl,'maindata'=>$mainData,'altUrl'=>$altUrl,'altdata'=>$altData)),DEBUG_DEVELOPER);
+            debugging(var_export(ARRAY('call'=>'mod_form-inner','mainUrl'=>$mainUrl,'maindata'=>$mainData,'altUrl'=>$altUrl,'altdata'=>$altData), TRUE),DEBUG_DEVELOPER);
         }
-        debugging(var_dump(ARRAY('call'=>'mod_form-outer','options'=>$options)),DEBUG_DEVELOPER);
+        debugging(var_export(ARRAY('call'=>'mod_form-outer','options'=>$options), TRUE),DEBUG_DEVELOPER);
         
         $mform->addElement('selectgroups', 'category', 'Category', $options, array('size'=>20));
 

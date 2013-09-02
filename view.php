@@ -93,7 +93,7 @@ if($readinglist->category != 'all') {
 
     $url = $base_url . '/sections/' . $category[1];
     
-    debugging(var_dump(ARRAY('call'=>'view-not-all','category'=>$category,'url'=>$url)),DEBUG_DEVELOPER);
+    debugging(var_export(ARRAY('call'=>'view-not-all','category'=>$category,'url'=>$url), TRUE),DEBUG_DEVELOPER);
     
     if(isset($CFG->aspirelists_resourcelist) && $CFG->aspirelists_resourcelist === true) {
         aspirelists_getResources($url);
