@@ -223,7 +223,7 @@ function aspirelists_getLists($site, $targetKG, $code, $timep) {
   global $COURSE;
 
   $config = get_config('aspirelists');
-  $context = get_context_instance(CONTEXT_COURSE, $COURSE->id);
+  $context = context_course::instance($COURSE->id);
   // build the target URL of the JSON data we'll be requesting from Aspire
   $url = "$site/$targetKG/$code/lists.json";
   // using php curl, we'll now request the JSON data from Aspire

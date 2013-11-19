@@ -57,7 +57,7 @@ $config = get_config('aspirelists');
 
 add_to_log($course->id, 'aspirelist', 'view', "view.php?id={$id}", '');
 
-$context = get_context_instance(CONTEXT_COURSE, $course->id);
+$context = context_course::instance($course->id);
 $PAGE->set_context($context);
 
 //Set page params and layout
