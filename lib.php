@@ -86,16 +86,6 @@ function aspirelists_delete_instance($id) {
     return true;
 }
 
-//Kent - Apparently no longer needed in 2.4
-//function aspirelists_get_types() {
-//    $readinglist = new object;
-//    $readinglist->modclass = MOD_CLASS_RESOURCE;
-//    $readinglist->type="aspirelists&amp;type=readinglist";
-//    $readinglist->typestr = "Reading list";
-
-//    return array($readinglist);
-//}
-
 function aspirelists_check_reading_lists() {
     global $DB, $CFG, $COURSE;
 
