@@ -218,7 +218,7 @@ function aspirelists_getLists($site, $targetKG, $code, $timep) {
           // let's try and get a last updated date
           if (isset($data[$list["url"]]['http://purl.org/vocab/resourcelist/schema#lastUpdated'])) {
             // ..and extract the date in a friendly, human readable format...
-            $ludTime = strtotime($data[$list["url"]]['http://purl.org/vocab/resourcelist/schema#lastUpdated'][0]['value']);
+            $ludTime = strtotime(clean_param($data[$list["url"]]['http://purl.org/vocab/resourcelist/schema#lastUpdated'][0]['value'], PARAM_TEXT));
             $list['lastUpdatedDate'] = date('l j F Y', $ludTime);
           }
 
@@ -226,7 +226,7 @@ function aspirelists_getLists($site, $targetKG, $code, $timep) {
           $itemCount = 0;
           if (isset($data[$list["url"]]['http://purl.org/vocab/resourcelist/schema#contains'])) {
             foreach ($data[$list["url"]]['http://purl.org/vocab/resourcelist/schema#contains'] as $things) {
-              if (preg_match('/\/items\//', $things['value'])) {
+              if (preg_match('/\/items\//', clean_param($things['value'], PARAM_URL))) {
                 $itemCount++;
               }
             }
