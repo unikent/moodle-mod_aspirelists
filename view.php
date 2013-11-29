@@ -135,7 +135,7 @@ if($readinglist->category != 'all') {
         echo aspirelists_resource_not_ready($context);
         
     } else {
-        $output .= '<link rel="stylesheet" href="fontello.css">';
+        $output .= '<link rel="stylesheet" href="styles/fontello.css">';
         echo $output;
     }
 

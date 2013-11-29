@@ -49,27 +49,21 @@ function aspirelists_get_post_actions() {
 }
 
 function aspirelists_update_instance($data, $mform) {
-    global $CFG, $DB;
-    require_once("$CFG->libdir/resourcelib.php");
-    $data->timemodified = time();
-    $data->id           = $data->instance;
+  global $CFG, $DB;
+  require_once("$CFG->libdir/resourcelib.php");
+  $data->timemodified = time();
+  $data->id           = $data->instance;
 
-    // This will preven the resource being added if the item is empty
-    // aspirelists_check_reading_lists();
-
-    $DB->update_record('aspirelists', $data);
-    return true;
+  $DB->update_record('aspirelists', $data);
+  return true;
 }
 
 function aspirelists_add_instance($data, $mform) {
-	global $CFG, $DB;
+  global $CFG, $DB;
 
-    // This will preven the resource being added if the item is empty
-    // aspirelists_check_reading_lists();
-    
-    $data->id = $DB->insert_record('aspirelists', $data);
+  $data->id = $DB->insert_record('aspirelists', $data);
 
-    return $data->id;
+  return $data->id;
 }
 
 function aspirelists_delete_instance($id) {
@@ -86,123 +80,41 @@ function aspirelists_delete_instance($id) {
     return true;
 }
 
-function aspirelists_check_reading_lists() {
-    global $DB, $CFG, $COURSE;
-
-    $config = get_config('aspirelists');
-
-    $shortname_full = explode(' ', $COURSE->shortname);
-    $shortnames = explode('/', strtolower($shortname_full[0]));
-
-    $lists = 0;
-
-    foreach($shortnames as $shortname) {
-
-      $url = "$config->baseurl/$config->group/$shortname/lists.json"; // build the target URL of the JSON data we'll be requesting from Aspire
-
-      // using php curl, we'll now request the JSON data from Aspire
-      $ch = curl_init();
-      $options = array(
-              CURLOPT_URL            => $url, // tell curl the URL
-              CURLOPT_HEADER         => false,
-              CURLOPT_RETURNTRANSFER => true,
-              CURLOPT_CONNECTTIMEOUT => $config->timeout,
-              CURLOPT_TIMEOUT => $config->timeout,
-              CURLOPT_HTTP_VERSION   => CURL_HTTP_VERSION_1_1
-      );
-      curl_setopt_array($ch, $options);
-
-      $response = curl_exec($ch); // execute the request and get a response
-
-      if($response) {
-        $data = json_decode($response,true); // decode the returned JSON data
-        if(!empty($data)) {
-          $lists ++;
-        }
-      }
-    }
-    if($lists === 0) {
-        throw new Exception(get_string('error:nolist', 'aspirelists'));
-      }
-}
-
 // Curls a url and json decodes the response
 // Caches n seconds of records to optimise requests
-function curlSource($url) {
-    global $ASPIRE_CACHE;
+function aspirelists_curlSource($url) {
+  $config = get_config('aspirelists');
+  $response = '';
 
-    if (!isset($ASPIRE_CACHE)) {
-	$ASPIRE_CACHE=array();
-    }
+  if ($response==='') {
+    $ch = curl_init();
+    $options = array(
+      CURLOPT_URL            => $url, // tell curl the URL
+      CURLOPT_HEADER         => false,
+      CURLOPT_RETURNTRANSFER => true,
+      CURLOPT_CONNECTTIMEOUT => $config->timeout,
+      CURLOPT_TIMEOUT 	 => $config->timeout,
+      CURLOPT_HTTP_VERSION   => CURL_HTTP_VERSION_1_1
+    );
+    curl_setopt_array($ch, $options);
 
-    $config = get_config('aspirelists');
-    $delay=$config->cacheDelay || 60;
-    $max_delay=$config->cacheMaxDelay || 300;
-    $response='';
-    $cache_hit=FALSE;
-    $new_timestamp=time();
-    $timestamp=time()-$delay;
-    $oldest_timestamp=time()-$max_delay;
-    $expunge=array();
+    $response = curl_exec($ch);
+  }
 
-    foreach ($ASPIRE_CACHE as $key =>$value ) {
-        if ($value['timestamp']<$timestamp) {
-            $expunge[]=$key;
-        } elseif ($key == $url) {
-            $value['timestamp']=$new_timestamp;
-            $response=$value['data'];
-            if ($value['original_timestamp']<$oldest_timestamp) {
-	        $expunge[]=$key;
-	    }
-	    $cache_hit=TRUE;
-        }
-    }
-
-    foreach ($expunge as $key) {
-	unset ($ASPIRE_CACHE[$key]);
-    }
-
-    if ($response==='') {
-
-	$ch = curl_init();
-	$options = array(
-		  CURLOPT_URL            => $url, // tell curl the URL
-		  CURLOPT_HEADER         => false,
-		  CURLOPT_RETURNTRANSFER => true,
-		  CURLOPT_CONNECTTIMEOUT => $config->timeout,
-		  CURLOPT_TIMEOUT 	 => $config->timeout,
-		  CURLOPT_HTTP_VERSION   => CURL_HTTP_VERSION_1_1
-	    );
-	curl_setopt_array($ch, $options);
-
-	$response = curl_exec($ch);
-        $value=array();
-        $value['timestamp']=$new_timestamp;
-        $value['original_timestamp']=$new_timestamp;
-        $value['data']=$response;
-        $ASPIRE_CACHE[$url]=$value;
-    }
-    debugging(var_export(ARRAY('call'=>'curlSource','cache'=>array_keys($ASPIRE_CACHE),'expunge'=>$expunge, 'url'=>$url, 'response'=>strlen($response), 'cache_hit'=>$cache_hit), TRUE),DEBUG_DEVELOPER);
-
-    return $response;
+  return $response;
 }
 
 //This gets an associative array of categories set out in a manner to be used
 //with the mod_form
 function aspirelists_getCats($baseurl, &$o, &$level, $shortname, $group) {
-
-    $p = curlSource($baseurl . '.json');
+    $p = aspirelists_curlSource($baseurl . '.json');
     $p = json_decode($p, true);
-    debugging(var_export(ARRAY('call'=>'aspirelists_getCats','baseurl'=>$baseurl,'p'=>$p, 'o'=>$o,'level'=>$level), TRUE),DEBUG_DEVELOPER);
-
-    if(!empty($p[$baseurl]['http://rdfs.org/sioc/spec/parent_of'])) {
-
+    if (!empty($p[$baseurl]['http://rdfs.org/sioc/spec/parent_of'])) {
         foreach ($p[$baseurl]['http://rdfs.org/sioc/spec/parent_of'] as $c) {
             $level ++;
-            $cn = curlSource($c['value'] . '.json');
+            $cn = aspirelists_curlSource($c['value'] . '.json');
             $cn = json_decode($cn, true);
             $o[$group][$group . '/' . substr($c['value'], strrpos($c['value'], '/') + 1)] = str_repeat('--', $level). ' ' .$shortname . ': ' .$cn[$c['value']]['http://rdfs.org/sioc/spec/name'][0]['value'];
-	    debugging(var_export(ARRAY('call'=>'aspirelists_getCats-inner','c[value]'=>$c['value'],'cn'=>$cn, 'o'=>$o ), TRUE),DEBUG_DEVELOPER);
             aspirelists_getCats($c['value'], $o, $level, $shortname, $group);
             $level --;
         }
@@ -217,7 +129,7 @@ function aspirelists_getLists($site, $targetKG, $code, $timep) {
   // build the target URL of the JSON data we'll be requesting from Aspire
   $url = "$site/$targetKG/$code/lists.json";
   // using php curl, we'll now request the JSON data from Aspire
-  $data = curlSource($url);
+  $data = aspirelists_curlSource($url);
 
   if ($data) // if we get a valid response from curl...
   {
@@ -244,9 +156,6 @@ function aspirelists_getLists($site, $targetKG, $code, $timep) {
           // let's try and get a last updated date
           if (isset($data[$list["url"]]['http://purl.org/vocab/resourcelist/schema#lastUpdated'])) // if there is a last updated date...
           {
-                  // set up the timezone 
-                  date_default_timezone_set('Europe/London');
-
                   // ..and extract the date in a friendly, human readable format...
                   $list['lastUpdatedDate'] = date('l j F Y',
                           strtotime($data[$list["url"]]['http://purl.org/vocab/resourcelist/schema#lastUpdated'][0]['value'])); 
@@ -336,19 +245,19 @@ function aspirelists_getLists($site, $targetKG, $code, $timep) {
 // running from
 function aspirelists_getResources($baseurl) {
 
-  $data = curlSource($baseurl . '.json');
+  $data = aspirelists_curlSource($baseurl . '.json');
 
   echo '<ul>';
         if(!empty($data[$baseurl]['http://rdfs.org/sioc/spec/container_of'])) {
             foreach($data[$baseurl]['http://rdfs.org/sioc/spec/container_of'] as $r) {
                 $resurl = $r['value'];
-                $rdata = curlSource($resurl . '.json');
+                $rdata = aspirelists_curlSource($resurl . '.json');
 
                 if(!empty($rdata[$resurl]['http://purl.org/vocab/resourcelist/schema#resource'])){
 
                     $tempurl = $rdata[$resurl]['http://purl.org/vocab/resourcelist/schema#resource'][0]['value'];
 
-                    $rdets = curlSource($tempurl . '.json');
+                    $rdets = aspirelists_curlSource($tempurl . '.json');
 
                     if(!empty($rdets[$tempurl]['http://purl.org/dc/terms/title'])) {
                         echo '<li><a href="' . $resurl . '">' . $rdets[$tempurl]['http://purl.org/dc/terms/title'][0]['value'] . '</a></li>';
@@ -361,7 +270,7 @@ function aspirelists_getResources($baseurl) {
 
           foreach ($data[$baseurl]['http://rdfs.org/sioc/spec/parent_of'] as $c) {
             $caturl = $c['value'];
-            $cn = curlSource($c['value'] . '.json');
+            $cn = aspirelists_curlSource($c['value'] . '.json');
             echo '<li>';
             echo $cn[$caturl]['http://rdfs.org/sioc/spec/name'][0]['value'];
 
