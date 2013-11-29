@@ -203,12 +203,12 @@ function aspirelists_getLists($site, $targetKG, $code, $timep) {
   $url = "$site/$targetKG/$code/lists.json";
   // using php curl, we'll now request the JSON data from Aspire
   $data = aspirelists_curlSource($url);
+  $lists = array();
 
   if ($data) {
     $data = json_decode($data, true);
     if (isset($data["$site/$targetKG/$code"]) && isset($data["$site/$targetKG/$code"]['http://purl.org/vocab/resourcelist/schema#usesList'])) {
       foreach ($data["$site/$targetKG/$code"]['http://purl.org/vocab/resourcelist/schema#usesList'] as $usesList) {
-
         $tp = strrev($data[$usesList['value']]['http://lists.talis.com/schema/temp#hasTimePeriod'][0]['value']);
         if ($tp[0] === $timep) {
           $list = array();
@@ -236,12 +236,9 @@ function aspirelists_getLists($site, $targetKG, $code, $timep) {
         }
       }
 
-      /**
-       *
-       */
       uasort($lists, function ($a, $b) {
-          return strcmp($a["name"], $b["name"]);
-        });
+        return strcmp($a["name"], $b["name"]);
+      });
     }
   } else {
     //If we had no response from the CURL request, then set a suitable message.
