@@ -68,6 +68,8 @@ $PAGE->set_heading(format_string($readinglist->name));
 $PAGE->navbar->add($course->shortname,"{$CFG->wwwroot}/course/view.php?id=$course->id");
 $PAGE->navbar->add(get_string('modulename', 'aspirelists'));
 $PAGE->set_pagelayout('admin');
+$PAGE->requires->css('/mod/aspirelists/styles/styles.css');
+$PAGE->requires->css('/mod/aspirelists/styles/fontello.css');
 
 
 $shortname_full = explode(' ', $course->shortname);
@@ -135,7 +137,6 @@ if($readinglist->category != 'all') {
         echo aspirelists_resource_not_ready($context);
         
     } else {
-        $output .= '<link rel="stylesheet" href="styles/fontello.css">';
         echo $output;
     }
 

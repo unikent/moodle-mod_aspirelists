@@ -45,6 +45,8 @@ $PAGE->set_url('/mod/aspirelists/index.php', array('id' => $course->id));
 $PAGE->set_title($course->shortname.': '.$strlists);
 $PAGE->set_heading($course->fullname);
 $PAGE->navbar->add($strlists);
+$PAGE->requires->css('/mod/aspirelists/styles/styles.css');
+
 echo $OUTPUT->header();
 
 if (!$lists = get_all_instances_in_course('aspirelists', $course)) {
