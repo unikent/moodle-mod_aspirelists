@@ -1,25 +1,15 @@
 <?php
 
-/**********************************************************************
- *                      @package Kent aspirelists                     *
- *                                                                    *
- *              University of Kent aspirelists resource               *
- *                                                                    *
- *                       Authors: jwk8, fg30, jw26                    *
- *                                                                    *
- *--------------------------------------------------------------------*
- *                                                                    *
- *                            Add/update form                         *
- *                                                                    *
- **********************************************************************/
-
 defined('MOODLE_INTERNAL') || die;
 
-require_once ($CFG->dirroot.'/course/moodleform_mod.php');
+require_once $CFG->dirroot.'/course/moodleform_mod.php';
 
 class mod_aspirelists_mod_form extends moodleform_mod {
 
-	function definition() {
+    /**
+     *
+     */
+    function definition() {
         global $CFG, $COURSE;
 
         $config = get_config('aspirelists');
@@ -39,8 +29,8 @@ class mod_aspirelists_mod_form extends moodleform_mod {
 
         //-------------------------------------------------------
 
-        $options=array();
-        $options['misc']['all']    = 'All';
+        $options = array();
+        $options['misc']['all'] = 'All';
         $options['canterbury'] = array();
         $options['medway'] = array();
 
@@ -56,7 +46,7 @@ class mod_aspirelists_mod_form extends moodleform_mod {
             $mainData = json_decode($mainData, true);
 
 
-            if(isset($mainData["$config->baseurl/$config->group/$shortname"]['http://purl.org/vocab/resourcelist/schema#usesList'][0]['value'])) {
+            if (isset($mainData["$config->baseurl/$config->group/$shortname"]['http://purl.org/vocab/resourcelist/schema#usesList'][0]['value'])) {
                 $list_url = $mainData["$config->baseurl/$config->group/$shortname"]['http://purl.org/vocab/resourcelist/schema#usesList'][0]['value'];
                 $level = 0;
                 $d = aspirelists_getCats($list_url, $options, $level, $shortname, 'canterbury');
@@ -65,13 +55,13 @@ class mod_aspirelists_mod_form extends moodleform_mod {
             $altData = aspirelists_curlSource($altUrl);
             $altData = json_decode($altData, true);
 
-            if(isset($altData["$config->altBaseurl/$config->group/$shortname"]['http://purl.org/vocab/resourcelist/schema#usesList'][0]['value'])) {
+            if (isset($altData["$config->altBaseurl/$config->group/$shortname"]['http://purl.org/vocab/resourcelist/schema#usesList'][0]['value'])) {
                 $list_url = $altData["$config->altBaseurl/$config->group/$shortname"]['http://purl.org/vocab/resourcelist/schema#usesList'][0]['value'];
                 $level = 0;
                 $d = aspirelists_getCats($list_url, $options, $level, $shortname, 'medway');
             }
         }
-        
+
         $mform->addElement('selectgroups', 'category', 'Category', $options, array('size'=>20));
 
         // add standard buttons, common to all modules
@@ -79,7 +69,4 @@ class mod_aspirelists_mod_form extends moodleform_mod {
         $this->add_action_buttons();
         return;
     }
-
-
-
 }
