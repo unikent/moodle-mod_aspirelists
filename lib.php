@@ -69,13 +69,13 @@ function aspirelists_add_instance($data, $mform) {
 function aspirelists_delete_instance($id) {
     global $DB;
 
-    if (!$readinglist = $DB->get_record('aspirelists', array('id'=>$id))) {
+    if (!$readinglist = $DB->get_record('aspirelists', array('id' => $id))) {
         return false;
     }
 
     // note: all context files are deleted automatically
 
-    $DB->delete_records('aspirelists', array('id'=>$resource->id));
+    $DB->delete_records('aspirelists', array('id' => $resource->id));
 
     return true;
 }
@@ -83,23 +83,30 @@ function aspirelists_delete_instance($id) {
 // Curls a url and json decodes the response
 // Caches n seconds of records to optimise requests
 function aspirelists_curlSource($url) {
-  $config = get_config('aspirelists');
-  $response = '';
 
-  if ($response==='') {
-    $ch = curl_init();
-    $options = array(
-      CURLOPT_URL            => $url, // tell curl the URL
-      CURLOPT_HEADER         => false,
-      CURLOPT_RETURNTRANSFER => true,
-      CURLOPT_CONNECTTIMEOUT => $config->timeout,
-      CURLOPT_TIMEOUT 	 => $config->timeout,
-      CURLOPT_HTTP_VERSION   => CURL_HTTP_VERSION_1_1
-    );
-    curl_setopt_array($ch, $options);
-
-    $response = curl_exec($ch);
+  // MUC - Cache the specific URLS
+  $cache = cache::make('mod_aspirelists', 'aspirecache');
+  $response = $cache->get($url);
+  if ($response !== false) {
+    return $response;
   }
+
+  $config = get_config('aspirelists');
+
+  $ch = curl_init();
+  $options = array(
+    CURLOPT_URL            => $url,
+    CURLOPT_HEADER         => false,
+    CURLOPT_RETURNTRANSFER => true,
+    CURLOPT_CONNECTTIMEOUT => $config->timeout,
+    CURLOPT_TIMEOUT 	     => $config->timeout,
+    CURLOPT_HTTP_VERSION   => CURL_HTTP_VERSION_1_1
+  );
+  curl_setopt_array($ch, $options);
+
+  $response = curl_exec($ch);
+
+  $cache->set($url, $response);
 
   return $response;
 }
