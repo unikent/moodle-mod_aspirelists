@@ -20,7 +20,7 @@ require_once ($CFG->dirroot.'/course/moodleform_mod.php');
 class mod_aspirelists_mod_form extends moodleform_mod {
 
 	function definition() {
-        global $CFG, $OUTPUT, $COURSE;
+        global $CFG, $COURSE;
 
         $config = get_config('aspirelists');
 
@@ -52,7 +52,7 @@ class mod_aspirelists_mod_form extends moodleform_mod {
             $mainUrl = "$config->baseurl/$config->group/$shortname/lists.json";
             $altUrl = "$config->altBaseurl/$config->group/$shortname/lists.json";
 
-            $mainData = curlSource($mainUrl);
+            $mainData = aspirelists_curlSource($mainUrl);
             $mainData = json_decode($mainData, true);
 
 
@@ -62,7 +62,7 @@ class mod_aspirelists_mod_form extends moodleform_mod {
                 $d = aspirelists_getCats($list_url, $options, $level, $shortname, 'canterbury');
             }
 
-            $altData = curlSource($altUrl);
+            $altData = aspirelists_curlSource($altUrl);
             $altData = json_decode($altData, true);
 
             if(isset($altData["$config->altBaseurl/$config->group/$shortname"]['http://purl.org/vocab/resourcelist/schema#usesList'][0]['value'])) {
