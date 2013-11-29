@@ -49,20 +49,16 @@ function aspirelists_get_post_actions() {
 }
 
 function aspirelists_update_instance($data, $mform) {
-  global $CFG, $DB;
-  require_once("$CFG->libdir/resourcelib.php");
+  global $DB;
   $data->timemodified = time();
   $data->id           = $data->instance;
-
   $DB->update_record('aspirelists', $data);
   return true;
 }
 
 function aspirelists_add_instance($data, $mform) {
-  global $CFG, $DB;
-
+  global $DB;
   $data->id = $DB->insert_record('aspirelists', $data);
-
   return $data->id;
 }
 
@@ -73,10 +69,7 @@ function aspirelists_delete_instance($id) {
         return false;
     }
 
-    // note: all context files are deleted automatically
-
     $DB->delete_records('aspirelists', array('id' => $resource->id));
-
     return true;
 }
 
@@ -118,12 +111,12 @@ function aspirelists_getCats($baseurl, &$o, &$level, $shortname, $group) {
     $p = json_decode($p, true);
     if (!empty($p[$baseurl]['http://rdfs.org/sioc/spec/parent_of'])) {
         foreach ($p[$baseurl]['http://rdfs.org/sioc/spec/parent_of'] as $c) {
-            $level ++;
+            $level++;
             $cn = aspirelists_curlSource($c['value'] . '.json');
             $cn = json_decode($cn, true);
             $o[$group][$group . '/' . substr($c['value'], strrpos($c['value'], '/') + 1)] = str_repeat('--', $level). ' ' .$shortname . ': ' .$cn[$c['value']]['http://rdfs.org/sioc/spec/name'][0]['value'];
             aspirelists_getCats($c['value'], $o, $level, $shortname, $group);
-            $level --;
+            $level--;
         }
     }
 }
@@ -138,54 +131,40 @@ function aspirelists_getLists($site, $targetKG, $code, $timep) {
   // using php curl, we'll now request the JSON data from Aspire
   $data = aspirelists_curlSource($url);
 
-  if ($data) // if we get a valid response from curl...
-  {
-
+  if ($data) {
     $data = json_decode($data, true);
-    debugging(var_export(ARRAY('call'=>'aspirelists_getLists', 'url'=>$url, 'data'=>$data), TRUE),DEBUG_DEVELOPER);
-
-    if(isset($data["$site/$targetKG/$code"]) && isset($data["$site/$targetKG/$code"]['http://purl.org/vocab/resourcelist/schema#usesList'])) // if there are any lists...
-    {
-      foreach ($data["$site/$targetKG/$code"]['http://purl.org/vocab/resourcelist/schema#usesList'] as $usesList) // for each list this module uses...
-      {
+    if(isset($data["$site/$targetKG/$code"]) && isset($data["$site/$targetKG/$code"]['http://purl.org/vocab/resourcelist/schema#usesList'])) {
+      foreach ($data["$site/$targetKG/$code"]['http://purl.org/vocab/resourcelist/schema#usesList'] as $usesList) {
 
         $tp = strrev($data[$usesList['value']]['http://lists.talis.com/schema/temp#hasTimePeriod'][0]['value']);
-
-        //$timep = get_config('aspirelists', 'modTimePeriod');
-        debugging(var_export(ARRAY('call'=>'aspirelists_getLists-inner','timep'=>$timep,'tp'=>$tp), TRUE),DEBUG_DEVELOPER);
-
-        if($tp[0] === $timep) {
-
+        if ($tp[0] === $timep) {
           $list = array();
           $list["url"] = $usesList["value"]; // extract the list URL
           $list["name"] = $data[$list["url"]]['http://rdfs.org/sioc/spec/name'][0]['value']; // extract the list name
 
           // let's try and get a last updated date
-          if (isset($data[$list["url"]]['http://purl.org/vocab/resourcelist/schema#lastUpdated'])) // if there is a last updated date...
-          {
-                  // ..and extract the date in a friendly, human readable format...
-                  $list['lastUpdatedDate'] = date('l j F Y',
-                          strtotime($data[$list["url"]]['http://purl.org/vocab/resourcelist/schema#lastUpdated'][0]['value'])); 
+          if (isset($data[$list["url"]]['http://purl.org/vocab/resourcelist/schema#lastUpdated'])) {
+            // ..and extract the date in a friendly, human readable format...
+            $ludTime = strtotime($data[$list["url"]]['http://purl.org/vocab/resourcelist/schema#lastUpdated'][0]['value']);
+            $list['lastUpdatedDate'] = date('l j F Y', $ludTime); 
           }
 
           // now let's count the number of items
           $itemCount = 0; 
-          if (isset($data[$list["url"]]['http://purl.org/vocab/resourcelist/schema#contains'])) // if the list contains anything...
-          {
-                  foreach ($data[$list["url"]]['http://purl.org/vocab/resourcelist/schema#contains'] as $things) // loop through the list of things the list contains...
-                  {
-                          if (preg_match('/\/items\//',$things['value'])) // if the thing is an item, incrememt the item count (lists can contain sections, too)
-                          {
-                                  $itemCount++; 
-                          }
-                  }
+          if (isset($data[$list["url"]]['http://purl.org/vocab/resourcelist/schema#contains'])) {
+            foreach ($data[$list["url"]]['http://purl.org/vocab/resourcelist/schema#contains'] as $things) {
+              if (preg_match('/\/items\//',$things['value'])) {
+                $itemCount++; 
+              }
+            }
           }
           $list['count'] = $itemCount;
-          //array_push($lists,$list);
           $lists[$list["url"]] = $list;
         }
       }
-      uasort($lists,'aspirelists_sortByName');
+      uasort($lists, function ($a, $b){
+        return strcmp($a["name"], $b["name"]);
+      });
     }
   } else {
       //If we had no response from the CURL request, then set a suitable message.
