@@ -29,6 +29,8 @@ $string['streamingvideo'] = 'Reading lists';
 $string['pluginadministration'] = 'Reading lists administration';
 $string['pluginname'] = 'Reading lists';
 
+$string['aspirelists:addinstance'] = 'Add a new reading list';
+
 /*********************************
  *            Settings           * 
  *********************************/
