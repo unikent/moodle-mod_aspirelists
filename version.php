@@ -11,7 +11,7 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-$module->version   = 2013120600;
+$module->version   = 2014011500;
 $module->requires  = 2013110500;
 $module->component = 'mod_aspirelists';
 $module->cron      = 0;
