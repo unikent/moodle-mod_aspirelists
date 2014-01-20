@@ -134,7 +134,7 @@ class aspirelists {
 		$url = "$site/$targetKG/$code/lists.json";
 
         $cache = \cache::make('mod_aspirelists', 'aspirecache');
-        $cache_content = $cache->get($url);
+        $cache_content = $cache->get($url . "_json_decoded");
         if ($cache_content !== false) {
         	return $cache_content;
         }
@@ -195,7 +195,7 @@ class aspirelists {
 		} else {
 			// If we had no response from the CURL request, then set a suitable message.
 			$out = "<p>Could not communicate with reading list system for $COURSE->fullname.  Please check again later.</p>";
-			$cache->set($url, $out);
+			$cache->set($url . "_json_decoded", $out);
 			return $out;
 		}
 
@@ -220,11 +220,11 @@ class aspirelists {
 				$output .= "</p>\n";
 			}
 		} else {
-			$cache->set($url, "");
+			$cache->set($url . "_json_decoded", "");
 			return null;
 		}
 
-		$cache->set($url, $output);
+		$cache->set($url . "_json_decoded", $output);
 
 		return $output;
 	}
