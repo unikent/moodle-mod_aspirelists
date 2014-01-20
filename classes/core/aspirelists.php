@@ -133,7 +133,7 @@ class aspirelists {
 
 		$url = "$site/$targetKG/$code/lists.json";
 
-        $cache = \cache::make('mod_aspirelists', 'aspirecache');
+        $cache = \cache::make('mod_aspirelists', 'aspirecache_json');
         $cache_content = $cache->get($url);
         if ($cache_content !== false) {
         	return $cache_content;
@@ -157,6 +157,12 @@ class aspirelists {
 		if ($response) {
 			// Decode the returned JSON data
 			$data = json_decode($response, true);
+			if ($data === NULL) {
+				// If the JSON decode failed, error out.
+				$out = "<p>Could not communicate with reading list system for $COURSE->fullname.  Please check again later.</p>";
+				$cache->set($url, $out);
+				return $out;
+			}
 			if (isset($data["$site/$targetKG/$code"]) && isset($data["$site/$targetKG/$code"]['http://purl.org/vocab/resourcelist/schema#usesList'])) {
 				
 				foreach ($data["$site/$targetKG/$code"]['http://purl.org/vocab/resourcelist/schema#usesList'] as $usesList) {
