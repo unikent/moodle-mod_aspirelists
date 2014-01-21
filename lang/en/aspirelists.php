@@ -86,3 +86,4 @@ $string['error:defaultnolist'] = '<p>Sorry, but the reading list resource is una
 
 // MUC
 $string['cachedef_aspirecache'] = 'Aspire Lists Cache';
+$string['cachedef_aspirecache_json'] = 'Aspire Lists JSON Cache';
