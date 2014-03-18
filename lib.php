@@ -117,7 +117,7 @@ function aspirelists_delete_instance($id) {
     return false;
   }
 
-  $DB->delete_records('aspirelists', array('id' => $resource->id));
+  $DB->delete_records('aspirelists', array('id' => $id));
   return true;
 }
 
