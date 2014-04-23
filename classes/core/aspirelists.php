@@ -82,8 +82,14 @@ class aspirelists {
 		}
 
 		$campus = true;
-		if ($connect_course = \local_connect\course::get_by_moodle_id($course_id)) {
-			$campus = in_array(strtolower($connect_course->campus_name), $CFG->aspirelist_campus_white_list) ? true : false;
+		$connect_courses = \local_connect\course::get_by_moodle_id($course_id);
+		if (!empty($connect_courses)) {
+			foreach ($connect_courses as $connect_course) {
+				$campus = in_array(strtolower($connect_course->campus_name), $CFG->aspirelist_campus_white_list) ? true : false;
+				if (!$campus) {
+					break;
+				}
+			}
 		}
 
 		$content = new \stdClass();
