@@ -93,6 +93,9 @@ class aspirelists {
 		}
 
 		$content = new \stdClass();
+		$content->text = "";
+		$content->footer = "";
+
 		if ($course_shortname && $campus) {
 			// Get the code from the global course object, lowercasing it in the process
 			$subject = strtolower($course_shortname);
