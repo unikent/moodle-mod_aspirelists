@@ -41,7 +41,14 @@ if (is_integer($id)) {
 
 $config = get_config('aspirelists');
 
-add_to_log($course->id, 'aspirelist', 'view', "view.php?id={$id}", '');
+$event = \mod_aspirelists\event\course_module_viewed::create(array(
+    'objectid' => $readinglist->id,
+    'courseid' => $course->id,
+    'cmid' => $id,
+    'context' => context_module::instance($id)
+));
+$event->add_record_snapshot('aspirelists', $readinglist);
+$event->trigger();
 
 $context = context_course::instance($course->id);
 $PAGE->set_context($context);
