@@ -49,7 +49,7 @@ class course_module_instance_list_viewed extends \core\event\base
      * @return string
      */
     public function get_description() {
-        return 'User viewed all aspirelists.';
+        return 'User viewed all aspirelists for course \'' . $this->objectid . '\'.';
     }
 
     /**
