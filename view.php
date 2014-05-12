@@ -44,7 +44,7 @@ $config = get_config('aspirelists');
 $event = \mod_aspirelists\event\course_module_viewed::create(array(
     'objectid' => $readinglist->id,
     'courseid' => $course->id,
-    'cmid' => $id,
+    'other' => array('cmid' => $id),
     'context' => context_module::instance($id)
 ));
 $event->add_record_snapshot('aspirelists', $readinglist);

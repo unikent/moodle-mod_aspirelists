@@ -67,7 +67,7 @@ class course_module_viewed extends \core\event\base
      * @return array
      */
     protected function get_legacy_logdata() {
-        return array($this->courseid, 'aspirelist', 'view', 'view.php?id=' . $this->objectid, $this->cmid);
+        return array($this->courseid, 'aspirelists', 'view', 'view.php?id=' . $this->objectid, $this->other['cmid']);
     }
 
     /**
@@ -83,7 +83,7 @@ class course_module_viewed extends \core\event\base
             throw new \coding_exception('The \'courseid\' must be set.');
         }
 
-        if (!isset($this->cmid)) {
+        if (!isset($this->other['cmid'])) {
             throw new \coding_exception('The \'cmid\' must be set.');
         }
     }

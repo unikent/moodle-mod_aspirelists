@@ -67,6 +67,6 @@ class course_module_instance_list_viewed extends \core\event\base
      * @return array
      */
     protected function get_legacy_logdata() {
-        return array($this->objectid, 'aspirelist', 'view all', 'index.php?id=' . $this->objectid, '');
+        return array($this->objectid, 'aspirelists', 'view all', 'index.php?id=' . $this->objectid, '');
     }
 }
