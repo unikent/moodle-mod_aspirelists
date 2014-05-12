@@ -31,7 +31,11 @@ $course = $DB->get_record('course', array('id'=>$id), '*', MUST_EXIST);
 require_course_login($course, true);
 $PAGE->set_pagelayout('incourse');
 
-add_to_log($course->id, 'aspirelists', 'view all', "index.php?id=$course->id", '');
+$event = \mod_aspirelists\event\course_module_instance_list_viewed::create(array(
+    'objectid' => $course->id,
+    'context' => context_course::instance($course->id)
+));
+$event->trigger();
 
 $strlists        = get_string('modulenameplural', 'aspirelists');
 $strname         = get_string('name');
