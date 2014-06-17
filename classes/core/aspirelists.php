@@ -82,7 +82,7 @@ class aspirelists {
 		}
 
 		$campus = true;
-		$connect_courses = \local_connect\course::get_by_moodle_id($course_id);
+		$connect_courses = \local_connect\course::get_by('mid', $course_id);
 		if (!empty($connect_courses)) {
 			foreach ($connect_courses as $connect_course) {
 				$campus = in_array(strtolower($connect_course->campus_name), $CFG->aspirelist_campus_white_list) ? true : false;
