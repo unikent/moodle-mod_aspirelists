@@ -82,12 +82,7 @@ class aspirelists {
 		}
 
 		$campus = true;
-		$connect_courses = \local_connect\course::get_by('mid', $course_id);
-
-        // Force array.
-        if (!is_array($connect_courses)) {
-            $connect_courses = array($connect_courses);
-        }
+		$connect_courses = \local_connect\course::get_by('mid', $course_id, true);
 
 		if (!empty($connect_courses)) {
 			foreach ($connect_courses as $connect_course) {
