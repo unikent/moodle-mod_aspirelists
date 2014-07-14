@@ -167,7 +167,8 @@ HTML;
         );
         curl_setopt_array($ch, $options);
         $response = curl_exec($ch);
-        if ($response) {
+        $info = curl_getinfo($ch);
+        if ($response && $response[CURLINFO_HTTP_CODE] === 200) {
             // Decode the returned JSON data.
             $data = json_decode($response, true);
             if ($data === null) {
@@ -176,6 +177,7 @@ HTML;
                 $cache->set($url, $out);
                 return $out;
             }
+
             if (isset($data["$site/$targetkg/$code"]) &&
                 isset($data["$site/$targetkg/$code"]['http://purl.org/vocab/resourcelist/schema#usesList'])) {
                 foreach ($data["$site/$targetkg/$code"]['http://purl.org/vocab/resourcelist/schema#usesList'] as $useslist) {
