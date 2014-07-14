@@ -59,13 +59,13 @@ if ($ADMIN->fulltree) {
     $settings->add(new admin_setting_configtext('aspirelists/modTimePeriod',
         get_string('config_timePeriod', 'aspirelists'),
         get_string('config_timePeriod_desc', 'aspirelists'),
-        4
+        '53304cb6f3d4d'
     ));
 
     $settings->add(new admin_setting_configtext('aspirelists/altModTimePeriod',
         get_string('config_altTimePeriod', 'aspirelists'),
         get_string('config_altTimePeriod_desc', 'aspirelists'),
-        3
+        '53304d3387393'
     ));
 
     $settings->add(new admin_setting_configtext('aspirelists/cacheDelay',
