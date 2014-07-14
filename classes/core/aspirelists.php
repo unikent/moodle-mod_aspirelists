@@ -53,20 +53,20 @@ class aspirelists {
         $sites = array();
 
         // Get config for the current target.
-        $site = get_config('aspirelists', 'targetAspire');
+        $site = get_config('aspirelists', 'baseurl');
         if ($site) {
             $sites["Canterbury"] = array(
                 "url"  => $site,
-                "time" => get_config('aspirelists', 'timePeriod')
+                "time" => get_config('aspirelists', 'modTimePeriod')
             );
         }
 
         // Get config for the alt target.
-        $altsite = get_config('aspirelists', 'altTargetAspire');
+        $altsite = get_config('aspirelists', 'altBaseurl');
         if ($altsite) {
             $sites["Medway"] = array(
                 "url"  => $altsite,
-                "time" => get_config('aspirelists', 'altTimePeriod')
+                "time" => get_config('aspirelists', 'altModTimePeriod')
             );
         }
 
@@ -76,7 +76,7 @@ class aspirelists {
             return $content;
         }
 
-        $targetkg = get_config('aspirelists', 'targetKG');
+        $targetkg = get_config('aspirelists', 'group');
         if (empty($targetkg)) {
             $targetkg = "modules";
         }
