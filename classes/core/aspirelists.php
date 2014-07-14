@@ -144,6 +144,8 @@ HTML;
      * @return [type]           [description]
      */
     private static function curl_list($site, $timep, $targetkg, $code) {
+        $ucode = strtoupper($code);
+
         $url = "$site/$targetkg/$code/lists.json";
 
         $cache = \cache::make('mod_aspirelists', 'aspirecache_json');
@@ -173,7 +175,7 @@ HTML;
             $data = json_decode($response, true);
             if ($data === null) {
                 // If the JSON decode failed, error out.
-                $out = "<p>Could not communicate with reading list system for $code.  Please check again later.</p>";
+                $out = "<p>Could not communicate with reading list system for $ucode.  Please check again later.</p>";
                 $cache->set($url, $out);
                 return $out;
             }
@@ -216,7 +218,7 @@ HTML;
             }
         } else {
             // If we had no response from the CURL request, then set a suitable message.
-            $out = "<p>Could not communicate with reading list system for $code.  Please check again later.</p>";
+            $out = "<p>Could not communicate with reading list system for $ucode.  Please check again later.</p>";
             $cache->set($url, $out);
             return $out;
         }
