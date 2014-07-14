@@ -182,7 +182,7 @@ HTML;
                 isset($data["$site/$targetkg/$code"]['http://purl.org/vocab/resourcelist/schema#usesList'])) {
                 foreach ($data["$site/$targetkg/$code"]['http://purl.org/vocab/resourcelist/schema#usesList'] as $useslist) {
                     $tp = strrev($data[$useslist["value"]]['http://lists.talis.com/schema/temp#hasTimePeriod'][0]['value']);
-                    if ($tp[0] === $timep) {
+                    if (strpos($tp, strrev($timep)) === 0) {
                         $list = array();
                         $list["url"] = clean_param($useslist["value"], PARAM_URL);
                         $list["name"] = clean_param($data[$list["url"]]['http://rdfs.org/sioc/spec/name'][0]['value'], PARAM_TEXT);
