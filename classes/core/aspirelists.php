@@ -167,8 +167,8 @@ HTML;
         );
         curl_setopt_array($ch, $options);
         $response = curl_exec($ch);
-        $info = curl_getinfo($ch);
-        if ($response && $response[CURLINFO_HTTP_CODE] === 200) {
+        $httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+        if ($response && $httpcode === 200) {
             // Decode the returned JSON data.
             $data = json_decode($response, true);
             if ($data === null) {
