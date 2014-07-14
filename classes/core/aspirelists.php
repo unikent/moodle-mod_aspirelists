@@ -136,8 +136,6 @@ class aspirelists {
 	 * @return [type]           [description]
 	 */
 	private static function curlList($site, $timep, $targetKG, $code) {
-		global $COURSE;
-
 		$url = "$site/$targetKG/$code/lists.json";
 
         $cache = \cache::make('mod_aspirelists', 'aspirecache_json');
@@ -166,7 +164,7 @@ class aspirelists {
 			$data = json_decode($response, true);
 			if ($data === NULL) {
 				// If the JSON decode failed, error out.
-				$out = "<p>Could not communicate with reading list system for $COURSE->fullname.  Please check again later.</p>";
+				$out = "<p>Could not communicate with reading list system for $code.  Please check again later.</p>";
 				$cache->set($url, $out);
 				return $out;
 			}
@@ -207,7 +205,7 @@ class aspirelists {
 			}
 		} else {
 			// If we had no response from the CURL request, then set a suitable message.
-			$out = "<p>Could not communicate with reading list system for $COURSE->fullname.  Please check again later.</p>";
+			$out = "<p>Could not communicate with reading list system for $code.  Please check again later.</p>";
 			$cache->set($url, $out);
 			return $out;
 		}
