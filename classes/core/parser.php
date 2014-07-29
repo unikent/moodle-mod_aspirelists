@@ -33,7 +33,9 @@ defined('MOODLE_INTERNAL') || die();
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class parser {
-    const TIME_PERIOD_INDEX = 'http://resourcelists.kent.ac.uk/config/timePeriod';
+    const INDEX_TIME_PERIOD = 'http://resourcelists.kent.ac.uk/config/timePeriod';
+    const INDEX_LISTS = 'http://resourcelists.kent.ac.uk/lists/';
+    const INDEX_LISTS_TIME_PERIOD = 'http://lists.talis.com/schema/temp#hasTimePeriod';
 
     /** The raw, decoded, JSON */
     private $raw;
@@ -49,37 +51,42 @@ class parser {
     public function __construct($data) {
         $this->raw = json_decode($data);
         $this->data = array();
-
-        $this->decode();
     }
 
     /**
-     * Decode the list.
+     * Shorthand method.
      */
-    private function decode() {
-        $timeperiods = $this->grab_timeperiods();
+    private function grab_dataset($index, $apiindex) {
+        if (isset($this->data[$index])) {
+            return $this->data[$index];
+        }
+
+        $data = array();
+        foreach ($this->raw as $k => $v) {
+            $pos = strpos($k, $apiindex);
+            if ($pos !== 0) {
+                continue;
+            }
+
+            $data[] = substr($k, strlen($apiindex));
+        }
+
+        $this->data[$index] = $data;
+
+        return $data;
     }
 
     /**
      * Grab all known time periods.
      */
     public function grab_timeperiods() {
-        if (isset($this->data['timeperiods'])) {
-            return $this->data['timeperiods'];
-        }
+        return $this->grab_dataset('timeperiods', self::INDEX_TIME_PERIOD);
+    }
 
-        $timeperiods = array();
-        foreach ($this->raw as $k => $v) {
-            $pos = strpos($k, self::TIME_PERIOD_INDEX);
-            if ($pos !== 0) {
-                continue;
-            }
-
-            $timeperiods[] = substr($k, strlen(self::TIME_PERIOD_INDEX));
-        }
-
-        $this->data['timeperiods'] = $timeperiods;
-
-        return $timeperiods;
+    /**
+     * Grabs all known lists.
+     */
+    public function grab_all_lists() {
+        return $this->grab_dataset('lists', self::INDEX_LISTS);
     }
 }
