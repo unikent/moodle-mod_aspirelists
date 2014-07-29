@@ -39,32 +39,42 @@ class mod_aspirelists_mod_form extends moodleform_mod {
         $shortnames = explode('/', strtolower($shortname_full[0]));
 
         foreach ($shortnames as $shortname) {
-            $mainUrl = "$config->baseurl/$config->group/$shortname/lists.json";
-            $altUrl = "$config->altBaseurl/$config->group/$shortname/lists.json";
+            // Canterbury first.
+            if (true) {
+                $data = aspirelists_curlSource("{$config->baseurl}/{$config->group}/{$shortname}/lists.json");
+                $parser = new \mod_aspirelists\core\parser($data);
+                $lists = $parser->grab_lists($config->modTimePeriod);
 
-            $mainData = aspirelists_curlSource($mainUrl);
-            $mainData = json_decode($mainData, true);
-
-
-            if (isset($mainData["$config->baseurl/$config->group/$shortname"]['http://purl.org/vocab/resourcelist/schema#usesList'][0]['value'])) {
-                $list_url = $mainData["$config->baseurl/$config->group/$shortname"]['http://purl.org/vocab/resourcelist/schema#usesList'][0]['value'];
-                $level = 0;
-                $d = aspirelists_getCats($list_url, $options, $level, $shortname, 'canterbury');
+                if (!empty($lists)) {
+                    $depth = 0;
+                    foreach ($lists as $list) {
+                        $url = $parser->grab_list_url($list);
+                        aspirelists_getCats($url, $options, $depth, $shortname, 'canterbury');
+                    }
+                }
             }
 
-            $altData = aspirelists_curlSource($altUrl);
-            $altData = json_decode($altData, true);
+            // Medway next.
+            if (true) {
+                $data = aspirelists_curlSource("{$config->altBaseurl}/{$config->group}/{$shortname}/lists.json");
+                $parser = new \mod_aspirelists\core\parser($data);
+                $lists = $parser->grab_lists($config->altModTimePeriod);
 
-            if (isset($altData["$config->altBaseurl/$config->group/$shortname"]['http://purl.org/vocab/resourcelist/schema#usesList'][0]['value'])) {
-                $list_url = $altData["$config->altBaseurl/$config->group/$shortname"]['http://purl.org/vocab/resourcelist/schema#usesList'][0]['value'];
-                $level = 0;
-                $d = aspirelists_getCats($list_url, $options, $level, $shortname, 'medway');
+                if (!empty($lists)) {
+                    $depth = 0;
+                    foreach ($lists as $list) {
+                        $url = $parser->grab_list_url($list);
+                        aspirelists_getCats($url, $options, $depth, $shortname, 'medway');
+                    }
+                }
             }
         }
 
-        $mform->addElement('selectgroups', 'category', 'Category', $options, array('size'=>20));
+        $mform->addElement('selectgroups', 'category', 'Category', $options, array(
+            'size' => 20
+        ));
 
-        // add standard buttons, common to all modules
+        // Add standard buttons, common to all modules.
         $this->standard_coursemodule_elements();
         $this->add_action_buttons();
         return;

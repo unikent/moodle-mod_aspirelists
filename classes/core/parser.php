@@ -116,4 +116,11 @@ class parser {
 
         return $lists;
     }
+
+    /**
+     * Grab list URL.
+     */
+    public function grab_list_url($list) {
+        return self::INDEX_LISTS . $list;
+    }
 }
