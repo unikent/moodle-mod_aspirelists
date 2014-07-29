@@ -1,0 +1,2794 @@
+{
+    "http://resourcelists.kent.ac.uk/config/timePeriod3": {
+        "http://lists.talis.com/schema/temp#active": [
+            {
+                "type": "literal",
+                "value": "true"
+            }
+        ],
+        "http://lists.talis.com/schema/temp#endDate": [
+            {
+                "type": "literal",
+                "value": "2014-08-31"
+            }
+        ],
+        "http://lists.talis.com/schema/temp#slug": [
+            {
+                "type": "literal",
+                "value": "2013-2014"
+            }
+        ],
+        "http://lists.talis.com/schema/temp#startDate": [
+            {
+                "type": "literal",
+                "value": "2013-09-01"
+            }
+        ],
+        "http://purl.org/dc/terms/title": [
+            {
+                "type": "literal",
+                "value": "2013-2014 "
+            }
+        ],
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+            {
+                "type": "uri",
+                "value": "http://lists.talis.com/schema/temp#TimePeriod"
+            }
+        ]
+    },
+    "http://resourcelists.kent.ac.uk/config/timePeriod53304cb6f3d4d": {
+        "http://lists.talis.com/schema/temp#active": [
+            {
+                "type": "literal",
+                "value": "true"
+            }
+        ],
+        "http://lists.talis.com/schema/temp#endDate": [
+            {
+                "type": "literal",
+                "value": "2015-08-31"
+            }
+        ],
+        "http://lists.talis.com/schema/temp#slug": [
+            {
+                "type": "literal",
+                "value": "2014-2015"
+            }
+        ],
+        "http://lists.talis.com/schema/temp#startDate": [
+            {
+                "type": "literal",
+                "value": "2014-09-01"
+            }
+        ],
+        "http://purl.org/dc/terms/title": [
+            {
+                "type": "literal",
+                "value": "2014-2015"
+            }
+        ],
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+            {
+                "type": "uri",
+                "value": "http://lists.talis.com/schema/temp#TimePeriod"
+            }
+        ]
+    },
+    "http://resourcelists.kent.ac.uk/lists/31F89776-6BEA-1DD2-E4C6-C3CA796D173D": {
+        "http://lists.talis.com/schema/temp#hasRolloverCopy": [
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/lists/39399749-E118-07A7-456E-80F55700F2C0"
+            }
+        ],
+        "http://lists.talis.com/schema/temp#hasTimePeriod": [
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/config/timePeriod3"
+            }
+        ],
+        "http://purl.org/vocab/resourcelist/schema#contains": [
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/sections/D12DEA46-C3F7-FE08-5B08-606D74753192"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/69A6FA94-C9E5-9DAB-E1E1-A610690A5865"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/AD6F656E-1B4D-3508-51BF-79AD25639474"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/9DE83A4D-1EDB-E0F2-FFCF-35BFB21B5B79"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/EB495874-CF88-7652-6FE5-FFCE30009866"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/60BB0837-4717-76B9-FF2D-5801387E50B5"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/A84EFD8C-B055-CDC8-E99D-CDE4B8482A3D"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/sections/20130386-7E75-D4DB-72EF-A3E7FB12AA9D"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/sections/42747418-455E-D5E1-CD5C-31A084050751"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/4B25F895-E594-9795-798A-B8CC8C17529F"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/sections/A3EA8794-5FA2-E157-5038-E0DFB9899EAE"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/E527E0D0-5574-30E0-28DD-43B600800B6F"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/7ACBED6E-12E1-E575-89D3-D5B81C7C76DC"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/DEEBDFD9-2EEC-5C86-2E2D-9ED6B152BEF1"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/40E2FD74-28A2-A1D9-30B3-CEDD2E5A8111"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/DF62AC63-3FF9-364F-CC64-2A2A20086494"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/600DDA7D-2054-A9FB-6F6D-64896AC58B1E"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/1BFF9968-C1C0-0E4F-3793-E912028925F3"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/18EF3449-F1FD-2AAF-0AF5-F977DA57D153"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/8C04481E-F5BC-1108-0F5C-A3913C4F062E"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/62535520-F196-F81A-6128-CC8E803074A4"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/15C39D3C-11B3-7F2D-B090-030318906D65"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/D3B9F8A8-3FAB-9F1F-370E-44D5AD70F5AD"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/04E324D3-A26F-7872-6219-1783139B153E"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/44E5CD69-1AA2-8877-3F5B-03B80B86E3AB"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/3A1C3BCD-DFA6-3664-B4B7-DF49CBB57D15"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/408E4F8E-E251-5E27-6973-81957EA01F18"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/25B5B7F0-4982-1154-089E-E6CC33D1E857"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/E4605743-00CC-B08A-3504-613B2C81CEEA"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/F687F4FF-5683-9C1D-DF64-37CD91E49642"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/261ACE6E-6A89-2B5D-27A8-6FC0B8A0410F"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/0FB3196C-0CCD-4445-B9B7-403B256159E0"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/2586DCBD-BE6B-F4EB-9CE8-1A3256815089"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/BC0B8812-7ADE-4759-CB22-D90E252B8D93"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/D2496A67-1A44-6290-45FC-C46E59111586"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/CEBB0476-2433-6494-4F0D-45201611C8B7"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/DE2DAA7B-D764-3078-EFBD-98EE1B42B662"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/8597640C-F178-4937-CF43-D718B2300F9E"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/6060CC0D-C8E1-BCB6-9A7A-DA646BD1A4D1"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/4765C5E0-0BBD-687B-1FE8-CAB71C9BDC7E"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/sections/968F3B04-C96F-C813-80A5-91A00BCA3C7F"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/sections/5E08722C-D614-8E89-8217-1555938079F5"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/sections/B7E17372-18F8-B2C1-F116-676C6781D96A"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/AC562434-D77B-0DB2-5AC7-576E90D8E780"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/73B3BF35-8876-DD8E-6118-64ABC4A26A4B"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/0F1E59BF-262C-DAAC-C9AD-484DABE381A5"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/7CD67A41-36BA-5DA7-84D0-9EF3599DF340"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/29BEDC82-1135-A0D7-B791-BB9D105BEF42"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/6C220134-AC03-8671-A291-BB5C1C43D1AA"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/35F931BF-F496-66A0-4992-F35E5AF45765"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/AEC57019-C4FB-7464-5FBC-7398D97978DF"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/49733240-4F5C-7071-8D14-4F615EF4245D"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/ACD9B99C-1D80-DE71-6D35-6B4A35346BAE"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/EB59B38A-326F-2820-8FAA-6D209D99EF59"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/255DC7DD-C0EE-E749-6BA2-CAA7F071067E"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/B2B988BF-A7EC-2CBF-FEB2-EE682F2987B7"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/911732DA-E9DB-E547-9E09-CD64789AD7C7"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/EB5D20E1-816A-4B78-1CA2-B2311E83E5CD"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/3E8D9712-D233-F7F0-49FB-6FCB4351600A"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/1C68BCA6-0C3A-F8AA-5969-462F16E7F8F8"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/D6EB4D20-1DFB-3D7D-F52F-63772F78B31B"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/8C39FDE2-43F2-76B3-B48D-5E303D3EF6C2"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/3463EA0D-A011-D5F8-4294-450463BCE503"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/72B0F4A4-150E-443D-D132-60BF653BE947"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/FF3E6CB1-7523-18E7-13F5-6A4806F3C7ED"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/173D571D-38B0-B049-93EF-AD45AB3257C0"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/D612599C-51BF-2D1D-B6F2-F022B63315F5"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/758A4EF8-3470-F1FF-F12D-E3879BB433E4"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/9FEF8A9C-C217-F0DF-A7E0-314EC5881ECD"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/610956D4-43D6-50C3-AABA-C4F956CE6C94"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/3A1BD8E9-EE60-0402-9F83-8B2ABA667B50"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/770CA179-8145-1F34-4B2B-3A1D3D0FCA50"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/sections/1F2136DF-D645-BA1F-400F-60CAB3178E04"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/sections/AF9F7D7A-5B1F-C3C2-7BE7-4D236DBC45E0"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/sections/53DEBF52-636A-9315-61E4-C87A8246F1D3"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/91B8D9B5-BFE9-562E-BD37-E44F7E7A7D40"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/EBECC464-BDB9-E178-75A4-59E59725A4DB"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/14DB0F01-BD13-C1CC-7E11-1B6E53A97591"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/D3C97770-DFE9-14E1-7CA2-F830C9B9F388"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/8FCFA7B0-772A-4AAC-B12E-B2894868B826"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/CFBAEAEA-86D2-CA42-B702-B9B5995302A6"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/E387263A-8969-2C34-5A00-4D22D5D85E32"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/61707546-C618-872F-D4AE-3AC185A25BD4"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/2092FF4A-67CC-C839-38C9-0C5D23B98FDF"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/297B6F7E-0FDC-9828-32BD-7E333E191E52"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/BC892B38-5DB0-C539-DFCA-DAA825B1C35B"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/DFA5FA70-8BA8-E043-972B-74D905569331"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/76D69EA3-8C80-C76B-A76F-1F619636680D"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/2FCAF187-6D68-C376-1FCE-0C8A1F053F5C"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/9243E7FB-B667-54E5-3995-FF6DAA8D707D"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/62F36942-B091-48CE-FA58-E19F0FDC9FBF"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/C565B996-069B-8DE5-63D7-AE1FB4B0CD3E"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/3C12C1BB-F0E0-182A-5AC3-62F70A57AE8A"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/86675B61-45DE-570E-1202-FBABF14F6C7E"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/10364D5A-9D96-F9DF-D9CC-734234C830A8"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/7855302F-87D8-3A48-B6EF-26EF16B22A2D"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/6CB2D519-C364-7F5C-3805-342E6C371D90"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/5100499B-D864-BA41-3DA4-584660694AB1"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/sections/0985B4E6-6FC5-68F4-CFD2-5C82BFC5FBF4"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/sections/D1AADFBF-3C30-25A6-10E2-BCBE6A005AC2"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/sections/F87551D9-DEFA-BA48-B9E8-67ADB9CFA062"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/F45E28A9-F3DD-7F4E-BEAB-C09F1ECE2ED9"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/7B583074-336C-741E-77BE-5D7BC6E7ACF9"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/7C789C1E-C832-0792-7331-2FA3A93A94C4"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/4950AF0D-8C2E-EF4A-4BC9-A548372EE743"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/9E974B5A-9EDE-5868-E917-11B174D31BB9"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/57B5B6B3-2F95-A43B-0D45-7F18B1682277"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/8A2E65BA-50FE-AC29-CB2F-24025A07FF84"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/B153F8CF-30D1-9AD8-C8D9-995550A1AD39"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/3FDBA304-FF72-638B-5E76-DED25F7A9D7E"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/C0C3AD74-4E2E-AF11-C850-A86CC359248E"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/0FF3C507-BB64-3F43-FA29-08957543BEEA"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/7E490EE3-097D-9DD0-6775-B1E75A257013"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/5A7978CC-6885-CAD7-9BEB-32081698DB29"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/6770E360-2546-167B-1EEA-21B242999EB9"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/4B149843-EDC9-8044-3576-9F3946952174"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/1841083B-C170-19B2-C610-9E005E1B30B5"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/40F2BE8D-5946-B23B-7520-1A3DBB972328"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/sections/4601F1C4-3702-8F06-D6B6-2963AB258478"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/sections/921CEF70-C126-1E88-1C3A-4AACAC0E1835"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/sections/09CFE441-EB7F-FFE1-7FE3-59807E6F705C"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/sections/BD2ACC98-4E6B-D7F2-0D9E-2BBE6EE8DB04"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/368547FB-8E83-3E84-5186-C43B63F5E480"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/64933AD2-A2A0-9E4A-DD68-C304187874D7"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/6F5D0F93-7441-B9EB-A9E7-D6BE8974FA3A"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/65CB76D1-CF9A-6E3F-0D0A-F318BF5040A4"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/A9744236-ECEE-F51C-1F60-C48084805A15"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/EFD3D223-659E-C971-D515-673664394B5C"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/5899141A-1AEE-F473-7A56-A9C3649855C9"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/21592B4B-FD5D-12EA-24E6-F8BD51AE6E54"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/1649C467-CD57-5FF9-F13B-27085C8A6D9B"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/E60AA502-DF21-6EF8-8121-7C7E416BBCEC"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/80F2989A-35C4-6BFE-3453-0A6DBF450E82"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/F83E18A3-598A-391F-524F-D0926E50F554"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/2A781F87-7303-CFBD-6E66-FB7DF9FEB19E"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/1D8EDA11-4DF5-7825-F182-2B8B48573BCC"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/D8310330-1359-FAD6-C586-45443450B0C7"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/sections/2CBDBCC1-1E95-8209-A9A8-2C5614B1C8A8"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/sections/52F70829-39BC-1355-989C-87E3C88AC1A4"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/sections/13B74606-B7DF-4014-C1C6-8C8967EE4BD4"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/C41986DC-DBEF-B1E5-7392-EAF3481C49DD"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/4FFF9E66-6BE2-38FF-BD39-A95501A13C36"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/D66C31AE-928D-EE16-4603-E681ACCC2B5C"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/38160C1D-A802-DB9D-6438-B5A28538E6D2"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/56C50083-D1D1-2FCD-625D-92DDE73C6842"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/F2730FA4-AD37-25F2-5BB7-A5D3CA0037B9"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/D8B0F9ED-D0FF-3D94-2580-A7000A3F6554"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/B74008AC-B6E5-B3E2-1910-A872139D5CE5"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/5A189D8F-DDA9-6289-EF12-C2CB7EC3083C"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/18E33387-6543-89C6-1C23-E6D596CDF5D1"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/359D1F79-E494-24A5-24A5-F012B62B1D08"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/DB15EA6C-439F-B6FF-F82C-4D1ADEACEFCC"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/191BC121-38DD-0E07-6A56-20DB5FAFB563"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/E868C606-64A8-FE81-3999-3A4D0AA95BF3"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/7513A451-72B1-2CFB-F448-5765263B2247"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/80209930-F589-2745-DE4C-CF19F65448C2"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/01BB7E97-F019-84FE-57BA-0840CF7242D5"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/sections/B1BF4D19-CBF1-7FC8-9FA1-9C17A3265C19"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/sections/BDA4BB4C-A646-E99B-2196-6D2F4FFD4665"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/F7EECB30-3ED4-69A9-419A-0F276FDA3E7A"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/22C2CDC7-A2FE-06A0-906D-BA4F1DE2C08E"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/2CCEB0CE-978D-907A-318B-84FB0F120740"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/305DD51D-50F3-C73D-FA2D-E485303CB531"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/5544EECB-7765-5DE9-31C5-562B1F8F1B23"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/E0825B92-4501-745B-621C-C995B1106234"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/E5445E51-A78C-753E-8255-1855EE4C469D"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/F3F7FB2F-284C-2C80-F889-6EBCE154F2EC"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/A39B96BE-2E97-E3F9-5757-B555F596C626"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/EA240F4F-DEEE-1B6F-3AD2-BB37A9880D6E"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/29BC21E4-FCA5-DA33-CEBE-5002C0C00EBD"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/07F3221E-912E-EC6F-EEC8-921C6A2EF3E1"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/sections/0CC53E71-AABB-D20B-928E-7E66C5FE13B9"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/sections/3A86842B-A9E6-0C1E-5D1A-184A4E70C5B4"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/95863CFB-C346-3593-E986-0BA6331E8F43"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/4DAD9DE5-B345-E43E-E885-F1D8138BD2CD"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/C5B59065-D0E3-9BBA-7A42-1B9B115D443F"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/50B1FDF6-D0EF-D2FA-D7A4-06762E381B8F"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/493FA24B-3BA3-C570-99E1-F8DA47776779"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/34E01414-546B-D57A-F093-AA6E59B5536D"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/16237DD9-DA82-70EB-F321-9608D5D28329"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/FAA96FE9-DC01-1263-194D-66E59295F8FE"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/011B2ED1-3770-E8D7-583A-6FFB498FB283"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/DE0285EE-24DD-54A2-BA63-E79325948315"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/A0E68D1C-A02B-A9C4-B5DD-7A0C32AE8208"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/3B317325-61EF-E67A-8235-5A597C54401A"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/768ABA6C-0DCE-BC37-2E3F-E67F2D9F8102"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/614573F0-0F12-09B1-6548-B64D88197359"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/CBA60941-52E5-5552-074A-2C339554D012"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/7FAE773A-3317-BAF7-AF2F-F098B0B70A81"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/455AE248-DA0E-389B-BB1C-CEE3956D5C84"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/712576B1-B72B-E9D7-6062-60EB1A8EE59B"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/4B37F215-6BF6-1068-1076-11F1A5DD65C5"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/E57F7D46-A9A7-BD67-5141-36C51E8F57A5"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/A197CAFD-BED4-4B8A-2FC5-A366A953D730"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/C4FD4B6D-FCF0-972F-38C4-9964D6B3A156"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/96D040AA-5045-624A-B334-AA33DEB4370A"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/7F05D43C-8BC5-1980-05DC-1836C9A141EE"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/EB931F45-CAC4-3406-626F-0680B91F4709"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/E63E9A87-D590-045E-E4D4-C7CB8389D369"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/CF37433F-68FC-B8CB-8BA5-1FA99656A3EE"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/6AABE7FA-C3DE-DF73-4616-8801A7973746"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/E897C90B-CE7D-A3BF-1AF0-3D074400D7FE"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/sections/A6ADC8CD-B5A6-6EFB-7A95-0C62BE223F02"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/sections/7774F770-B083-B409-4514-E1E2AC3959A9"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/sections/B81F1202-DB09-783C-5858-E4BF6801EAD7"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/sections/EAF2BA73-84A9-97E0-7F5A-554CA5F40FBA"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/sections/456E0BBF-3E69-00A9-913C-AC8AD8C1669B"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/65A55368-5B21-1428-049B-F13D217CFD45"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/0662D0E4-2F48-A73F-6382-4CC30448BE8E"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/5E2307CF-EEB6-EDF4-4AFC-6C30EF28E5AE"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/E7EC5904-8182-1F07-4EA6-988A92770648"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/C7E9C7E9-C7A2-AA39-6266-3F3680AE6291"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/3211794F-4A64-0F65-DA24-222539A7E408"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/B2DB07F1-6734-85EE-6D07-65D2E2E24A6F"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/DA9CB0C4-5E4E-A416-FFB0-54FDFAC02692"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/0673C671-ED08-6E50-01DA-AD91AE171EDF"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/0631A552-E2E9-EB81-9A9D-15DDE6D5B1E5"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/9AEED487-2613-3FC4-B279-F40CA11EAB3D"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/7F1D9C5C-B740-8057-2BA8-0BD53C5BE799"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/5366BEC9-1E58-CB61-BF6B-9B2ED48D5076"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/7D138CA3-6C43-9C16-15EE-BD02C979E71A"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/4701AADC-FC5D-666D-0594-42BF62A2FCC8"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/289995D9-6712-F1F7-F743-2EF61861D0E6"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/9381DC49-B2F8-4AF9-1C39-C9187EEC812A"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/71476240-E2AB-3F7E-4FBC-5A077334E51D"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/B6EB5D6F-5785-1F9C-F92A-9007CAFDCF28"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/38011118-8EF6-97AA-9CBD-A407A9803A6E"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/3D8AFEF3-0A5F-9C4F-DF22-75CFB904B102"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/97016E00-0F86-B272-A6CC-2DD393C2F462"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/B14DE5FF-F49C-BCC3-E3BF-839443E67033"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/9A8B6A25-4FD5-C0E8-F430-E447672B5A79"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/7E55F5EA-541A-AB3F-EB13-ECC30A9AB59B"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/565E8D74-5B4D-8584-87DE-A036329DD5BF"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/E211CA00-3E37-2135-9B46-327E2EDA412D"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/7614976F-3D14-1DA6-B2ED-5EC643EEFDB1"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/7321F641-01C4-1128-C760-F468E26AB646"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/3345DB7E-5F5E-11DF-F875-7EE4F1F8D5D1"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/3049887B-452E-7DC6-A8B9-2F0F0337629F"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/5547960F-69F6-7FB1-CE2A-8F13806E20EE"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/D2CE3694-83CA-D376-D8F4-5897217018A9"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/604058E3-A8B7-7B24-60AF-23684D237BBC"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/E9AC7265-B496-ECB4-CB58-6B18BAEA1C01"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/6C52A4FF-1D1E-B994-3F7C-030D0DFFDB80"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/1EE520F0-1B62-F937-6BA3-C11F9F7DD0F7"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/A3538BE9-E4E1-3616-3E9C-A0D21CAFF161"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/sections/F26D2A7C-C10A-FD1A-DDD5-6F4D9A638C4F"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/sections/C627ECE5-C163-CA52-1963-FA63BD1E1AB8"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/sections/81EB0695-E7CF-88D9-BD7C-2427D187BDB9"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/6591F4FD-3700-8D11-960D-C67BF020EA97"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/6F6D0C88-6078-8D5F-F2DD-89B98B7F2F85"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/514C4750-329F-ACC0-0CE0-447622EA6C9B"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/AB9FF676-43B9-4699-A14B-E8CB75980896"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/D6E31285-9D33-DACC-CE1A-8205795CE0B9"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/95F25613-5858-C276-4FBF-72F279340A77"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/EB949C7A-F165-026D-E97A-B86DC58669BA"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/3666002D-0858-7D1C-768A-B478867B8D4A"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/D43CC2EA-8D88-E75E-F37F-F6C2B25C9581"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/D629B2E2-5125-E502-C75D-50C1966E6C2A"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/8DD9E573-CA3D-CC76-8CD4-B7B8F7D98CDC"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/C376A875-24D5-6528-F115-892DE253B34F"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/55B77961-DB15-B046-1516-36939009B45F"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/6DD4B9F4-8A2E-85BA-79DA-2EDD399719E9"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/9A5864CB-DE4E-2AA9-52F5-FD8D12A4C259"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/6AD6A7F8-BEDA-AF0A-10E9-145A85E2D922"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/B55AB364-E8BA-E6BD-4E70-66BA0D3D668E"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/32AD8186-00BF-53CF-7C6A-B0224DA7B842"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/67B7FF35-4BF1-F0BC-6F84-B7FC0E30E771"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/4DF96B21-1B9B-3DB7-2E68-E19FDB1016C3"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/1C70758D-E786-75F1-A463-A90F9CD34FA3"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/06935D36-54B5-AE01-F402-3B893AE3135A"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/9747F87C-4442-6E0E-CAF7-7A0C06A65147"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/C6586E13-08A3-9454-C7D1-72031D36B1F7"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/8AD8845D-9B00-C8E2-D35A-6A4172C60B60"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/sections/5C026C8E-540A-9AA2-B549-7C4116D3B960"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/sections/539B69A0-AE14-95BA-F3FC-2AF83A986A70"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/sections/35D1C80A-0A1A-5CA8-2565-15B646F21FE9"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/0DE2065D-7A84-C294-DE88-055FAA8E3312"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/E6673CB3-1CC0-856E-83B5-FA3D0C0EE486"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/34D9BCA3-E4E7-90AC-E264-41BD0FAAF759"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/364052A2-D265-461A-13DB-1F511B2AFBD7"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/C42F2F7E-E8FC-3614-C824-5BADB5EB6F72"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/4D0B3262-3DB3-5456-A707-2B1304044833"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/179779A1-1ADC-E61F-53F6-757979FABA37"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/FF4D7FED-6892-B0F5-62AD-8FE819BF7E69"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/F1FA4ACA-5BA2-FA9B-C873-A8D3674A087E"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/82265D30-C550-C208-08EA-DB53717C269E"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/8E6310AF-94B3-9AA8-5C63-097BB6D95433"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/75CB6B28-C418-A309-D27F-46D019C9AAF2"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/0FDF4FEF-045F-FE9E-126F-CCAA078A29BA"
+            }
+        ],
+        "http://purl.org/vocab/resourcelist/schema#created": [
+            {
+                "type": "literal",
+                "value": "2013-09-11T10:02:46+01:00"
+            }
+        ],
+        "http://purl.org/vocab/resourcelist/schema#hasOwner": [
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/users/6C91C1D5-3944-1B63-2A0F-2DD869A063F0"
+            }
+        ],
+        "http://purl.org/vocab/resourcelist/schema#lastPublished": [
+            {
+                "type": "literal",
+                "value": "2013-09-16T12:11:47+01:00"
+            }
+        ],
+        "http://purl.org/vocab/resourcelist/schema#lastUpdated": [
+            {
+                "type": "literal",
+                "value": "2013-09-16T11:30:29+01:00"
+            }
+        ],
+        "http://purl.org/vocab/resourcelist/schema#usedBy": [
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/modules/so712"
+            }
+        ],
+        "http://rdfs.org/sioc/spec/has_creator": [
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/users/4B156B63-A6A2-FCEC-0FD3-1AC1EDCCE53D"
+            }
+        ],
+        "http://rdfs.org/sioc/spec/name": [
+            {
+                "type": "literal",
+                "value": "Urban Sociology"
+            }
+        ],
+        "http://rdfs.org/sioc/spec/parent_of": [
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/sections/D12DEA46-C3F7-FE08-5B08-606D74753192"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/sections/20130386-7E75-D4DB-72EF-A3E7FB12AA9D"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/sections/968F3B04-C96F-C813-80A5-91A00BCA3C7F"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/sections/1F2136DF-D645-BA1F-400F-60CAB3178E04"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/sections/0985B4E6-6FC5-68F4-CFD2-5C82BFC5FBF4"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/sections/4601F1C4-3702-8F06-D6B6-2963AB258478"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/sections/921CEF70-C126-1E88-1C3A-4AACAC0E1835"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/sections/2CBDBCC1-1E95-8209-A9A8-2C5614B1C8A8"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/sections/B1BF4D19-CBF1-7FC8-9FA1-9C17A3265C19"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/sections/0CC53E71-AABB-D20B-928E-7E66C5FE13B9"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/sections/A6ADC8CD-B5A6-6EFB-7A95-0C62BE223F02"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/sections/F26D2A7C-C10A-FD1A-DDD5-6F4D9A638C4F"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/sections/5C026C8E-540A-9AA2-B549-7C4116D3B960"
+            }
+        ],
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#_1": [
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/sections/D12DEA46-C3F7-FE08-5B08-606D74753192"
+            }
+        ],
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#_10": [
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/sections/0CC53E71-AABB-D20B-928E-7E66C5FE13B9"
+            }
+        ],
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#_11": [
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/sections/A6ADC8CD-B5A6-6EFB-7A95-0C62BE223F02"
+            }
+        ],
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#_12": [
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/sections/F26D2A7C-C10A-FD1A-DDD5-6F4D9A638C4F"
+            }
+        ],
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#_13": [
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/sections/5C026C8E-540A-9AA2-B549-7C4116D3B960"
+            }
+        ],
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#_2": [
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/sections/20130386-7E75-D4DB-72EF-A3E7FB12AA9D"
+            }
+        ],
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#_3": [
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/sections/968F3B04-C96F-C813-80A5-91A00BCA3C7F"
+            }
+        ],
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#_4": [
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/sections/1F2136DF-D645-BA1F-400F-60CAB3178E04"
+            }
+        ],
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#_5": [
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/sections/0985B4E6-6FC5-68F4-CFD2-5C82BFC5FBF4"
+            }
+        ],
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#_6": [
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/sections/4601F1C4-3702-8F06-D6B6-2963AB258478"
+            }
+        ],
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#_7": [
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/sections/921CEF70-C126-1E88-1C3A-4AACAC0E1835"
+            }
+        ],
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#_8": [
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/sections/2CBDBCC1-1E95-8209-A9A8-2C5614B1C8A8"
+            }
+        ],
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#_9": [
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/sections/B1BF4D19-CBF1-7FC8-9FA1-9C17A3265C19"
+            }
+        ],
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+            {
+                "type": "uri",
+                "value": "http://purl.org/vocab/resourcelist/schema#List"
+            },
+            {
+                "type": "uri",
+                "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Seq"
+            }
+        ]
+    },
+    "http://resourcelists.kent.ac.uk/lists/39399749-E118-07A7-456E-80F55700F2C0": {
+        "http://lists.talis.com/schema/temp#createdByRolloverJob": [
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/jobs/4F06CCAE-909F-A13F-BAD4-820BFAB32E7E"
+            }
+        ],
+        "http://lists.talis.com/schema/temp#hasTimePeriod": [
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/config/timePeriod53304cb6f3d4d"
+            }
+        ],
+        "http://lists.talis.com/schema/temp#rolloverCopyOf": [
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/lists/31F89776-6BEA-1DD2-E4C6-C3CA796D173D"
+            }
+        ],
+        "http://purl.org/vocab/resourcelist/schema#anticipatedStudentNumbers": [
+            {
+                "type": "literal",
+                "value": 40
+            }
+        ],
+        "http://purl.org/vocab/resourcelist/schema#contains": [
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/sections/0EB78013-5306-EBE2-07E8-5BF671BAA373"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/25482EA9-F37C-3B1E-1431-1755E68D05BA"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/114CEE79-E243-3A0D-FB25-9CD3CA39FE7B"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/FDD196D9-F9DD-7808-AA2D-BA5CC117D53A"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/C6C2A385-2A9E-C042-7A02-579F82918EEA"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/C575F115-3F4B-D2E4-2B1B-B8134D50122D"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/8FA00847-7E7B-BEAC-57C1-14F4315F1DAF"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/sections/76C739E5-8C16-EFC7-3D5F-28655BE71B09"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/sections/9A9A811C-3EB8-7AAB-D1FF-69380E730517"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/256B37A6-C73E-0599-A6CD-E390919E4C03"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/8FF76A1D-04F8-9618-8AE7-3E4760852163"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/66D79544-6D77-0A98-BD39-BCE535B23DE4"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/D41A58D4-3605-8CB5-408F-C525D2C8DD04"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/738D8CEC-7EEA-9057-BE54-5C0E11C0969F"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/48FADF1A-8A8A-F383-959D-5BD59BFB1DEC"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/E704A025-AAAF-93FF-B1F9-7E6710974422"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/3094D127-22BA-E340-3B47-46E53EB934CD"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/105A76DF-846E-C4FA-617F-80113595F4D3"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/ABF3D9AB-C364-C4AA-BC62-0D96BF8D48F0"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/17657EA3-AD8A-4587-310A-A5CE3C601458"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/E47D3D87-2064-49A1-AE8D-F9E0EFD850BE"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/7F7E7859-5F29-D564-D192-8AFAE55D3480"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/FC21135A-76F9-D93F-64FD-97E9C6275C10"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/A0BDBE01-2C05-DDAC-39FD-6D33AEBC1B0D"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/43D61DE2-BCCC-33F0-50DA-F8984E009BB4"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/FA01E726-2549-1069-B9CA-EC259D897F1B"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/sections/60E85BD1-0359-44A3-2F2F-0064B8E01E2A"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/sections/40FD37A0-E0A8-8463-1878-4B08BF78CADD"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/sections/15CBBC6F-F777-A48B-EE7E-9052DBF154B8"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/B0473DE9-9134-EC31-385D-DA409741AE55"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/A43A5FE3-D1F6-7DF4-0661-880E712574D9"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/1217A312-9937-B101-C8B8-4093588CBB67"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/6B5874FC-940A-2CCD-7525-257CB78A0A9B"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/52C4A9DB-6A55-4E19-4DAD-D8AAA08C0023"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/05D4E402-769D-F052-435C-3800ADDF290E"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/47E19DAC-5B8F-514B-3BDF-53B1A4BD1611"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/7CEE7947-5C02-3134-C349-CCBBBC2A7882"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/58577AB5-2B90-BBD6-5985-A1B53D154269"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/6A8DC02B-2D47-EE33-51CA-8CE4DBDB0332"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/0E16DBF1-D3DE-2A7A-0027-EB6DC722946E"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/57097B37-887E-E03F-23EE-89A1EF6B61C9"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/97424F2E-4D19-FB55-9F99-D14D8EF0EDF0"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/sections/EA9DD12F-19BB-B544-2680-2B8F2AA7D6B2"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/sections/0286744E-BA54-574A-500C-4D26150D9A0F"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/sections/A2E47040-3FDA-61A9-78A2-52A7A3CF9147"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/00581F28-0B65-3534-1C95-3BABFB85C808"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/DB8C986B-BB0B-FDF9-C79A-D0AA87FDAF02"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/6ED66AFE-B439-8D25-107A-EF5386161ABA"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/2E985C4E-D600-43D6-8101-A45E57CE7021"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/C7CEA30F-2825-E262-E70F-7090EDDF5EF0"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/AB8E8201-F5C8-29D9-97A1-218B643E8302"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/4CE51D54-7712-07E8-EC8F-EA56AD495326"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/CFF8EA54-47C3-3FEB-AE7A-D84BE632FB94"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/B3CB4871-5C60-15CD-B7A7-71DF7911ED9F"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/3B20EC13-5C64-F535-BDAE-501D0A161A42"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/6CC617EF-4F6A-3F9C-829F-6FF517630133"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/165ADF8F-0FD5-B41D-E33E-8B6DE42BA0F4"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/2F4EA6C4-EAB5-8748-A62A-990CC0F5F722"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/sections/4BB68C84-0B5D-93D9-CD81-2509DA104DAA"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/sections/C6C7AF7E-E207-D75C-E907-276DE88B2739"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/sections/CF7D2049-3180-CCEF-63F8-86F60AF8653F"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/1F57AFE6-F1B7-876E-38BF-8B163B716503"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/F4C7CC12-725E-A776-7B3E-0E59D9345721"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/9F760A0F-9F5E-33EE-4EA4-4D13B6089528"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/589C0719-2774-8C10-C93B-2A9C4FBA156C"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/9200F3CF-2B53-AF05-E065-BD4035F009DB"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/2415EA7D-A9F1-3B7F-0D8D-794216F492DC"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/130CA4EF-9389-EDEA-E8CB-547FFD95E0F4"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/E0B8F5A7-08C1-A760-8CAE-E8277698EACE"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/262739EF-8783-7D67-0349-54E374C654F8"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/C5E8B259-5824-BBB9-434B-56EAFCBCE129"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/sections/FA7F3B42-059D-D1B1-0543-BCCD2D412AE0"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/sections/C7FFFB42-76AE-A2C8-70CD-234B340DE4CA"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/sections/5A9902F5-F2DC-8E15-308A-7DB3B43BC26A"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/B175F4EA-EF08-4614-42FE-1F8F514F72DE"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/6E82F845-B701-FB2A-E2A8-822502BBB1F4"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/F30044A5-5834-31E5-0E03-DEE9CE1169B8"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/D25F6DE7-58D7-84F0-D385-BFC151E2D844"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/DDBE7B0A-9795-CB9C-0454-F67BBAAD2AE7"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/17F7FD94-51D4-D9C7-DDD5-BC0A0203DF79"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/6CDEA577-9D11-10E2-738A-850A0EBCA275"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/273B0208-2496-0D19-1864-67194AD7E042"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/0CB61923-2A2D-0D64-E50E-56BB59172C19"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/A725FFF7-1CCC-27A7-D9C2-B053D10BF925"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/83A8C1F9-979E-30AE-3B70-609086828AE7"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/sections/97F9DFB2-0EA0-1761-3DC2-9F9EB377C3F8"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/sections/879217DF-23B7-9784-F276-17B32EE2B14A"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/sections/289C6366-7E9F-E2CE-97B3-84D96A03062B"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/0E1785DA-0371-E7A0-247C-5D6B88B5E7B3"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/A781A25E-C71A-F201-820E-A0072F382A37"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/F95D22F3-1F8C-3322-F76A-B3AFEE02E982"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/B1FE1114-E18A-FB25-A727-FE7F08551B77"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/D34ACA34-12FA-C07A-BE9A-6C48C2416AC6"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/88A6CA10-FA1D-A2CA-8648-FBBF30453AD4"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/86C49840-7288-32CE-BA64-B944C81D564F"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/480DB9C7-02E7-80C4-E443-500DCF079313"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/17D46396-0F72-AFF6-7D2C-9C9D3EDAACF9"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/24CD059B-BFE8-7F23-ED33-A9AD4FC78D7C"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/FC3E9228-729A-3BDF-91B9-04D6685F7F81"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/FE579274-1FEA-EEEB-D591-A288265FFC4D"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/DF45575A-3D35-FBC3-E8E3-5AE946A6F51A"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/94FCE475-68C1-737C-6073-38DA6906F980"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/9EBFFDBA-0BF8-275B-5DAE-498F8FB3A111"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/47042CDF-3ED1-079C-45CE-D2050F4AD35A"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/E45E8493-34B3-4D14-DD67-B218A948DC9B"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/sections/DEA8BB23-41F6-B12C-6FB3-213669A5F620"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/sections/A2ACB5AB-19BA-4C6B-CE2B-42AB89061CA7"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/AB773DE6-33A1-1849-067F-D8B9563C2EED"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/4DA0ED67-D5A0-3DFC-5186-E462032C0553"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/20A66CAA-7F69-C466-3271-77E157A6E35B"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/A5541F1A-7EE5-36A7-14F0-683C370E5872"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/C920C42F-9DDA-23D8-4469-82C6466032E9"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/E8D64E2A-8CB2-5B53-5F76-885333848774"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/786A1A1D-97F0-0FBD-5E32-5538E28D8B99"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/40D1BE08-BBB4-D6AD-4DD3-8B00440A927B"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/4BE192EA-4553-65F1-72E0-DA8C575DC616"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/CB796C79-78F2-4096-D1B8-6C07F68A6233"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/187ADC93-84C9-B632-A2CC-8A88BA97C818"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/2981CE4B-C2C7-C921-BD70-553EE83E7932"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/sections/12CDB773-D1DA-37F6-0E28-6A6D03D6F6C2"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/sections/C4DC3DEA-2ED4-6E87-B14B-77AC22B1825E"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/CAEB6A4F-91B3-8830-2B54-029834E5FBAF"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/000FEFFE-103E-7324-977E-91A875754546"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/A0C6F595-C4FA-4AFB-D074-4F5994F046AC"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/7B6EC02B-124E-8F26-E04C-9308254F4CC5"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/4AD55E8E-A5FC-6B42-DFAF-C1E830B6BA43"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/A6573E80-2B99-22BC-9656-9CE7EA6DA451"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/36A39619-C814-63BA-C20A-C25DEFAFA9D9"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/87A621A2-9055-6F02-042D-C88DF84C4E81"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/8F191D1C-A905-53F1-523B-48A3BF9371FA"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/6D06BFEA-D8A2-6EC7-678D-8617B1441494"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/4182DCBC-2373-9AE9-A1C9-6815A6332668"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/FC5FDD33-BD19-36DF-BD26-D499ABFE9449"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/6472E4A2-DBFC-4532-A6FD-E7227EF8946B"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/9A861570-8943-B388-DE30-5EFFA15B2C7A"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/00CBDAA2-8781-ADE9-DAAA-AEB5860D080A"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/2DC59CA5-727C-FB64-0A2D-92E1FEB1A4C5"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/9F6BB5E4-B6F2-1BB3-E6B6-DB08FB824C6E"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/9F4D2457-4B77-1403-1D95-D2CF289DEF81"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/9ED78D0B-9F0F-43AB-DFAC-A8E271D3C30D"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/853E15CC-ABD9-8833-359B-3A24F8EFC9E1"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/7BD3B0A1-9D3D-C352-C570-654F967A154E"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/511C7D5E-23C8-52CD-005E-2FE479DA42A8"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/1BBA5C47-C10D-4B7A-85D1-20026CA6D776"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/07D9E50A-873C-6E4E-D344-C8FD5628A873"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/ACA2125B-3A9D-06EE-F942-2D9C667E19B1"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/F0738BA6-EDC7-04CD-F255-A270398509D3"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/F16A02C3-3C34-B745-D1B2-6371F40B0CF7"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/0897DD3D-8780-2CBF-0A04-32D2A16B962E"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/C5E1E1D3-D2C6-F369-349F-5CB41144FCC1"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/sections/92E8EA81-3CD7-C2D8-D6A1-BC4007DFC0EE"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/sections/C9BBA719-3429-BFBE-356F-96473A29B0F2"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/sections/FEFCE1AE-3DD5-B1A3-87B4-F5B88AFD5745"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/sections/6566FD51-BFC7-5810-45CD-544C08F7476A"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/sections/6A99F3C8-E898-B666-3FE8-BBC0CFB9C74B"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/D4F83E80-5D6C-05AF-6A7F-161746DD87E4"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/36DC4D18-F62A-5094-8873-2C78C85871DA"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/E03ABD0E-FD63-3AE3-DC2A-7CAE7C5382C5"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/11DAE9B5-A422-7F0B-C449-8B050DE64D20"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/ADFA4734-5335-78A5-4621-E56952661F68"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/DA41E0AA-3324-5422-0FFD-C2D64AC92C6C"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/36575569-CDE5-C582-C3CD-17A5B4E5162A"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/99387462-8779-A081-1105-5E8CE3EB0EE9"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/6B15BD63-770D-8787-3725-F9BC6DD1F494"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/F5711420-21CD-7440-222F-2B0A3CA2903B"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/248EAF61-3137-9498-94C5-05B419C419E1"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/ADEA0072-0B9B-BF06-E220-B435E32AAF7F"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/C5A1A45D-9251-7065-6A3B-0F25DE36877B"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/88345AFF-C3A4-EA54-0CAF-7118E2684329"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/8867A42E-7156-1BD0-03D0-7D7F555136B2"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/ADD524F1-7A1B-E712-10DD-3B6C7D219C57"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/632A3F11-5794-BED8-5D24-AF0B506A7296"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/6735697C-4FAD-2E75-42E1-4D03F8133778"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/3BD95DF5-48DA-DBE6-3066-BFC017BF9E11"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/18986041-BD85-DE11-4DA9-201EECDA7BDA"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/15ED8373-13B8-00E9-A32A-D03B195341BC"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/0F3E672F-9F6C-4A26-19E7-D54F7708D6A6"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/1438BC63-5FED-F463-D501-89198CCA8C1E"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/68A25A19-6B42-759F-DFE3-D9A2F4E1FA53"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/80F3AEF3-17A1-42B4-CF61-2B55A70A264A"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/4BE96BAD-3485-1B2D-35FD-656383CD2946"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/2F8C2191-2E27-9BCF-9E7C-F98B72D383B8"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/5A368557-5375-416B-C7AD-41F7CA0936DE"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/ED42867E-8359-E49A-F19D-72484614E93A"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/6131D53E-FB0C-2A3E-352F-F1DB503B25D0"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/A23B3F43-FF5B-1B35-AA02-D52F7E374473"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/771AFFF6-E6CB-8DA3-7329-129BDF0A3A2A"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/7289A5EE-DA4F-D4E6-5CD0-4840EE1FE0C1"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/4E6E43FC-404B-F491-5AE8-910BB4B92E96"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/B9EBCC15-4519-4504-FE0B-9109EA067458"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/49737158-4626-37E9-4590-6ABF0ABA8014"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/sections/0804EE22-81AA-7AA4-70F4-7440556855CE"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/sections/89D14DE8-A7AF-5A05-A38C-FFE43410F08F"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/sections/EC4A5095-2201-D21C-B744-A655FE725886"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/48B80A54-3BC5-6B1B-D43E-E8A824C98E2D"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/A04D09C8-3A5B-AE65-0C7F-CA799F7E37FB"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/CDFD875B-68AA-36A2-C15F-B067E331F513"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/663CFC9C-A209-97B2-6408-DFF88E92838D"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/59ACCF60-91BB-D761-1723-670EA5A91450"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/706D38BD-FE70-12D5-41E3-AE1F2B6DC111"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/D3E1B60C-B8B7-77B7-FDF3-FBA00F492F16"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/AA54C834-50E4-0B95-0F5B-28B0E9567813"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/665B1A11-13BE-0C90-6435-28420B76F2BD"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/1DB1BC69-A283-2F8E-BE53-E94335866D73"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/B1503556-D9AA-D943-EEC1-4D5CDF6A272A"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/C597E01C-6BE9-22C0-A536-A37BE014FD70"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/44CE6B66-A006-35A5-D161-42AA476A81D2"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/E07546D9-157F-BB02-B3DB-841976E3E2E2"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/0772E368-7C43-FE31-6C3C-0CB9EB7A1576"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/62DF30EE-4930-6855-E82E-BC08A73B14C6"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/823B4548-4FCC-39A2-BCE5-EADF6F5B3C62"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/sections/07E602EA-488B-CB4C-0172-E5D6DBA6DB92"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/5D116166-B595-E747-F8DA-F914DDEEA1F5"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/6B7CD609-4EF1-1838-B9AA-A1FD8757F656"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/F2512992-B53C-ADBF-079D-F528205F724A"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/0DD4D9B1-98BF-23C2-2BD8-4D4B48B63CEB"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/12298A28-CD0E-F1B9-DCB2-8A704909EC1B"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/D9FE51C0-F3BF-2264-2C0E-24E703374660"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/9BDD959B-5F20-8282-9E6C-18022693926B"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/BA8E0878-F6FF-3EAC-8C1C-A8C78D71BF2E"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/15DFCA7C-2114-574C-38F6-AC9493FDC64A"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/BD2823E3-FC7A-2181-F1F2-C1B8905868AD"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/81930E3F-02B8-87F4-879A-9FADFA42E9AC"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/B0212F49-5C39-78A0-EDA9-C8A9451C1A22"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/sections/BA61AB22-F5D3-58E1-6D1F-CD7C74F6B552"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/97AE1BFD-85D8-1900-76FA-FBB90D856843"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/BB8FF028-2BD4-0F9D-D4FB-10FAF11A4B0C"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/6B76ECA1-79B7-F3BE-3C03-FC03C8E357C5"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/1D37C714-C28F-C4A9-DFF5-4179B087C9CC"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/2910EBB5-4B9A-1D6A-771A-9F88A8E75E17"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/B2086716-1A09-D694-C4DE-4216DDB8D2A3"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/113A886C-009D-3F00-C6EA-32A7CB880FFB"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/446051FF-C7C9-6ED1-989C-5006056AE4F5"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/B0C9E411-CBB2-C389-CA6D-5D559E7BB45E"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/4F40406D-5692-81E6-14F8-26E79BE8AAAC"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/E7253285-607A-0C9F-F835-680C03F55DCC"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/14C806A9-3449-1F6C-0C4F-4F68767E7EF0"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/7A8080F2-5659-69B8-0C55-DD9C3B6CA114"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/865C7369-A9E6-F536-DA9B-73C145E243E2"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/451AC0FF-EB28-2B39-AF05-7AA003C4541F"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/68353854-DF1B-2758-9819-D637EED2B1B5"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/25B29A61-EA1D-A78E-ECC8-31C5AE68B2D4"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/sections/A9163CD8-80C3-30E0-FAF3-55AA3DA71889"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/sections/08B8951F-E89F-052C-9779-1D34207D41C3"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/sections/7125AAF6-E867-0FC5-E983-DA9C67F2D889"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/99FE2D0D-7028-74F1-0B0A-7C26F67CC525"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/450FAF51-B9C0-5AC3-205D-B58CAB146AB8"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/853CB6DA-8E4E-083B-57F9-367A8E2D76BB"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/4299DE8B-E2C0-75EC-6180-309158E7F4E3"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/CBDEC824-B7EE-E217-9283-28D9075BE1D6"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/8A71A5CD-1CB4-24E6-A1F7-44B252BFD79E"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/FA68FE83-42F9-C300-5811-C562A1F66D91"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/6F28FFB6-4E55-4454-DC82-2DA3D8E72BC8"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/C0B9EFFD-33D8-96D7-431F-0412B4816E42"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/5805332B-30E3-3545-F71A-8C2F4FC7399B"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/69BA3360-D4A8-C721-7383-F8D632011634"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/0155F158-D786-4ACD-983D-66FA21805E54"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/5F79BBC2-BB96-77AD-02F1-83112B5E744E"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/62D00B82-73CF-BF35-D48F-FA3B9D31FCBA"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/39CC681A-DD28-61DA-2877-F7F280941E6A"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/E8B41454-3382-B1CD-8C7E-742758E31809"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/0127E69B-ACDE-3172-6F33-DF58A803D1A3"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/27769E9A-50E2-1827-1333-0F0152746498"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/EFCD5338-29EB-FF04-89DA-54990E37CFFA"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/12F5CA51-6BBF-F3E3-A6EB-92AAB9D7D7D0"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/ED8665CA-BD3F-6871-456B-EE3761A22D6A"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/794C4247-B8DC-8DAF-6477-A58C7631C752"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/7C13817C-9455-B17D-4396-DC74F609CFBE"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/sections/68C7AE78-68BC-BF48-7E5B-1F61B4AEA74E"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/101AF53F-9DFB-5EC4-1450-63E5FE6EDCE8"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/86628434-F5AB-C848-1034-044F01B96088"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/48E34FCA-6D06-9CB2-11FC-98B1E406903D"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/10E85BFF-8A69-4332-03D8-CFD9C487550A"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/D5707672-9B50-5E1C-4867-937221E0F771"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/BFC7CD18-5FDF-0A12-A884-243E6A848EDA"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/89F275C5-47C0-C297-D7EB-4FC85964FD68"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/items/85408A9E-92CA-5077-7C17-093DF4D5ADC5"
+            }
+        ],
+        "http://purl.org/vocab/resourcelist/schema#created": [
+            {
+                "type": "literal",
+                "value": "2014-05-02T15:37:04+01:00"
+            }
+        ],
+        "http://purl.org/vocab/resourcelist/schema#hasOwner": [
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/users/BCE8FC2F-6A4B-9A2A-D241-87DB3B8A69E6"
+            }
+        ],
+        "http://purl.org/vocab/resourcelist/schema#isCopyOf": [
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/lists/31F89776-6BEA-1DD2-E4C6-C3CA796D173D"
+            }
+        ],
+        "http://purl.org/vocab/resourcelist/schema#lastPublished": [
+            {
+                "type": "literal",
+                "value": "2014-07-25T11:39:10+01:00"
+            }
+        ],
+        "http://purl.org/vocab/resourcelist/schema#lastUpdated": [
+            {
+                "type": "literal",
+                "value": "2014-07-25T11:38:59+01:00"
+            }
+        ],
+        "http://purl.org/vocab/resourcelist/schema#usedBy": [
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/modules/so712"
+            }
+        ],
+        "http://rdfs.org/sioc/spec/has_creator": [
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/users/4B156B63-A6A2-FCEC-0FD3-1AC1EDCCE53D"
+            }
+        ],
+        "http://rdfs.org/sioc/spec/name": [
+            {
+                "type": "literal",
+                "value": "Urban Sociology"
+            }
+        ],
+        "http://rdfs.org/sioc/spec/parent_of": [
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/sections/0EB78013-5306-EBE2-07E8-5BF671BAA373"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/sections/76C739E5-8C16-EFC7-3D5F-28655BE71B09"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/sections/60E85BD1-0359-44A3-2F2F-0064B8E01E2A"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/sections/EA9DD12F-19BB-B544-2680-2B8F2AA7D6B2"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/sections/4BB68C84-0B5D-93D9-CD81-2509DA104DAA"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/sections/FA7F3B42-059D-D1B1-0543-BCCD2D412AE0"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/sections/97F9DFB2-0EA0-1761-3DC2-9F9EB377C3F8"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/sections/DEA8BB23-41F6-B12C-6FB3-213669A5F620"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/sections/12CDB773-D1DA-37F6-0E28-6A6D03D6F6C2"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/sections/92E8EA81-3CD7-C2D8-D6A1-BC4007DFC0EE"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/sections/0804EE22-81AA-7AA4-70F4-7440556855CE"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/sections/BA61AB22-F5D3-58E1-6D1F-CD7C74F6B552"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/sections/A9163CD8-80C3-30E0-FAF3-55AA3DA71889"
+            }
+        ],
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#_1": [
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/sections/0EB78013-5306-EBE2-07E8-5BF671BAA373"
+            }
+        ],
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#_10": [
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/sections/92E8EA81-3CD7-C2D8-D6A1-BC4007DFC0EE"
+            }
+        ],
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#_11": [
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/sections/A9163CD8-80C3-30E0-FAF3-55AA3DA71889"
+            }
+        ],
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#_12": [
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/sections/0804EE22-81AA-7AA4-70F4-7440556855CE"
+            }
+        ],
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#_13": [
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/sections/97F9DFB2-0EA0-1761-3DC2-9F9EB377C3F8"
+            }
+        ],
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#_2": [
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/sections/76C739E5-8C16-EFC7-3D5F-28655BE71B09"
+            }
+        ],
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#_3": [
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/sections/60E85BD1-0359-44A3-2F2F-0064B8E01E2A"
+            }
+        ],
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#_4": [
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/sections/EA9DD12F-19BB-B544-2680-2B8F2AA7D6B2"
+            }
+        ],
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#_5": [
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/sections/DEA8BB23-41F6-B12C-6FB3-213669A5F620"
+            }
+        ],
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#_6": [
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/sections/BA61AB22-F5D3-58E1-6D1F-CD7C74F6B552"
+            }
+        ],
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#_7": [
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/sections/4BB68C84-0B5D-93D9-CD81-2509DA104DAA"
+            }
+        ],
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#_8": [
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/sections/FA7F3B42-059D-D1B1-0543-BCCD2D412AE0"
+            }
+        ],
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#_9": [
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/sections/12CDB773-D1DA-37F6-0E28-6A6D03D6F6C2"
+            }
+        ],
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+            {
+                "type": "uri",
+                "value": "http://purl.org/vocab/resourcelist/schema#List"
+            },
+            {
+                "type": "uri",
+                "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Seq"
+            }
+        ]
+    },
+    "http://resourcelists.kent.ac.uk/modules/so712": {
+        "http://purl.org/vocab/aiiso/schema#code": [
+            {
+                "type": "literal",
+                "value": "SO712"
+            }
+        ],
+        "http://purl.org/vocab/aiiso/schema#name": [
+            {
+                "type": "literal",
+                "value": "Urban Sociology"
+            }
+        ],
+        "http://purl.org/vocab/resourcelist/schema#usesList": [
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/lists/31F89776-6BEA-1DD2-E4C6-C3CA796D173D"
+            },
+            {
+                "type": "uri",
+                "value": "http://resourcelists.kent.ac.uk/lists/39399749-E118-07A7-456E-80F55700F2C0"
+            }
+        ],
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+            {
+                "type": "uri",
+                "value": "http://purl.org/vocab/aiiso/schema#KnowledgeGrouping"
+            },
+            {
+                "type": "uri",
+                "value": "http://purl.org/vocab/aiiso/schema#Module"
+            }
+        ]
+    }
+}
