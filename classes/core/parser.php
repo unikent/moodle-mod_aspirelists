@@ -49,7 +49,7 @@ class parser {
      * @param string $data The raw data from the CURL
      */
     public function __construct($data) {
-        $this->raw = json_decode($data);
+        $this->raw = json_decode($data, true);
         $this->data = array();
     }
 
@@ -88,5 +88,32 @@ class parser {
      */
     public function grab_all_lists() {
         return $this->grab_dataset('lists', self::INDEX_LISTS);
+    }
+
+    /**
+     * Which time period is this list in?
+     */
+    public function which_time_period($list) {
+        $data = $this->raw[self::INDEX_LISTS . $list];
+        $data = $data[self::INDEX_LISTS_TIME_PERIOD];
+        $data = $data[0];
+        $data = $data['value'];
+        $data = substr($data, strlen(self::INDEX_TIME_PERIOD));
+
+        return $data;
+    }
+
+    /**
+     * Grabs lists for a specific time period.
+     */
+    public function grab_lists($timeperiod) {
+        $lists = array();
+        foreach ($this->grab_all_lists() as $list) {
+            if ($this->which_time_period($list) == $timeperiod) {
+                $lists[] = $list;
+            }
+        }
+
+        return $lists;
     }
 }
