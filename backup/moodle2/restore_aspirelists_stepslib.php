@@ -18,6 +18,7 @@ class restore_aspirelists_activity_structure_step extends restore_activity_struc
         $oldid = $data->id;
         $data->course = $this->get_courseid();
         $data->timemodified = $this->apply_date_offset($data->timemodified);
+        $data->category = 'all';
 
         // insert the aspirelists record
         $newitemid = $DB->insert_record('aspirelists', $data);
