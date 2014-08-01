@@ -38,6 +38,7 @@ class parser {
     const INDEX_LISTS_TIME_PERIOD = 'http://lists.talis.com/schema/temp#hasTimePeriod';
     const INDEX_LISTS_LIST_ITEMS = 'http://purl.org/vocab/resourcelist/schema#contains';
     const INDEX_LISTS_LIST_UPDATED = 'http://purl.org/vocab/resourcelist/schema#lastUpdated';
+    const INDEX_NAME_SPEC = 'http://rdfs.org/sioc/spec/name';
 
     /** Our Base URL */
     private $baseurl;
@@ -70,7 +71,7 @@ class parser {
     /**
      * Shorthand method.
      */
-    private function grab_dataset($index, $apiindex) {
+    private function get_dataset($index, $apiindex) {
         if (isset($this->data[$index])) {
             return $this->data[$index];
         }
@@ -93,44 +94,25 @@ class parser {
     /**
      * Grab all known time periods.
      */
-    public function grab_timeperiods() {
-        return $this->grab_dataset('timeperiods', $this->baseurl . self::INDEX_TIME_PERIOD);
+    public function get_timeperiods() {
+        return $this->get_dataset('timeperiods', $this->baseurl . self::INDEX_TIME_PERIOD);
     }
 
     /**
      * Grabs all known lists.
      */
-    public function grab_all_lists() {
-        return $this->grab_dataset('lists', $this->baseurl . self::INDEX_LISTS);
-    }
-
-    /**
-     * Get the raw data for a given list.
-     */
-    private function get_raw_list($list) {
-        return $this->raw[$this->baseurl . self::INDEX_LISTS . $list];
-    }
-
-    /**
-     * Which time period is this list in?
-     */
-    public function which_time_period($list) {
-        $data = $this->get_raw_list($list);
-        $data = $data[self::INDEX_LISTS_TIME_PERIOD];
-        $data = $data[0];
-        $data = $data['value'];
-        $data = substr($data, strlen($this->baseurl . self::INDEX_TIME_PERIOD));
-
-        return $data;
+    public function get_all_lists() {
+        return $this->get_dataset('lists', $this->baseurl . self::INDEX_LISTS);
     }
 
     /**
      * Grabs lists for a specific time period.
      */
-    public function grab_lists($timeperiod) {
+    public function get_lists($timeperiod) {
         $lists = array();
-        foreach ($this->grab_all_lists() as $list) {
-            if ($this->which_time_period($list) == $timeperiod) {
+        foreach ($this->get_all_lists() as $list) {
+            $object = $this->get_list($list);
+            if ($object->get_time_period() == $timeperiod) {
                 $lists[] = $list;
             }
         }
@@ -139,50 +121,14 @@ class parser {
     }
 
     /**
-     * Grab list URL.
+     * Returns a list object for a specific list.
      */
-    public function grab_list_url($list) {
-        return self::INDEX_LISTS . $list;
-    }
-
-    /**
-     * Name of a list.
-     */
-    public function list_name($list) {
-        $data = $this->get_raw_list($list);
-        return $data['http://rdfs.org/sioc/spec/name'][0]['value'];
-    }
-
-    /**
-     * Counts the number of items in a list.
-     */
-    public function item_count($list) {
-        $data = $this->get_raw_list($list);
-
-        $count = 0;
-        if (isset($data[self::INDEX_LISTS_LIST_ITEMS])) {
-            foreach ($data[self::INDEX_LISTS_LIST_ITEMS] as $things) {
-                if (preg_match('/\/items\//', clean_param($things['value'], PARAM_URL))) {
-                    $count++;
-                }
-            }
+    public function get_list($id) {
+        $key = $this->baseurl . self::INDEX_LISTS . $id;
+        if (isset($this->raw[$key])) {
+            return new reading_list($id, $this->raw[$key]);
         }
 
-        return $count;
-    }
-
-    /**
-     * Get the time a list was last updated.
-     */
-    public function last_updated($list) {
-        $data = $this->get_raw_list($list);
-        $time = null;
-
-        if (isset($data[self::INDEX_LISTS_LIST_UPDATED])) {
-            $time = clean_param($data[self::INDEX_LISTS_LIST_UPDATED][0]['value'], PARAM_TEXT);
-            $time = strtotime($time);
-        }
-
-        return $time;
+        return null;
     }
 }

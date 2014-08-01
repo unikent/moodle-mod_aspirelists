@@ -36,18 +36,21 @@ class mod_aspirelists_parser_tests extends \advanced_testcase
         $this->assertEquals(array(
             '3',
             '53304cb6f3d4d'
-        ), $parser->grab_timeperiods());
+        ), $parser->get_timeperiods());
 
         $this->assertEquals(array(
             '31F89776-6BEA-1DD2-E4C6-C3CA796D173D',
             '39399749-E118-07A7-456E-80F55700F2C0'
-        ), $parser->grab_all_lists());
+        ), $parser->get_all_lists());
 
-        $this->assertEquals('3', $parser->which_time_period('31F89776-6BEA-1DD2-E4C6-C3CA796D173D'));
-        $this->assertEquals('53304cb6f3d4d', $parser->which_time_period('39399749-E118-07A7-456E-80F55700F2C0'));
+        $list = $parser->get_list('31F89776-6BEA-1DD2-E4C6-C3CA796D173D');
+        $this->assertEquals('3', $list->get_time_period());
+
+        $list = $parser->get_list('39399749-E118-07A7-456E-80F55700F2C0');
+        $this->assertEquals('53304cb6f3d4d', $list->get_time_period());
 
         $this->assertEquals(array(
             '31F89776-6BEA-1DD2-E4C6-C3CA796D173D'
-        ), $parser->grab_lists('3'));
+        ), $parser->get_lists('3'));
     }
 }

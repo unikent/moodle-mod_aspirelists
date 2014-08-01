@@ -206,15 +206,17 @@ function aspirelists_getLists($site, $targetKG, $code, $timep) {
 
     if ($data) {
         $parser = new \mod_aspirelists\core\parser($site, $data);
-        $lists = $parser->grab_lists($timep);
+        $lists = $parser->get_lists($timep);
         $lists = array_map(function($list) use ($parser) {
+            $list = $parser->get_list($list);
+
             $array = array(
-                "url" => $parser->grab_list_url($list),
-                "name" => $parser->list_name($list),
-                "count" => $parser->item_count($list)
+                "url" => $list->get_url(),
+                "name" => $list->get_name(),
+                "count" => $list->get_item_count()
             );
 
-            $time = $parser->last_updated($list);
+            $time = $list->get_last_updated();
             if ($time !== null) {
                 $array['lastupdated'] = $time;
             }
