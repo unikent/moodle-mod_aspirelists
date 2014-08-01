@@ -42,7 +42,7 @@ class mod_aspirelists_mod_form extends moodleform_mod {
             // Canterbury first.
             $data = aspirelists_curlSource("{$config->baseurl}/{$config->group}/{$shortname}/lists.json");
             if ($data) {
-                $parser = new \mod_aspirelists\core\parser($data);
+                $parser = new \mod_aspirelists\core\parser($config->baseurl, $data);
                 $lists = $parser->grab_lists($config->modTimePeriod);
 
                 if (!empty($lists)) {
@@ -57,7 +57,7 @@ class mod_aspirelists_mod_form extends moodleform_mod {
             // Medway next.
             $data = aspirelists_curlSource("{$config->altBaseurl}/{$config->group}/{$shortname}/lists.json");
             if ($data) {
-                $parser = new \mod_aspirelists\core\parser($data);
+                $parser = new \mod_aspirelists\core\parser($config->altBaseurl, $data);
                 $lists = $parser->grab_lists($config->altModTimePeriod);
 
                 if (!empty($lists)) {

@@ -33,9 +33,12 @@ defined('MOODLE_INTERNAL') || die();
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class parser {
-    const INDEX_TIME_PERIOD = 'http://resourcelists.kent.ac.uk/config/timePeriod';
-    const INDEX_LISTS = 'http://resourcelists.kent.ac.uk/lists/';
+    const INDEX_TIME_PERIOD = 'config/timePeriod';
+    const INDEX_LISTS = 'lists/';
     const INDEX_LISTS_TIME_PERIOD = 'http://lists.talis.com/schema/temp#hasTimePeriod';
+
+    /** Our Base URL */
+    private $baseurl;
 
     /** The raw, decoded, JSON */
     private $raw;
@@ -48,7 +51,12 @@ class parser {
      *
      * @param string $data The raw data from the CURL
      */
-    public function __construct($data) {
+    public function __construct($baseurl, $data) {
+        $this->baseurl = $baseurl;
+        if (strrpos($this->baseurl, '/') !== strlen($this->baseurl) - 1) {
+            $this->baseurl = $this->baseurl . '/';
+        }
+
         $this->raw = json_decode($data, true);
         $this->data = array();
     }
@@ -80,25 +88,25 @@ class parser {
      * Grab all known time periods.
      */
     public function grab_timeperiods() {
-        return $this->grab_dataset('timeperiods', self::INDEX_TIME_PERIOD);
+        return $this->grab_dataset('timeperiods', $this->baseurl . self::INDEX_TIME_PERIOD);
     }
 
     /**
      * Grabs all known lists.
      */
     public function grab_all_lists() {
-        return $this->grab_dataset('lists', self::INDEX_LISTS);
+        return $this->grab_dataset('lists', $this->baseurl . self::INDEX_LISTS);
     }
 
     /**
      * Which time period is this list in?
      */
     public function which_time_period($list) {
-        $data = $this->raw[self::INDEX_LISTS . $list];
+        $data = $this->raw[$this->baseurl . self::INDEX_LISTS . $list];
         $data = $data[self::INDEX_LISTS_TIME_PERIOD];
         $data = $data[0];
         $data = $data['value'];
-        $data = substr($data, strlen(self::INDEX_TIME_PERIOD));
+        $data = substr($data, strlen($this->baseurl . self::INDEX_TIME_PERIOD));
 
         return $data;
     }

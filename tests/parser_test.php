@@ -31,7 +31,7 @@ class mod_aspirelists_parser_tests extends \advanced_testcase
 
         $json = file_get_contents(dirname(__FILE__) . "/fixtures/api.json");
 
-        $parser = new \mod_aspirelists\core\parser($json);
+        $parser = new \mod_aspirelists\core\parser('http://resourcelists.kent.ac.uk/', $json);
 
         $this->assertEquals(array(
             '3',
