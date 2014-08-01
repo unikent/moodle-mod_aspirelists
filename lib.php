@@ -135,7 +135,7 @@ function aspirelists_curlSource($url) {
     $cache = cache::make('mod_aspirelists', 'aspirecache');
     $response = $cache->get($url);
     if ($response !== false) {
-        //return $response;
+        return $response;
     }
 
     $config = get_config('aspirelists');
@@ -145,8 +145,8 @@ function aspirelists_curlSource($url) {
         CURLOPT_URL                        => $url,
         CURLOPT_HEADER                 => false,
         CURLOPT_RETURNTRANSFER => true,
-        //CURLOPT_CONNECTTIMEOUT => $config->timeout,
-        //CURLOPT_TIMEOUT             => $config->timeout,
+        CURLOPT_CONNECTTIMEOUT => $config->timeout,
+        CURLOPT_TIMEOUT             => $config->timeout,
         CURLOPT_HTTP_VERSION     => CURL_HTTP_VERSION_1_1
     );
     curl_setopt_array($ch, $options);
@@ -197,7 +197,6 @@ function aspirelists_getCats($baseurl, &$o, &$level, $shortname, $group) {
 function aspirelists_getLists($site, $targetKG, $code, $timep) {
     global $COURSE;
 
-
     $config = get_config('aspirelists');
     $context = context_course::instance($COURSE->id);
     $url = "$site/$targetKG/$code/lists.json";
@@ -207,11 +206,11 @@ function aspirelists_getLists($site, $targetKG, $code, $timep) {
     if ($data) {
         $parser = new \mod_aspirelists\core\parser($site, $data);
         $lists = $parser->get_lists($timep);
-        $lists = array_map(function($list) use ($parser) {
+        $lists = array_map(function($list) use ($site, $parser) {
             $list = $parser->get_list($list);
 
             $array = array(
-                "url" => $list->get_url(),
+                "url" => $site . "/" . $list->get_url(),
                 "name" => $list->get_name(),
                 "count" => $list->get_item_count()
             );
@@ -229,7 +228,7 @@ function aspirelists_getLists($site, $targetKG, $code, $timep) {
         });
     } else {
         // If we had no response from the CURL request, then set a suitable message.
-        return "<p>Could not communicate with reading list system for $COURSE->fullname.    Please check again later.</p>";
+        return "<p>Could not communicate with reading list system for {$COURSE->fullname}. Please check again later.</p>";
     }
 
 

@@ -49,7 +49,7 @@ class mod_aspirelists_mod_form extends moodleform_mod {
                     $depth = 0;
                     foreach ($lists as $list) {
                         $obj = $parser->get_list($list);
-                        $url = $obj->get_url();
+                        $url = $config->baseurl . "/" . $obj->get_url();
                         aspirelists_getCats($url, $options, $depth, $shortname, 'canterbury');
                     }
                 }
@@ -65,7 +65,7 @@ class mod_aspirelists_mod_form extends moodleform_mod {
                     $depth = 0;
                     foreach ($lists as $list) {
                         $obj = $parser->get_list($list);
-                        $url = $obj->get_url();
+                        $url = $config->altBaseurl . "/" . $obj->get_url();
                         aspirelists_getCats($url, $options, $depth, $shortname, 'medway');
                     }
                 }
