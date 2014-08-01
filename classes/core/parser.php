@@ -36,6 +36,8 @@ class parser {
     const INDEX_TIME_PERIOD = 'config/timePeriod';
     const INDEX_LISTS = 'lists/';
     const INDEX_LISTS_TIME_PERIOD = 'http://lists.talis.com/schema/temp#hasTimePeriod';
+    const INDEX_LISTS_LIST_ITEMS = 'http://purl.org/vocab/resourcelist/schema#contains';
+    const INDEX_LISTS_LIST_UPDATED = 'http://purl.org/vocab/resourcelist/schema#lastUpdated';
 
     /** Our Base URL */
     private $baseurl;
@@ -58,6 +60,10 @@ class parser {
         }
 
         $this->raw = json_decode($data, true);
+        if (!$this->raw) {
+            $this->raw = array();
+        }
+
         $this->data = array();
     }
 
@@ -99,10 +105,17 @@ class parser {
     }
 
     /**
+     * Get the raw data for a given list.
+     */
+    private function get_raw_list($list) {
+        return $this->raw[$this->baseurl . self::INDEX_LISTS . $list];
+    }
+
+    /**
      * Which time period is this list in?
      */
     public function which_time_period($list) {
-        $data = $this->raw[$this->baseurl . self::INDEX_LISTS . $list];
+        $data = $this->get_raw_list($list);
         $data = $data[self::INDEX_LISTS_TIME_PERIOD];
         $data = $data[0];
         $data = $data['value'];
@@ -130,5 +143,46 @@ class parser {
      */
     public function grab_list_url($list) {
         return self::INDEX_LISTS . $list;
+    }
+
+    /**
+     * Name of a list.
+     */
+    public function list_name($list) {
+        $data = $this->get_raw_list($list);
+        return $data['http://rdfs.org/sioc/spec/name'][0]['value'];
+    }
+
+    /**
+     * Counts the number of items in a list.
+     */
+    public function item_count($list) {
+        $data = $this->get_raw_list($list);
+
+        $count = 0;
+        if (isset($data[self::INDEX_LISTS_LIST_ITEMS])) {
+            foreach ($data[self::INDEX_LISTS_LIST_ITEMS] as $things) {
+                if (preg_match('/\/items\//', clean_param($things['value'], PARAM_URL))) {
+                    $count++;
+                }
+            }
+        }
+
+        return $count;
+    }
+
+    /**
+     * Get the time a list was last updated.
+     */
+    public function last_updated($list) {
+        $data = $this->get_raw_list($list);
+        $time = null;
+
+        if (isset($data[self::INDEX_LISTS_LIST_UPDATED])) {
+            $time = clean_param($data[self::INDEX_LISTS_LIST_UPDATED][0]['value'], PARAM_TEXT);
+            $time = strtotime($time);
+        }
+
+        return $time;
     }
 }

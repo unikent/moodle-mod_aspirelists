@@ -135,7 +135,7 @@ function aspirelists_curlSource($url) {
     $cache = cache::make('mod_aspirelists', 'aspirecache');
     $response = $cache->get($url);
     if ($response !== false) {
-        return $response;
+        //return $response;
     }
 
     $config = get_config('aspirelists');
@@ -145,8 +145,8 @@ function aspirelists_curlSource($url) {
         CURLOPT_URL                        => $url,
         CURLOPT_HEADER                 => false,
         CURLOPT_RETURNTRANSFER => true,
-        CURLOPT_CONNECTTIMEOUT => $config->timeout,
-        CURLOPT_TIMEOUT             => $config->timeout,
+        //CURLOPT_CONNECTTIMEOUT => $config->timeout,
+        //CURLOPT_TIMEOUT             => $config->timeout,
         CURLOPT_HTTP_VERSION     => CURL_HTTP_VERSION_1_1
     );
     curl_setopt_array($ch, $options);
@@ -200,50 +200,33 @@ function aspirelists_getLists($site, $targetKG, $code, $timep) {
 
     $config = get_config('aspirelists');
     $context = context_course::instance($COURSE->id);
-    // build the target URL of the JSON data we'll be requesting from Aspire
     $url = "$site/$targetKG/$code/lists.json";
-    // using php curl, we'll now request the JSON data from Aspire
     $data = aspirelists_curlSource($url);
     $lists = array();
 
     if ($data) {
         $parser = new \mod_aspirelists\core\parser($site, $data);
-        $data = json_decode($data, true);
-        if (isset($data["$site/$targetKG/$code"]) && isset($data["$site/$targetKG/$code"]['http://purl.org/vocab/resourcelist/schema#usesList'])) {
-            foreach ($data["$site/$targetKG/$code"]['http://purl.org/vocab/resourcelist/schema#usesList'] as $usesList) {
-                $tp = strrev($data[$usesList['value']]['http://lists.talis.com/schema/temp#hasTimePeriod'][0]['value']);
-                if ($tp[0] === $timep) {
-                    $list = array();
-                    $list["url"] = $usesList["value"]; // extract the list URL
-                    $list["name"] = $data[$list["url"]]['http://rdfs.org/sioc/spec/name'][0]['value']; // extract the list name
+        $lists = $parser->grab_lists($timep);
+        $lists = array_map(function($list) use ($parser) {
+            $array = array(
+                "url" => $parser->grab_list_url($list),
+                "name" => $parser->list_name($list),
+                "count" => $parser->item_count($list)
+            );
 
-                    // let's try and get a last updated date
-                    if (isset($data[$list["url"]]['http://purl.org/vocab/resourcelist/schema#lastUpdated'])) {
-                        // ..and extract the date in a friendly, human readable format...
-                        $ludTime = strtotime(clean_param($data[$list["url"]]['http://purl.org/vocab/resourcelist/schema#lastUpdated'][0]['value'], PARAM_TEXT));
-                        $list['lastUpdatedDate'] = date('l j F Y', $ludTime);
-                    }
-
-                    // now let's count the number of items
-                    $itemCount = 0;
-                    if (isset($data[$list["url"]]['http://purl.org/vocab/resourcelist/schema#contains'])) {
-                        foreach ($data[$list["url"]]['http://purl.org/vocab/resourcelist/schema#contains'] as $things) {
-                            if (preg_match('/\/items\//', clean_param($things['value'], PARAM_URL))) {
-                                $itemCount++;
-                            }
-                        }
-                    }
-                    $list['count'] = $itemCount;
-                    $lists[$list["url"]] = $list;
-                }
+            $time = $parser->last_updated($list);
+            if ($time !== null) {
+                $array['lastupdated'] = $time;
             }
 
-            uasort($lists, function ($a, $b) {
-                return strcmp($a["name"], $b["name"]);
-            });
-        }
+            return $array;
+        }, $lists);
+
+        uasort($lists, function ($a, $b) {
+            return strcmp($a["name"], $b["name"]);
+        });
     } else {
-        //If we had no response from the CURL request, then set a suitable message.
+        // If we had no response from the CURL request, then set a suitable message.
         return "<p>Could not communicate with reading list system for $COURSE->fullname.    Please check again later.</p>";
     }
 
@@ -278,13 +261,13 @@ function aspirelists_getLists($site, $targetKG, $code, $timep) {
 
             $output .= '</td>';
             // add update text if we have it
-            if (isset($list["lastUpdatedDate"])) {
+            if (isset($list["lastupdated"])) {
                 $output .= '<td class="list_update">';
                 $output .= '<ul class="list_item_update">';
                 $output .= '<li class="title">last updated</li>';
-                $output .= '<li class="month">' . date('F', strtotime($list["lastUpdatedDate"])) . '</li>';
-                $output .= '<li class="day">' . date('j', strtotime($list['lastUpdatedDate'])) . '</li>';
-                $output .= '<li class="year">' . date('Y', strtotime($list['lastUpdatedDate'])) . '</li>';
+                $output .= '<li class="month">' . date('F', $list["lastupdated"]) . '</li>';
+                $output .= '<li class="day">' . date('j', $list['lastupdated']) . '</li>';
+                $output .= '<li class="year">' . date('Y', $list['lastupdated']) . '</li>';
                 $output .= '</ul>';
                 $output .= '</td>';
             }
