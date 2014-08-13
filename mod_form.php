@@ -42,13 +42,14 @@ class mod_aspirelists_mod_form extends moodleform_mod {
             // Canterbury first.
             $data = aspirelists_curlSource("{$config->baseurl}/{$config->group}/{$shortname}/lists.json");
             if ($data) {
-                $parser = new \mod_aspirelists\core\parser($data);
-                $lists = $parser->grab_lists($config->modTimePeriod);
+                $parser = new \mod_aspirelists\core\parser($config->baseurl, $data);
+                $lists = $parser->get_lists($config->modTimePeriod);
 
                 if (!empty($lists)) {
                     $depth = 0;
                     foreach ($lists as $list) {
-                        $url = $parser->grab_list_url($list);
+                        $obj = $parser->get_list($list);
+                        $url = $config->baseurl . "/" . $obj->get_url();
                         aspirelists_getCats($url, $options, $depth, $shortname, 'canterbury');
                     }
                 }
@@ -57,13 +58,14 @@ class mod_aspirelists_mod_form extends moodleform_mod {
             // Medway next.
             $data = aspirelists_curlSource("{$config->altBaseurl}/{$config->group}/{$shortname}/lists.json");
             if ($data) {
-                $parser = new \mod_aspirelists\core\parser($data);
-                $lists = $parser->grab_lists($config->altModTimePeriod);
+                $parser = new \mod_aspirelists\core\parser($config->altBaseurl, $data);
+                $lists = $parser->get_lists($config->altModTimePeriod);
 
                 if (!empty($lists)) {
                     $depth = 0;
                     foreach ($lists as $list) {
-                        $url = $parser->grab_list_url($list);
+                        $obj = $parser->get_list($list);
+                        $url = $config->altBaseurl . "/" . $obj->get_url();
                         aspirelists_getCats($url, $options, $depth, $shortname, 'medway');
                     }
                 }
