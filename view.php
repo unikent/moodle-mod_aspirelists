@@ -41,15 +41,6 @@ if (is_integer($id)) {
 
 $config = get_config('aspirelists');
 
-$event = \mod_aspirelists\event\course_module_viewed::create(array(
-    'objectid' => $readinglist->id,
-    'courseid' => $course->id,
-    'other' => array('cmid' => $id),
-    'context' => context_module::instance($id)
-));
-$event->add_record_snapshot('aspirelists', $readinglist);
-$event->trigger();
-
 $context = context_course::instance($course->id);
 $PAGE->set_context($context);
 
@@ -64,6 +55,15 @@ $PAGE->set_pagelayout('admin');
 $PAGE->requires->css('/mod/aspirelists/styles/styles.css');
 $PAGE->requires->css('/mod/aspirelists/styles/fontello.css');
 
+$event = \mod_aspirelists\event\course_module_viewed::create(array(
+    'objectid' => $readinglist->id,
+    'courseid' => $course->id,
+    'other' => array('cmid' => $id),
+    'context' => context_module::instance($id)
+));
+$event->add_record_snapshot('course', $PAGE->course);
+$event->add_record_snapshot('aspirelists', $readinglist);
+$event->trigger();
 
 $shortname_full = explode(' ', $course->shortname);
 $shortnames = explode('/', strtolower($shortname_full[0]));

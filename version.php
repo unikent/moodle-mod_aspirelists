@@ -17,6 +17,6 @@
 defined('MOODLE_INTERNAL') || die();
 
 $plugin->version   = 2014062300;
-$plugin->requires  = 2013110500;
+$plugin->requires  = 2014051201;
 $plugin->component = 'mod_aspirelists';
 $plugin->cron      = 0;
