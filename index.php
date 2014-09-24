@@ -32,7 +32,6 @@ require_course_login($course, true);
 $PAGE->set_pagelayout('incourse');
 
 $event = \mod_aspirelists\event\course_module_instance_list_viewed::create(array(
-    'objectid' => $course->id,
     'context' => context_course::instance($course->id)
 ));
 $event->trigger();
