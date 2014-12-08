@@ -1,43 +1,59 @@
 <?php
+// This file is part of Moodle - http://moodle.org/
+//
+// Moodle is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+//
+// Moodle is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
-require '../../config.php';
-require_once "lib.php";
+require(dirname(__FILE__) . '/../../config.php');
+require_once(dirname(__FILE__) . "/lib.php");
+
 global $CFG, $USER, $DB, $PAGE;
 
 // dont do anything if not logged in
 require_login();
 
-$id = optional_param('id', 0, PARAM_INT);        // Course Module ID
-$listid = optional_param('list', NAN, PARAM_INT); // streamingvideo id
+$id = optional_param('id', 0, PARAM_INT);
+$listid = optional_param('list', 0, PARAM_INT);
 
-
-if (is_integer($id)) {
-    if (! $module = $DB->get_record("course_modules", array("id"=>$id))) {
-        throw new Exception(get_string('cmunknown', 'error'));
+// Get the relevant objects.
+if ($id > 0) {
+    if (!$module = $DB->get_record("course_modules", array("id" => $id))) {
+        throw new \moodle_exception(get_string('cmunknown', 'error'));
     }
 
-    if (! $course = $DB->get_record("course", array("id"=>$module->course))) {
-        throw new Exception(get_string('invalidcourseid', 'error', $module->course));
+    if (!$course = $DB->get_record("course", array("id" => $module->course))) {
+        throw new \moodle_exception(get_string('invalidcourseid', 'error', $module->course));
     }
 
-    if (!$readinglist = $DB->get_record('aspirelists', array('id'=>$module->instance), '*', MUST_EXIST)) {
-        throw new Exception(get_string('cmunknown', 'error'));
+    if (!$readinglist = $DB->get_record('aspirelists', array('id' => $module->instance), '*', MUST_EXIST)) {
+        throw new \moodle_exception(get_string('cmunknown', 'error'));
+    }
+} elseif ($listid > 0) {
+
+    if (!$readinglist = $DB->get_record('aspirelists', array('id' => $listid), '*', MUST_EXIST)) {
+        throw new \moodle_exception(get_string('cmunknown', 'error'));
     }
 
-} else if ($listid) {
+    if (!$module = $DB->get_record("course_modules", array("instance" => $readinglist->id))) {
+        throw new \moodle_exception(get_string('cmunknown', 'error'));
+    }
 
-        if (! $readinglist = $DB->get_record('aspirelists', array('id'=>$listid), '*', MUST_EXIST)) {
-            throw new Exception(get_string('cmunknown', 'error'));
-        }
-
-        if (! $module = $DB->get_record("course_modules", array("instance"=>$readinglist->id))) {
-            throw new Exception(get_string('cmunknown', 'error'));
-        }
-
-        if (! $course = $DB->get_record('course', array('id'=>$readinglist->course))) {
-            throw new Exception(get_string('invalidcourseid', 'error', $readinglist->course));
-        }
-    } else throw new Exception("A module ID or resource id must be specified");
+    if (!$course = $DB->get_record('course', array('id' => $readinglist->course))) {
+        throw new \moodle_exception(get_string('invalidcourseid', 'error', $readinglist->course));
+    }
+} else {
+    throw new \moodle_exception("A module ID or resource id must be specified");
+}
 
 $config = get_config('aspirelists');
 
@@ -65,12 +81,6 @@ $event->add_record_snapshot('course', $PAGE->course);
 $event->add_record_snapshot('aspirelists', $readinglist);
 $event->trigger();
 
-$shortname_full = explode(' ', $course->shortname);
-$shortnames = explode('/', strtolower($shortname_full[0]));
-
-$output = '';
-$lists = array();
-
 //Check to see if a specific category has been picked
 if ($readinglist->category != 'all') {
 
@@ -96,10 +106,13 @@ if ($readinglist->category != 'all') {
 
 
 } else { // if not then display reading lists for any short codes given
+    $shortname_full = explode(' ', $course->shortname);
+    $shortnames = explode('/', strtolower($shortname_full[0]));
 
     echo $OUTPUT->header();
     echo $OUTPUT->heading("$readinglist->name", 2, 'aspirelists_main', '');
 
+    $output = '';
     foreach ($shortnames as $shortname) {
 
         $m = aspirelists_getLists($config->baseurl, $config->group, $shortname, $config->modTimePeriod);
@@ -124,18 +137,13 @@ if ($readinglist->category != 'all') {
     }
 
 
-    if ($output == '') {
+    if (empty($output)) {
         echo aspirelists_resource_not_ready($context);
-
     } else {
         echo $output;
     }
 
     echo $OUTPUT->footer();
-    if (isset($redirectpage) && $redirectpage != false) {
-        redirect($redirectpage);
-    }
-
 }
 
 
