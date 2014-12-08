@@ -81,69 +81,56 @@ $event->add_record_snapshot('course', $PAGE->course);
 $event->add_record_snapshot('aspirelists', $readinglist);
 $event->trigger();
 
-$renderer = $PAGE->get_renderer('mod_aspirelists');
-
 // Check to see if a specific category has been picked.
 if ($readinglist->category != 'all') {
-
     $category = explode('/', $readinglist->category);
 
-    switch ($category[0]) {
-    case 'medway':
-        $base_url = $config->altBaseurl;
-        break;
-    case 'canterbury':
-    default:
-        $base_url = $config->baseurl;
-        break;
+    $url = \mod_aspirelists\core\API::CANTERBURY_URL;
+    if ($category[0] == 'medway'){
+        $url = \mod_aspirelists\core\API::MEDWAY_URL;
     }
 
-    $url = $base_url . '/sections/' . $category[1];
-
-    if (isset($CFG->aspirelists_resourcelist) && $CFG->aspirelists_resourcelist === true) {
-        aspirelists_getResources($url);
-    } else {
-        redirect($url . '.html') ;
-    }
-
-
-} else { // if not then display reading lists for any short codes given
-    $shortname_full = explode(' ', $course->shortname);
-    $shortnames = explode('/', strtolower($shortname_full[0]));
-
-    echo $OUTPUT->header();
-    echo $OUTPUT->heading("$readinglist->name", 2, 'aspirelists_main', '');
-
-    $output = '';
-    foreach ($shortnames as $shortname) {
-
-        $m = aspirelists_getLists($config->baseurl, $config->group, $shortname, $config->modTimePeriod);
-        if (!empty($m)) {$main[] = $m; }
-
-        $a = aspirelists_getLists($config->altBaseurl, $config->group, $shortname, $config->altModTimePeriod);
-        if (!empty($a)) {$alt[] = $a; }
-
-        if (!empty($main)) {
-            $output .= '<h3 style="margin: 10px 0px;">Canterbury</h3>';
-            foreach ($main as $i) {
-                $output .= $i;
-            }
-        }
-
-        if (!empty($alt)) {
-            $output .= '<h3 style="margin: 10px 0px; ">Medway</h3>';
-            foreach ($alt as $i) {
-                $output .= $i;
-            }
-        }
-    }
-
-
-    if (empty($output)) {
-        echo $renderer->resource_not_ready($context);
-    } else {
-        echo $output;
-    }
-
-    echo $OUTPUT->footer();
+    redirect($url . '/sections/' . $category[1] . '.html');
+    die();
 }
+
+$renderer = $PAGE->get_renderer('mod_aspirelists');
+
+$shortname_full = explode(' ', $course->shortname);
+$shortnames = explode('/', strtolower($shortname_full[0]));
+
+echo $OUTPUT->header();
+echo $OUTPUT->heading("$readinglist->name", 2, 'aspirelists_main', '');
+
+$output = '';
+foreach ($shortnames as $shortname) {
+
+    $m = aspirelists_getLists($config->baseurl, $config->group, $shortname, $config->modTimePeriod);
+    if (!empty($m)) {$main[] = $m; }
+
+    $a = aspirelists_getLists($config->altBaseurl, $config->group, $shortname, $config->altModTimePeriod);
+    if (!empty($a)) {$alt[] = $a; }
+
+    if (!empty($main)) {
+        $output .= '<h3 style="margin: 10px 0px;">Canterbury</h3>';
+        foreach ($main as $i) {
+            $output .= $i;
+        }
+    }
+
+    if (!empty($alt)) {
+        $output .= '<h3 style="margin: 10px 0px; ">Medway</h3>';
+        foreach ($alt as $i) {
+            $output .= $i;
+        }
+    }
+}
+
+
+if (empty($output)) {
+    echo $renderer->resource_not_ready($context);
+} else {
+    echo $output;
+}
+
+echo $OUTPUT->footer();
