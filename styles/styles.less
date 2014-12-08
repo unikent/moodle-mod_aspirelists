@@ -1,0 +1,108 @@
+#aspirecontainer .list_item_inset {
+	width: 100%;
+	background: #efefef;
+	border: 1px solid #e3e3e3;
+	margin: 0;
+
+	.list_item {
+		margin: 10px;
+		overflow: auto;
+		list-style: none;
+		background: #fff;
+		border: 1px solid #e3e3e3;
+		-webkit-box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+		box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+
+		table {
+			width: 100%;
+			margin-bottom: 0;
+
+            td {
+                padding: 0;
+
+                &.list_item_dets {
+                    vertical-align: top;
+                    width: 90%;
+
+                    a {
+                        height: 100%;
+                        width: 100%;
+                        display: inline-block;
+
+                        &:hover {
+                            background: #f2f5ff;
+                            text-decoration: none !important;
+
+                            span {
+                                text-decoration: none;
+                            }
+                        }
+
+                        span {
+                            padding: 10px 10px 5px 10px;
+                            display: block;
+                            color: #6f6f6f;
+                            text-shadow: 1px 1px 0 #fff;
+
+                            &.fa {
+                                float: right;
+                                font-size: 34px;
+                                color: #6f6f6f;
+                                padding: 25px 10px 0 0;
+                                text-shadow: none;
+                            }
+
+                            &.list_item_link {
+                                font-size: 24px;
+                                font-weight: bold;
+                                color: #333;
+                                padding-bottom: 10px;
+                            }
+                        }
+                    }
+                }
+
+                &.list_update {
+                    width: 10%;
+                    padding: 10px 5px;
+                    background: #fafafa;
+                    border-left: 1px solid #e3e3e3;
+
+                    .list_item_update {
+                        margin: 0;
+
+                        li {
+                            list-style: none;
+                            text-align: center;
+
+                        }
+
+                        .title {
+                            font-size: 10px;
+                            color: #6f6f6f;
+                        }
+
+                        .month {
+                            font-size: 16px;
+                            font-weight: bold;
+                            color: #6f6f6f;
+                            width: 90px;
+                        }
+
+                        .day {
+                            font-size: 18px;
+                            font-weight: bold;
+                            color: #333;
+                        }
+
+                        .year {
+                            font-size: 14px;
+                            font-weight: bold;
+                            color: #6f6f6f;
+                        }
+                    }
+                }
+            }
+		}
+    }
+}

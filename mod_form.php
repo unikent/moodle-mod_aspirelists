@@ -1,73 +1,81 @@
 <?php
+// This file is part of Moodle - http://moodle.org/
+//
+// Moodle is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+//
+// Moodle is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 defined('MOODLE_INTERNAL') || die;
 
-require_once $CFG->dirroot.'/course/moodleform_mod.php';
+require_once($CFG->dirroot . '/course/moodleform_mod.php');
 
-class mod_aspirelists_mod_form extends moodleform_mod {
-
+class mod_aspirelists_mod_form extends moodleform_mod
+{
     /**
      *
      */
-    function definition() {
+    public function definition() {
         global $CFG, $COURSE;
 
         $config = get_config('aspirelists');
 
         $mform =& $this->_form;
 
-        //-------------------------------------------------------
+        // -------------------------------------------------------
         $mform->addElement('header', 'general', get_string('general', 'form'));
-        $mform->addElement('text', 'name', get_string('name'), array('size'=>'48'));
+        $mform->addElement('text', 'name', get_string('name'), array(
+            'size' => '48'
+        ));
+
         if (!empty($CFG->formatstringstriptags)) {
             $mform->setType('name', PARAM_TEXT);
         } else {
             $mform->setType('name', PARAM_CLEANHTML);
         }
+
         $mform->addRule('name', null, 'required', null, 'client');
         $this->add_intro_editor();
 
-        //-------------------------------------------------------
+        // -------------------------------------------------------
 
         $options = array();
         $options['misc']['all'] = 'All';
-        $options['canterbury'] = array();
-        $options['medway'] = array();
 
+        // Build API object.
+        $api = new \mod_aspirelists\core\API();
+        $api->set_cache_layer(\cache::make('mod_aspirelists', 'categories'));
 
-        $shortname_full = explode(' ', $COURSE->shortname);
-        $shortnames = explode('/', strtolower($shortname_full[0]));
+        // Extract the shortnames.
+        $subject = strtolower($COURSE->shortname);
+        preg_match_all("([a-z]{2,4}[0-9]{3,4})", $subject, $matches);
+        if (empty($matches)) {
+            print_error("Invalid course specified!");
+        }
 
-        foreach ($shortnames as $shortname) {
-            // Canterbury first.
-            $data = aspirelists_curlSource("{$config->baseurl}/{$config->group}/{$shortname}/lists.json");
-            if ($data) {
-                $parser = new \mod_aspirelists\core\parser($config->baseurl, $data);
-                $lists = $parser->get_lists($config->modTimePeriod);
+        // Grab categories for each shortname.
+        foreach ($matches as $match) {
+            $shortname = $match[0];
 
-                if (!empty($lists)) {
-                    $depth = 0;
-                    foreach ($lists as $list) {
-                        $obj = $parser->get_list($list);
-                        $url = $config->baseurl . "/" . $obj->get_url();
-                        aspirelists_getCats($url, $options, $depth, $shortname, 'canterbury');
-                    }
-                }
-            }
+            // Grab lists.
+            $lists = $api->get_lists($shortname);
 
-            // Medway next.
-            $data = aspirelists_curlSource("{$config->altBaseurl}/{$config->group}/{$shortname}/lists.json");
-            if ($data) {
-                $parser = new \mod_aspirelists\core\parser($config->altBaseurl, $data);
-                $lists = $parser->get_lists($config->altModTimePeriod);
+            // Build options.
+            foreach ($lists as $list) {
+                $campus = $list->get_campus();
 
-                if (!empty($lists)) {
-                    $depth = 0;
-                    foreach ($lists as $list) {
-                        $obj = $parser->get_list($list);
-                        $url = $config->altBaseurl . "/" . $obj->get_url();
-                        aspirelists_getCats($url, $options, $depth, $shortname, 'medway');
-                    }
+                $categories = $list->get_categories();
+                foreach ($categories as $category) {
+                    $categoryoptions = $this->get_category_options($shortname, $category);
+                    $options = array_merge_recursive($options, $categoryoptions);
                 }
             }
         }
@@ -80,5 +88,28 @@ class mod_aspirelists_mod_form extends moodleform_mod {
         $this->standard_coursemodule_elements();
         $this->add_action_buttons();
         return;
+    }
+
+    /**
+     * Returns an array of options for categories.
+     */
+    private function get_category_options($shortname, $category, $depth = 1) {
+        $id = $category->get_id();
+        $campus = $category->get_campus();
+
+        if (!isset($options[$campus])) {
+            $options[$campus] = array();
+        }
+
+        $displayname = str_repeat('--', $depth) . " {$shortname}: ";
+        $displayname .= $category->get_name();
+
+        $options[$campus]["{$campus}/$id"] = $displayname;
+
+        foreach ($category->get_parents() as $parent) {
+            $options = array_merge_recursive($options, $this->get_category_options($shortname, $parent, $depth + 1));
+        }
+
+        return $options;
     }
 }
