@@ -19,7 +19,7 @@ defined('MOODLE_INTERNAL') || die;
 if ($ADMIN->fulltree) {
     $settings->add(new admin_setting_configtext('aspirelists/timeperiod',
         get_string('settings:timeperiod', 'aspirelists'),
-        get_string('settings:configtimeout', 'aspirelists'),
+        get_string('settings:configtimeperiod', 'aspirelists'),
         '2'
     ));
 
