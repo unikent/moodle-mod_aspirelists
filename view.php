@@ -69,7 +69,6 @@ $PAGE->navbar->add($course->shortname, "{$CFG->wwwroot}/course/view.php?id=$cour
 $PAGE->navbar->add(get_string('modulename', 'aspirelists'));
 $PAGE->set_pagelayout('admin');
 $PAGE->requires->css('/mod/aspirelists/styles/styles.css');
-$PAGE->requires->css('/mod/aspirelists/styles/fontello.css');
 
 $event = \mod_aspirelists\event\course_module_viewed::create(array(
     'objectid' => $readinglist->id,

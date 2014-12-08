@@ -74,7 +74,7 @@ class mod_aspirelists_renderer extends plugin_renderer_base
         $output .= '<tr>';
         $output .= '<td class="list_item_dets">';
         $output .= '<a href="' . $list->get_url() . '" target="_blank">';
-        $output .= '<i class="icon-right-circle2"></i>';
+        $output .= '<span class="fa fa-arrow-circle-o-right"></span>';
         $output .= '<span class="list_item_link">' . $list->get_name() . '</span>';
 
         $count = $list->get_item_count();
