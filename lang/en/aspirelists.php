@@ -1,17 +1,18 @@
 <?php
-
-/**********************************************************************
- *                      @package Kent aspirelists                     *
- *                                                                    *
- *              University of Kent aspirelists resource               *
- *                                                                    *
- *                       Authors: jwk8, fg30, jw26                    *
- *                                                                    *
- *--------------------------------------------------------------------*
- *                                                                    *
- *                            en-lang file                            *
- *                                                                    *
- **********************************************************************/
+// This file is part of Moodle - http://moodle.org/
+//
+// Moodle is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+//
+// Moodle is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 defined('MOODLE_INTERNAL') || die();
 
@@ -80,6 +81,5 @@ $string['error:staffnolist'] = '<p>Sorry, but the reading list resource is unava
 $string['error:defaultnolist'] = '<p>Sorry, but the reading list resource is unavailable for this course.  This Moodle course is not yet linked to the resource lists system.  You may be able to find your list through searching the <a href="http://resourcelists.kent.ac.uk">resource lists</a> system, or you can consult your Moodle module or lecturer for further information.<p>';
 
 
-// MUC
-$string['cachedef_aspirecache'] = 'Aspire Lists Cache';
-$string['cachedef_aspirecache_json'] = 'Aspire Lists JSON Cache';
+// MUC.
+$string['cachedef_data'] = 'Reading lists module data';
