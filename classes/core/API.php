@@ -21,6 +21,7 @@ defined('MOODLE_INTERNAL') || die();
 require_once(dirname(__FILE__) . "/../../lib/readinglists/src/API.php");
 require_once(dirname(__FILE__) . "/../../lib/readinglists/src/Parser.php");
 require_once(dirname(__FILE__) . "/../../lib/readinglists/src/ReadingList.php");
+require_once(dirname(__FILE__) . "/../../lib/readinglists/src/Category.php");
 
 /**
  * mod_aspirelists aspirelists class.
@@ -29,7 +30,7 @@ require_once(dirname(__FILE__) . "/../../lib/readinglists/src/ReadingList.php");
  * @copyright  2014 Skylar Kelty <S.Kelty@kent.ac.uk>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class aspirelists extends \unikent\ReadingLists\API
+class API extends \unikent\ReadingLists\API
 {
     public function __construct() {
         parent::__construct();
