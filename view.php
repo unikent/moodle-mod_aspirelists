@@ -81,7 +81,9 @@ $event->add_record_snapshot('course', $PAGE->course);
 $event->add_record_snapshot('aspirelists', $readinglist);
 $event->trigger();
 
-//Check to see if a specific category has been picked
+$renderer = $PAGE->get_renderer('mod_aspirelists');
+
+// Check to see if a specific category has been picked.
 if ($readinglist->category != 'all') {
 
     $category = explode('/', $readinglist->category);
@@ -138,33 +140,10 @@ if ($readinglist->category != 'all') {
 
 
     if (empty($output)) {
-        echo aspirelists_resource_not_ready($context);
+        echo $renderer->resource_not_ready($context);
     } else {
         echo $output;
     }
 
     echo $OUTPUT->footer();
-}
-
-
-/**
- *
- *
- * @param unknown $context
- * @return unknown
- */
-function aspirelists_resource_not_ready($context) {
-    global $USER;
-    $output = "";
-    $role = get_user_roles($context, $USER->id);
-
-    if (isset($role[1]) && ($role[1]->shortname == 'student' || $role[1]->shortname == 'sds_student')) {
-        $output .= get_string('error:studentnolist', 'aspirelists');
-    } else if (has_capability('moodle/course:update', $context)) {
-            $output .= get_string('error:staffnolist', 'aspirelists');
-        } else {
-        $output .= get_string('error:defaultnolist', 'aspirelists');
-    }
-
-    return $output;
 }
