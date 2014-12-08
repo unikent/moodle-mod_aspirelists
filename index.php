@@ -69,8 +69,6 @@ if ($course->format == "weeks") {
     $table->align = array ("left", "left", "left", "left");
 }
 
-$modinfo = get_fast_modinfo($course);
-
 foreach ($lists as $list) {
 
     if (!$list->visible) {
