@@ -43,3 +43,4 @@ $string['error:staffnolist'] = '<p>Sorry, but the reading list resource is unava
 $string['error:defaultnolist'] = '<p>Sorry, but the reading list resource is unavailable for this course.  This Moodle course is not yet linked to the resource lists system.  You may be able to find your list through searching the <a href="http://resourcelists.kent.ac.uk">resource lists</a> system, or you can consult your Moodle module or lecturer for further information.<p>';
 
 $string['cachedef_data'] = 'Reading lists module data';
+$string['cachedef_categories'] = 'Reading lists category data';
