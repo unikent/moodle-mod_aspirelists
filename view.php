@@ -97,6 +97,8 @@ echo $OUTPUT->header();
 echo $OUTPUT->heading(s($readinglist->name), 2, 'aspirelists_main');
 
 $renderer = $PAGE->get_renderer('mod_aspirelists');
+echo '<div id="aspirecontainer">';
 echo $renderer->print_lists($course, $context);
+echo '</div>';
 
 echo $OUTPUT->footer();
