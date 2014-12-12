@@ -18,11 +18,6 @@ namespace mod_aspirelists\core;
 
 defined('MOODLE_INTERNAL') || die();
 
-require_once(dirname(__FILE__) . "/../../lib/readinglists/src/API.php");
-require_once(dirname(__FILE__) . "/../../lib/readinglists/src/Parser.php");
-require_once(dirname(__FILE__) . "/../../lib/readinglists/src/ReadingList.php");
-require_once(dirname(__FILE__) . "/../../lib/readinglists/src/Category.php");
-
 /**
  * mod_aspirelists aspirelists class.
  *
