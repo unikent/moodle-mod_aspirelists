@@ -48,7 +48,7 @@ class mod_aspirelists_mod_form extends moodleform_mod
         // -------------------------------------------------------
 
         $options = array();
-        $options['misc']['all'] = 'All';
+        $options['Meta']['all'] = 'All Lists';
 
         // Build API object.
         $api = new \mod_aspirelists\core\API();
