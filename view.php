@@ -85,7 +85,7 @@ if ($readinglist->category != 'all') {
     $category = explode('/', $readinglist->category);
 
     $url = \mod_aspirelists\core\API::CANTERBURY_URL;
-    if ($category[0] == 'medway'){
+    if (strtolower($category[0]) == 'medway'){
         $url = \mod_aspirelists\core\API::MEDWAY_URL;
     }
 
