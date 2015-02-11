@@ -1,5 +1,4 @@
 <?php
-
 // This file is part of Moodle - http://moodle.org/
 //
 // Moodle is free software: you can redistribute it and/or modify
@@ -21,9 +20,8 @@ class mod_aspirelists_renderer extends plugin_renderer_base
      * Print lists.
      */
     public function print_lists($course, $context) {
-        $shortname = strtolower($course->shortname);
-        preg_match_all("([a-z]{2,4}[0-9]{3,4})", $shortname, $matches);
-        if (empty($matches)) {
+        $subject = strtolower($course->shortname);
+        if (empty($subject)) {
             return $this->resource_not_ready($context);
         }
 
@@ -31,9 +29,8 @@ class mod_aspirelists_renderer extends plugin_renderer_base
         $api = new \mod_aspirelists\core\API();
 
         $output = '';
-        foreach ($matches as $match) {
-            $shortname = $match[0];
-
+        $matches = explode('/', $subject);
+        foreach ($matches as $shortname) {
             $formattedlists = array();
 
             // Grab lists.
@@ -54,7 +51,6 @@ class mod_aspirelists_renderer extends plugin_renderer_base
                 }
             }
         }
-
 
         if (empty($output)) {
             return $this->resource_not_ready($context);
