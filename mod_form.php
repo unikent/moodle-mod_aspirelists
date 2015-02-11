@@ -56,15 +56,10 @@ class mod_aspirelists_mod_form extends moodleform_mod
 
         // Extract the shortnames.
         $subject = strtolower($COURSE->shortname);
-        preg_match_all("([a-z]{2,4}[0-9]{3,4})", $subject, $matches);
-        if (empty($matches)) {
-            print_error("Invalid course specified!");
-        }
+        $matches = explode('/', $subject);
 
         // Grab categories for each shortname.
-        foreach ($matches as $match) {
-            $shortname = $match[0];
-
+        foreach ($matches as $shortname) {
             // Grab lists.
             $lists = $api->get_lists($shortname);
 
