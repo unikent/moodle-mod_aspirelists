@@ -52,11 +52,9 @@ class mod_aspirelists_mod_form extends moodleform_mod
 
         // Build API object.
         $api = new \mod_aspirelists\core\API();
-        $api->set_cache_layer(\cache::make('mod_aspirelists', 'categories'));
 
         // Extract the shortnames.
-        $subject = strtolower($COURSE->shortname);
-        $matches = explode('/', $subject);
+        $matches = $api->extract_shortcodes($COURSE->shortname);
 
         // Grab categories for each shortname.
         foreach ($matches as $shortname) {

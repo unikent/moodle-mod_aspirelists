@@ -21,8 +21,5 @@ $definitions = array(
     'data' => array(
         'mode' => cache_store::MODE_APPLICATION,
         'ttl' => 14400
-    ),
-    'categories' => array(
-        'mode' => cache_store::MODE_APPLICATION
     )
 );
