@@ -35,4 +35,21 @@ class API extends \unikent\ReadingLists\API
         $this->set_timeout(get_config('aspirelists', 'timeout'));
         $this->set_timeperiod(get_config('aspirelists', 'timeperiod'));
     }
+
+    /**
+     * Extract shortcodes.
+     */
+    public function extract_shortcodes($shortcode) {
+		$shortcode = strtolower($shortcode);
+		$matches = explode('/', $shortcode);
+
+		return array_map(function($match) {
+		    if (strpos($match, ' ') !== false) {
+		        $match = explode(' ', $match);
+		        $match = $match[0];
+		    }
+
+		    return trim($match);
+		}, $matches);
+    }
 }
