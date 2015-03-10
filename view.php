@@ -66,6 +66,7 @@ if (isset($id)) {
 
 $PAGE->set_url($url);
 $PAGE->set_context($context);
+$PAGE->set_activity_record($readinglist);
 
 //Set page params and layout
 $PAGE->set_title(format_string($readinglist->name));
@@ -76,6 +77,9 @@ $event = \mod_aspirelists\event\course_module_viewed::create(array(
     'objectid' => $readinglist->id,
     'context' => $context
 ));
+$event->add_record_snapshot('course_modules', $cm);
+$event->add_record_snapshot('course', $course);
+$event->add_record_snapshot('aspirelists', $readinglist);
 $event->trigger();
 
 // Update 'viewed' state if required by completion system
