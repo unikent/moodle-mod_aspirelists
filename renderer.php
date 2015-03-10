@@ -19,17 +19,14 @@ class mod_aspirelists_renderer extends plugin_renderer_base
     /**
      * Print lists.
      */
-    public function print_lists($course, $context) {
-        $subject = strtolower($course->shortname);
-        if (empty($subject)) {
-            return $this->resource_not_ready($context);
-        }
+    public function print_lists($course) {
+        $context = \context_course::instance($course->id);
 
         // Build API object.
         $api = new \mod_aspirelists\core\API();
 
         $output = '';
-        $matches = explode('/', $subject);
+        $matches = $api->extract_shortcodes($course->shortname);
         foreach ($matches as $shortname) {
             $formattedlists = array();
 

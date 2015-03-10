@@ -15,27 +15,23 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 require(dirname(__FILE__) . '/../../config.php');
+require_once($CFG->libdir.'/completionlib.php');
 require_once(dirname(__FILE__) . "/lib.php");
-
-global $CFG, $USER, $DB, $PAGE;
-
-// dont do anything if not logged in
-require_login();
 
 $id = optional_param('id', 0, PARAM_INT);
 $listid = optional_param('list', 0, PARAM_INT);
 
 // Get the relevant objects.
 if ($id > 0) {
-    if (!$module = $DB->get_record("course_modules", array("id" => $id))) {
+    if (!$cm = $DB->get_record("course_modules", array("id" => $id))) {
         throw new \moodle_exception(get_string('cmunknown', 'error'));
     }
 
-    if (!$course = $DB->get_record("course", array("id" => $module->course))) {
-        throw new \moodle_exception(get_string('invalidcourseid', 'error', $module->course));
+    if (!$course = $DB->get_record("course", array("id" => $cm->course))) {
+        throw new \moodle_exception(get_string('invalidcourseid', 'error', $cm->course));
     }
 
-    if (!$readinglist = $DB->get_record('aspirelists', array('id' => $module->instance), '*', MUST_EXIST)) {
+    if (!$readinglist = $DB->get_record('aspirelists', array('id' => $cm->instance), '*', MUST_EXIST)) {
         throw new \moodle_exception(get_string('cmunknown', 'error'));
     }
 } elseif ($listid > 0) {
@@ -44,7 +40,7 @@ if ($id > 0) {
         throw new \moodle_exception(get_string('cmunknown', 'error'));
     }
 
-    if (!$module = $DB->get_record("course_modules", array("instance" => $readinglist->id))) {
+    if (!$cm = $DB->get_record("course_modules", array("instance" => $readinglist->id))) {
         throw new \moodle_exception(get_string('cmunknown', 'error'));
     }
 
@@ -55,30 +51,36 @@ if ($id > 0) {
     throw new \moodle_exception("A module ID or resource id must be specified");
 }
 
+// Check login and get context.
+require_course_login($course, true, $cm);
+$context = context_module::instance($cm->id);
+
 $config = get_config('aspirelists');
 
-$context = context_course::instance($course->id);
+$url = new moodle_url($CFG->wwwroot.'/mod/aspirelists/view.php');
+if (isset($id)) {
+    $url->param('id', $id);
+} else {
+    $url->param('list', $listid);
+}
+
+$PAGE->set_url($url);
 $PAGE->set_context($context);
 
 //Set page params and layout
-$PAGE->set_url('/mod/aspirelists/view.php', array('id'=>$id));
 $PAGE->set_title(format_string($readinglist->name));
-$PAGE->add_body_class('mod_aspirelists');
 $PAGE->set_heading(format_string($readinglist->name));
-$PAGE->navbar->add($course->shortname, "{$CFG->wwwroot}/course/view.php?id=$course->id");
-$PAGE->navbar->add(get_string('modulename', 'aspirelists'));
-$PAGE->set_pagelayout('admin');
 $PAGE->requires->css('/mod/aspirelists/styles/styles.css');
 
 $event = \mod_aspirelists\event\course_module_viewed::create(array(
     'objectid' => $readinglist->id,
-    'courseid' => $course->id,
-    'other' => array('cmid' => $id),
-    'context' => context_module::instance($id)
+    'context' => $context
 ));
-$event->add_record_snapshot('course', $PAGE->course);
-$event->add_record_snapshot('aspirelists', $readinglist);
 $event->trigger();
+
+// Update 'viewed' state if required by completion system
+$completion = new completion_info($course);
+$completion->set_module_viewed($cm);
 
 // Check to see if a specific category has been picked.
 if ($readinglist->category != 'all') {
@@ -94,11 +96,11 @@ if ($readinglist->category != 'all') {
 }
 
 echo $OUTPUT->header();
-echo $OUTPUT->heading(s($readinglist->name), 2, 'aspirelists_main');
+echo $OUTPUT->heading(s($readinglist->name));
 
 $renderer = $PAGE->get_renderer('mod_aspirelists');
 echo '<div id="aspirecontainer">';
-echo $renderer->print_lists($course, $context);
+echo $renderer->print_lists($course);
 echo '</div>';
 
 echo $OUTPUT->footer();
