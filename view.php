@@ -40,13 +40,11 @@ if ($id > 0) {
         throw new \moodle_exception(get_string('cmunknown', 'error'));
     }
 
-    if (!$cm = $DB->get_record("course_modules", array("instance" => $readinglist->id))) {
-        throw new \moodle_exception(get_string('cmunknown', 'error'));
-    }
-
     if (!$course = $DB->get_record('course', array('id' => $readinglist->course))) {
         throw new \moodle_exception(get_string('invalidcourseid', 'error', $readinglist->course));
     }
+
+    $cm = get_coursemodule_from_instance('aspirelists', $readinglist->id, $course->id, false, MUST_EXIST);
 } else {
     throw new \moodle_exception("A module ID or resource id must be specified");
 }
