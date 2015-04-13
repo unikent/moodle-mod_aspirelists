@@ -24,7 +24,10 @@ class mod_aspirelists_mod_form extends moodleform_mod
      *
      */
     public function definition() {
-        global $CFG, $COURSE;
+        global $CFG, $COURSE, $PAGE;
+
+        $PAGE->requires->jquery();
+        $PAGE->requires->js('/mod/aspirelists/mod_form.js');
 
         $config = get_config('aspirelists');
 
@@ -79,6 +82,10 @@ class mod_aspirelists_mod_form extends moodleform_mod
         }
 
         $mform->addElement('selectgroups', 'category', 'Category', $options, array(
+            'size' => 20
+        ));
+
+        $mform->addElement('select', 'item', 'Item (optional)', array('invalid' => 'Select a category to view options'), array(
             'size' => 20
         ));
 
