@@ -92,7 +92,6 @@ class mod_aspirelists_mod_form extends moodleform_mod
         // Add standard buttons, common to all modules.
         $this->standard_coursemodule_elements();
         $this->add_action_buttons();
-        return;
     }
 
     /**
