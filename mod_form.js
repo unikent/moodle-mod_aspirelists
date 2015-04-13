@@ -1,4 +1,9 @@
 $(function() {
+	$("#id_updateitems").hide();
+	$("#id_item").on('change', function() {
+		$("#id_updateitems").click();
+	});
+	
 	$('#id_category').on('change', function() {
 		$("#id_item").html("");
 

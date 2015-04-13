@@ -89,7 +89,6 @@ function aspirelists_update_instance($data, $mform) {
  */
 function aspirelists_add_instance($data, $mform) {
     global $DB;
-
     return $DB->insert_record('aspirelists', $data);
 }
 
