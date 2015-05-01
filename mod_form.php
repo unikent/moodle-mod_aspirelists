@@ -24,7 +24,10 @@ class mod_aspirelists_mod_form extends moodleform_mod
      *
      */
     public function definition() {
-        global $CFG, $COURSE;
+        global $CFG, $COURSE, $PAGE;
+
+        $PAGE->requires->jquery();
+        $PAGE->requires->js('/mod/aspirelists/mod_form.js');
 
         $config = get_config('aspirelists');
 
@@ -43,7 +46,12 @@ class mod_aspirelists_mod_form extends moodleform_mod
         }
 
         $mform->addRule('name', null, 'required', null, 'client');
-        $this->add_intro_editor();
+        
+        if (method_exists($this, 'standard_intro_elements')) {
+            $this->standard_intro_elements();
+        } else {
+            $this->add_intro_editor();
+        }
 
         // -------------------------------------------------------
 
@@ -74,13 +82,27 @@ class mod_aspirelists_mod_form extends moodleform_mod
         }
 
         $mform->addElement('selectgroups', 'category', 'Category', $options, array(
-            'size' => 20
+            'size' => 15
         ));
+
+        $category = optional_param('category', false, PARAM_RAW);
+        if ($category) {
+            $options = $this->get_item_options($category);
+            $mform->addElement('select', 'item', 'Item (optional)', $options, array(
+                'size' => min(count($options), 5)
+            ));
+        } else {
+            $mform->addElement('select', 'item', 'Item (optional)', array('invalid' => 'Select a category'), array(
+                'size' => 5
+            ));
+        }
+
+        $mform->registerNoSubmitButton('updateitems');
+        $mform->addElement('submit', 'updateitems', 'Update Available Items');
 
         // Add standard buttons, common to all modules.
         $this->standard_coursemodule_elements();
         $this->add_action_buttons();
-        return;
     }
 
     /**
@@ -104,5 +126,29 @@ class mod_aspirelists_mod_form extends moodleform_mod
         }
 
         return $options;
+    }
+
+    /**
+     * Load options for a select when we have a category.
+     */
+    private function get_item_options($category) {
+        list($campus, $id) = explode('/', $category);
+
+        $campus = strtolower($campus);
+        $campus = $campus == 'medway' ? 'medway' : 'canterbury';
+
+        $api = new \mod_aspirelists\core\API();
+        $list = $api->get_list($id, $campus);
+        $items = $list->get_items();
+
+        $data = array();
+        foreach ($items as $item) {
+            $name = $item->get_name();
+            if ($name) {
+                $data[$item->get_url()] = $name;
+            }
+        }
+
+        return $data;
     }
 }

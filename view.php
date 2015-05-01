@@ -84,6 +84,11 @@ $event->trigger();
 $completion = new completion_info($course);
 $completion->set_module_viewed($cm);
 
+if (!empty($readinglist->item)) {
+    redirect($readinglist->item . '.html');
+    die();
+}
+
 // Check to see if a specific category has been picked.
 if ($readinglist->category != 'all') {
     $category = explode('/', $readinglist->category);

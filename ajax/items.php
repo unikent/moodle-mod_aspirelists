@@ -14,9 +14,33 @@
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
-defined('MOODLE_INTERNAL') || die();
+define('AJAX_SCRIPT', true);
 
-$plugin->version   = 2015041300;
-$plugin->requires  = 2014051201;
-$plugin->component = 'mod_aspirelists';
-$plugin->cron      = 0;
+require_once(dirname(__FILE__) . '/../../../config.php');
+
+$PAGE->set_context(\context_system::instance());
+$PAGE->set_url('/mod/aspirelists/ajax/items.php');
+
+require_login();
+require_sesskey();
+
+$id = required_param('id', PARAM_RAW);
+list($campus, $id) = explode('/', $id);
+
+$campus = strtolower($campus);
+$campus = $campus == 'medway' ? 'medway' : 'canterbury';
+
+$api = new \mod_aspirelists\core\API();
+$list = $api->get_list($id, $campus);
+$items = $list->get_items();
+
+$data = array();
+foreach ($items as $item) {
+	$name = $item->get_name();
+	if ($name) {
+		$data[$item->get_url()] = $name;
+	}
+}
+
+echo $OUTPUT->header();
+echo json_encode($data);

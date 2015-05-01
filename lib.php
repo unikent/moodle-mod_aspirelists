@@ -89,7 +89,6 @@ function aspirelists_update_instance($data, $mform) {
  */
 function aspirelists_add_instance($data, $mform) {
     global $DB;
-
     return $DB->insert_record('aspirelists', $data);
 }
 
@@ -137,7 +136,7 @@ function aspirelists_get_coursemodule_info($coursemodule) {
     }
 
     // If we are not showing all categories then set the link to direct to a new tab.
-    if ($aspireresource->category != 'all') {
+    if ($aspireresource->category != 'all' || !empty($aspireresource->item)) {
         $fullurl = new \moodle_url('/mod/aspirelists/view.php', array(
             'id' => $coursemodule->id,
             'redirect' => 1

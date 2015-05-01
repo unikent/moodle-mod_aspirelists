@@ -30,11 +30,19 @@ function xmldb_aspirelists_upgrade($oldversion) {
 		upgrade_mod_savepoint(true, 2012071001, 'aspirelists');
     }
 
-    // Moodle v2.1.0 release upgrade line
-    // Put any upgrade step following this
+    if ($oldversion < 2015041300) {
+        // Define field item to be added to aspirelists.
+        $table = new xmldb_table('aspirelists');
+        $field = new xmldb_field('item', XMLDB_TYPE_TEXT, null, null, null, null, null, 'name');
 
-    // Moodle v2.2.0 release upgrade line
-    // Put any upgrade step following this
+        // Conditionally launch add field item.
+        if (!$dbman->field_exists($table, $field)) {
+            $dbman->add_field($table, $field);
+        }
+
+        // Aspirelists savepoint reached.
+        upgrade_mod_savepoint(true, 2015041300, 'aspirelists');
+    }
 
     return true;
 }
