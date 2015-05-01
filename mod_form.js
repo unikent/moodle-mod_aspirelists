@@ -1,6 +1,7 @@
 $(function() {
 	$("#id_updateitems").hide();
 	$("#id_item").on('change', function() {
+		$("#id_name").val($("#id_item option[value='"+$("#id_item").val()+"']").text());
 		$("#id_updateitems").click();
 	});
 	
