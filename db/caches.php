@@ -20,7 +20,6 @@
 $definitions = array(
     'data' => array(
         'mode' => cache_store::MODE_APPLICATION,
-        'simplekeys' => true,
         'ttl' => 14400,
         'staticacceleration' => true,
         'staticaccelerationsize' => 10
