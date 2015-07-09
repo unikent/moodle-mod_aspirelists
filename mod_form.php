@@ -46,7 +46,7 @@ class mod_aspirelists_mod_form extends moodleform_mod
         }
 
         $mform->addRule('name', null, 'required', null, 'client');
-        
+
         if (method_exists($this, 'standard_intro_elements')) {
             $this->standard_intro_elements();
         } else {
@@ -76,7 +76,7 @@ class mod_aspirelists_mod_form extends moodleform_mod
                 $categories = $list->get_categories();
                 foreach ($categories as $category) {
                     $categoryoptions = $this->get_category_options($shortname, $category);
-                    $options = array_merge_recursive($options, $categoryoptions);
+                    $options = array_merge($options, $categoryoptions);
                 }
             }
         }
@@ -116,7 +116,7 @@ class mod_aspirelists_mod_form extends moodleform_mod
             $options[$campus] = array();
         }
 
-        $displayname = str_repeat('--', $depth) . " {$shortname}: ";
+        $displayname = str_repeat('&nbsp;&nbsp;&nbsp;&nbsp;', $depth);
         $displayname .= $category->get_name();
 
         $options[$campus]["{$campus}/$id"] = $displayname;
