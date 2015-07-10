@@ -20,8 +20,8 @@ defined('MOODLE_INTERNAL') || die();
  *            General            * 
  *********************************/
 
-$string['modulename'] = 'Reading lists';
-$string['modulename_help'] = 'The Reading List activity module enables inclusion of Talis Reading list link integrations within your modules.
+$string['modulename'] = 'Reading list';
+$string['modulename_help'] = 'The Reading list activity module enables inclusion of Talis Reading list link integrations within your modules.
 
 There is the choice of either just providing a direct resource link to the entire reading list, or you can select a direct section to link to of the reading list.';
 $string['modulenameplural'] = 'Reading lists';
