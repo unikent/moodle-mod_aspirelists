@@ -55,9 +55,6 @@ class mod_aspirelists_mod_form extends moodleform_mod
 
         // -------------------------------------------------------
 
-        $options = array();
-        $options['Meta']['all'] = 'All Lists';
-
         // Build API object.
         $api = new \mod_aspirelists\core\API();
 
@@ -65,6 +62,7 @@ class mod_aspirelists_mod_form extends moodleform_mod
         $matches = $api->extract_shortcodes($COURSE->shortname);
 
         // Grab categories for each shortname.
+        $options = array();
         foreach ($matches as $shortname) {
             // Grab lists.
             $lists = $api->get_lists($shortname);
@@ -81,7 +79,7 @@ class mod_aspirelists_mod_form extends moodleform_mod
             }
         }
 
-        $mform->addElement('selectgroups', 'category', 'Category', $options, array(
+        $mform->addElement('selectgroups', 'category', 'Category (optional)', $options, array(
             'size' => 15
         ));
 
