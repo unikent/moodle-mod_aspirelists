@@ -25,27 +25,34 @@ class mod_aspirelists_renderer extends plugin_renderer_base
         // Build API object.
         $api = new \mod_aspirelists\core\API();
 
-        $output = '';
-        $matches = $api->extract_shortcodes($course->shortname);
-        foreach ($matches as $shortname) {
-            $formattedlists = array();
+        // Build a list of lists.
+        $lists = array();
+        $shortcodes = $api->extract_shortcodes($course->shortname);
+        foreach ($shortcodes as $match) {
+            $lists = array_merge($lists, $api->get_lists($match));
+        }
 
-            // Grab lists.
-            $lists = $api->get_lists($shortname);
-            foreach ($lists as $list) {
-                $campus = $list->get_campus();
-                if (!isset($formattedlists[$campus])) {
-                    $formattedlists[$campus] = array();
-                }
+        // For merged modules.
+        $lists = array_unique($lists);
 
-                $formattedlists[$campus][] = $this->render_list($list);
+        // Build lists by-campus.
+        $formattedlists = array();
+        foreach ($lists as $list) {
+            // Grab campus data.
+            $campus = $list->get_campus();
+            if (!isset($formattedlists[$campus])) {
+                $formattedlists[$campus] = array();
             }
 
-            foreach ($formattedlists as $campus => $lists) {
-                $output .= '<h3>' . $campus . '</h3>';
-                foreach ($lists as $list) {
-                    $output .= $list;
-                }
+            $formattedlists[$campus][] = $this->render_list($list);
+        }
+
+        // Build output.
+        $output = '';
+        foreach ($formattedlists as $campus => $lists) {
+            $output .= '<h3>' . $campus . '</h3>';
+            foreach ($lists as $list) {
+                $output .= $list;
             }
         }
 
