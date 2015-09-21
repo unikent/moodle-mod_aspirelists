@@ -73,8 +73,7 @@ class mod_aspirelists_mod_form extends moodleform_mod
 
                 $categories = $list->get_categories();
                 foreach ($categories as $category) {
-                    $categoryoptions = $this->get_category_options($shortname, $category);
-                    $options = array_merge($options, $categoryoptions);
+                    $options = $this->build_category_options($options, $shortname, $category);
                 }
             }
         }
@@ -85,7 +84,7 @@ class mod_aspirelists_mod_form extends moodleform_mod
 
         $category = optional_param('category', false, PARAM_RAW);
         if ($category) {
-            $options = $this->get_item_options($category);
+            $options = static::get_item_options($category);
             $mform->addElement('select', 'item', 'Item (optional)', $options, array(
                 'size' => min(count($options), 5)
             ));
@@ -106,30 +105,35 @@ class mod_aspirelists_mod_form extends moodleform_mod
     /**
      * Returns an array of options for categories.
      */
-    private function get_category_options($shortname, $category, $depth = 1) {
+    private function build_category_options($existing, $shortname, $category, $depth = 1) {
         $id = $category->get_id();
         $campus = $category->get_campus();
 
-        if (!isset($options[$campus])) {
-            $options[$campus] = array();
+        if (!isset($existing[$campus])) {
+            $existing[$campus] = array();
         }
 
+        // Build display name.
         $displayname = str_repeat('&nbsp;&nbsp;&nbsp;&nbsp;', $depth);
         $displayname .= $category->get_name();
 
-        $options[$campus]["{$campus}/$id"] = $displayname;
-
-        foreach ($category->get_parents() as $parent) {
-            $options = array_merge_recursive($options, $this->get_category_options($shortname, $parent, $depth + 1));
+        // Conditionally add the new item to the array.
+        if (!isset($existing[$campus]["{$campus}/$id"])) {
+            $existing[$campus]["{$campus}/$id"] = $displayname;
         }
 
-        return $options;
+        // Loop any children.
+        foreach ($category->get_parents() as $parent) {
+            $existing = $this->build_category_options($existing, $shortname, $parent, $depth + 1);
+        }
+
+        return $existing;
     }
 
     /**
      * Load options for a select when we have a category.
      */
-    private function get_item_options($category) {
+    public static function get_item_options($category) {
         list($campus, $id) = explode('/', $category);
 
         $campus = strtolower($campus);
