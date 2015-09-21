@@ -73,8 +73,7 @@ class mod_aspirelists_mod_form extends moodleform_mod
 
                 $categories = $list->get_categories();
                 foreach ($categories as $category) {
-                    $categoryoptions = $this->get_category_options($shortname, $category);
-                    $options = array_merge($options, $categoryoptions);
+                    $options = $this->build_category_options($options, $shortname, $category);
                 }
             }
         }
@@ -106,24 +105,29 @@ class mod_aspirelists_mod_form extends moodleform_mod
     /**
      * Returns an array of options for categories.
      */
-    private function get_category_options($shortname, $category, $depth = 1) {
+    private function build_category_options($existing, $shortname, $category, $depth = 1) {
         $id = $category->get_id();
         $campus = $category->get_campus();
 
-        if (!isset($options[$campus])) {
-            $options[$campus] = array();
+        if (!isset($existing[$campus])) {
+            $existing[$campus] = array();
         }
 
+        // Build display name.
         $displayname = str_repeat('&nbsp;&nbsp;&nbsp;&nbsp;', $depth);
         $displayname .= $category->get_name();
 
-        $options[$campus]["{$campus}/$id"] = $displayname;
-
-        foreach ($category->get_parents() as $parent) {
-            $options = array_merge_recursive($options, $this->get_category_options($shortname, $parent, $depth + 1));
+        // Conditionally add the new item to the array.
+        if (!isset($existing[$campus]["{$campus}/$id"])) {
+            $existing[$campus]["{$campus}/$id"] = $displayname;
         }
 
-        return $options;
+        // Loop any children.
+        foreach ($category->get_parents() as $parent) {
+            $existing = $this->build_category_options($existing, $shortname, $parent, $depth + 1);
+        }
+
+        return $existing;
     }
 
     /**
