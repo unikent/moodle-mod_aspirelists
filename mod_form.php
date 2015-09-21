@@ -84,7 +84,7 @@ class mod_aspirelists_mod_form extends moodleform_mod
 
         $category = optional_param('category', false, PARAM_RAW);
         if ($category) {
-            $options = $this->get_item_options($category);
+            $options = static::get_item_options($category);
             $mform->addElement('select', 'item', 'Item (optional)', $options, array(
                 'size' => min(count($options), 5)
             ));
@@ -133,7 +133,7 @@ class mod_aspirelists_mod_form extends moodleform_mod
     /**
      * Load options for a select when we have a category.
      */
-    private function get_item_options($category) {
+    public static function get_item_options($category) {
         list($campus, $id) = explode('/', $category);
 
         $campus = strtolower($campus);

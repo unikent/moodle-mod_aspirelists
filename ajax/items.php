@@ -17,6 +17,7 @@
 define('AJAX_SCRIPT', true);
 
 require_once(dirname(__FILE__) . '/../../../config.php');
+require_once(dirname(__FILE__) . '/../mod_form.php');
 
 $PAGE->set_context(\context_system::instance());
 $PAGE->set_url('/mod/aspirelists/ajax/items.php');
@@ -25,22 +26,8 @@ require_login();
 require_sesskey();
 
 $id = required_param('id', PARAM_RAW);
-list($campus, $id) = explode('/', $id);
 
-$campus = strtolower($campus);
-$campus = $campus == 'medway' ? 'medway' : 'canterbury';
-
-$api = new \mod_aspirelists\core\API();
-$list = $api->get_list($id, $campus);
-$items = $list->get_items();
-
-$data = array();
-foreach ($items as $item) {
-	$name = $item->get_name();
-	if ($name) {
-		$data[$item->get_url()] = $name;
-	}
-}
+$data = \mod_aspirelists_mod_form::get_item_options($id);
 
 echo $OUTPUT->header();
 echo json_encode($data);
