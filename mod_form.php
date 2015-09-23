@@ -47,11 +47,7 @@ class mod_aspirelists_mod_form extends moodleform_mod
 
         $mform->addRule('name', null, 'required', null, 'client');
 
-        if (method_exists($this, 'standard_intro_elements')) {
-            $this->standard_intro_elements();
-        } else {
-            $this->add_intro_editor();
-        }
+        $this->standard_intro_elements();
 
         // -------------------------------------------------------
 
