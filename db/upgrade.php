@@ -24,7 +24,7 @@ function xmldb_aspirelists_upgrade($oldversion) {
     if ($oldversion < 2012062001) {
 
     	$table = new xmldb_table('aspirelists');
-    	$field = new xmldb_field('category', XMLDB_TYPE_CHAR, '255', XMLDB_UNSIGNED, XMLDB_NOTNULL, null, 'all', 'introformat');
+    	$field = new xmldb_field('category', XMLDB_TYPE_CHAR, '255', XMLDB_INT, XMLDB_NOTNULL, null, 'all', 'introformat');
 		$dbman->add_field($table, $field);
 
 		upgrade_mod_savepoint(true, 2012071001, 'aspirelists');
