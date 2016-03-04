@@ -44,5 +44,56 @@ function xmldb_aspirelists_upgrade($oldversion) {
         upgrade_mod_savepoint(true, 2015041300, 'aspirelists');
     }
 
+    if ($oldversion < 2016030400) {
+        // Define table aspirelists_fimexport_sv to be created.
+        $table = new xmldb_table('aspirelists_fimexport_sv');
+
+        // Adding fields to table aspirelists_fimexport_sv.
+        $table->add_field('id', XMLDB_TYPE_INTEGER, '10', null, XMLDB_NOTNULL, XMLDB_SEQUENCE, null);
+        $table->add_field('username', XMLDB_TYPE_CHAR, '255', null, XMLDB_NOTNULL, null, null);
+
+        // Adding keys to table aspirelists_fimexport_sv.
+        $table->add_key('primary', XMLDB_KEY_PRIMARY, array('id'));
+        $table->add_key('k_user', XMLDB_KEY_UNIQUE, array('username'));
+
+        // Conditionally launch create table for aspirelists_fimexport_sv.
+        if (!$dbman->table_exists($table)) {
+            $dbman->create_table($table);
+        }
+
+        // Define table aspirelists_fimexport_mv to be created.
+        $table = new xmldb_table('aspirelists_fimexport_mv');
+
+        // Adding fields to table aspirelists_fimexport_mv.
+        $table->add_field('id', XMLDB_TYPE_INTEGER, '10', null, XMLDB_NOTNULL, XMLDB_SEQUENCE, null);
+        $table->add_field('username', XMLDB_TYPE_CHAR, '255', null, XMLDB_NOTNULL, null, null);
+        $table->add_field('attribute_name', XMLDB_TYPE_CHAR, '64', null, XMLDB_NOTNULL, null, null);
+        $table->add_field('string_value', XMLDB_TYPE_CHAR, '255', null, null, null, null);
+
+        // Adding keys to table aspirelists_fimexport_mv.
+        $table->add_key('primary', XMLDB_KEY_PRIMARY, array('id'));
+
+        // Conditionally launch create table for aspirelists_fimexport_mv.
+        if (!$dbman->table_exists($table)) {
+            $dbman->create_table($table);
+        }
+
+        // Aspirelists savepoint reached.
+        upgrade_mod_savepoint(true, 2016030400, 'aspirelists');
+    }
+
+    if ($oldversion < 2016030600) {
+
+        // Changing type of field string_value on table aspirelists_fimexport_mv to text.
+        $table = new xmldb_table('aspirelists_fimexport_mv');
+        $field = new xmldb_field('string_value', XMLDB_TYPE_TEXT, null, null, null, null, null, 'attribute_name');
+
+        // Launch change of type for field string_value.
+        $dbman->change_field_type($table, $field);
+
+        // Aspirelists savepoint reached.
+        upgrade_mod_savepoint(true, 2016030600, 'aspirelists');
+    }
+
     return true;
 }

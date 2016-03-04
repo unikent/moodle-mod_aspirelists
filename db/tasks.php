@@ -14,8 +14,22 @@
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
-defined('MOODLE_INTERNAL') || die();
+/**
+ * Aspirelists mod.
+ *
+ * @package    mod_aspirelists
+ * @copyright  2016 Skylar Kelty <S.Kelty@kent.ac.uk>
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ */
 
-$plugin->version   = 2016030600;
-$plugin->requires  = 2014051201;
-$plugin->component = 'mod_aspirelists';
+$tasks = array(
+    array(
+        'classname' => 'mod_aspirelists\task\fim_export',
+        'blocking' => 0,
+        'minute' => 'R',
+        'hour' => '2',
+        'day' => '*',
+        'dayofweek' => '*',
+        'month' => '*'
+    )
+);
