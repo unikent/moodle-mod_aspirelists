@@ -17,7 +17,7 @@
 defined('MOODLE_INTERNAL') || die();
 
 /*********************************
- *            General            * 
+ *            General            *
  *********************************/
 
 $string['modulename'] = 'Reading list';
@@ -31,6 +31,8 @@ $string['pluginadministration'] = 'Reading lists administration';
 $string['pluginname'] = 'Reading lists';
 
 $string['aspirelists:addinstance'] = 'Add a new reading list';
+
+$string['search:activity'] = 'Aspirelists activities';
 
 $string['settings:timeperiod'] = 'Timeperiod';
 $string['settings:configtimeperiod'] = 'Timeperiod for lists.';
