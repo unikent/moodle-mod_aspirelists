@@ -29,7 +29,10 @@ namespace mod_aspirelists\task;
  */
 class fim_export extends \core\task\scheduled_task
 {
+    private $creatortypes = array('staff', 'tempstaff');
     private $users;
+    private $editingusers;
+    private $userinfodata;
 
     public function get_name() {
         return "FIM Export";
@@ -39,6 +42,22 @@ class fim_export extends \core\task\scheduled_task
         global $DB;
 
         $this->users = array();
+        $this->editingusers = array();
+
+        $this->userinfodata = $DB->get_records_sql('
+            SELECT uid.userid, uid.data
+            FROM {user_info_data} uid
+            INNER JOIN {user_info_field} uif
+                ON uif.id=uid.fieldid AND uif.shortname=?
+            GROUP BY uid.userid, uid.fieldid
+        ', array(
+            'kentacctype'
+        ));
+
+        if (empty($this->userinfodata)) {
+            // This Moodle doesn't support aspire lists.
+            return;
+        }
 
         $contextpreload = \context_helper::get_preload_record_columns_sql('x');
         $courses = $DB->get_records_sql("
@@ -68,19 +87,35 @@ class fim_export extends \core\task\scheduled_task
      */
     private function build_user_list($course) {
         $context = \context_course::instance($course->id);
-        $users = get_enrolled_users($context, 'mod/aspirelists:addinstance', 0, 'u.id, u.username');
-        foreach ($users as $user) {
+
+        // Calculate a decent shortname.
+        $shortname = $course->shortname;
+        $pos = strpos($shortname, ' ');
+        if ($pos !== false) {
+            $shortname = substr($shortname, 0, $pos);
+        }
+
+        // Every user gets a list of their courses.
+        $allusers = get_enrolled_users($context, '', 0, 'u.id, u.username');
+        $editingusers = get_enrolled_users($context, 'mod/aspirelists:addinstance', 0, 'u.id, u.username');
+        foreach ($allusers as $user) {
+            if (!isset($this->userinfodata[$user->id])) {
+                continue;
+            }
+
             if (!isset($this->users[$user->username])) {
                 $this->users[$user->username] = array();
             }
 
-            $shortname = $course->shortname;
-            $pos = strpos($shortname, ' ');
-            if ($pos !== false) {
-                $shortname = substr($shortname, 0, $pos);
+            if (!isset($this->editingusers[$user->username])) {
+                $this->editingusers[$user->username] = array();
             }
 
+            // Okay!
             $this->users[$user->username][] = $shortname;
+            if (isset($editingusers[$user->id]) && in_array($this->userinfodata[$user->id]->data, $this->creatortypes)) {
+                $this->editingusers[$user->username][] = $shortname;
+            }
         }
     }
 
@@ -102,7 +137,18 @@ class fim_export extends \core\task\scheduled_task
      */
     private function build_mv() {
         $mv = array();
+
         foreach ($this->users as $username => $courses) {
+            $courses = array_unique($courses);
+            if (empty($courses)) {
+                continue;
+            }
+
+            // Build the scope string.
+            $mv[] = $this->build_mv_map($username, implode(' ', $courses));
+        }
+
+        foreach ($this->editingusers as $username => $courses) {
             $courses = array_unique($courses);
             if (empty($courses)) {
                 continue;
