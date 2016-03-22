@@ -64,6 +64,7 @@ class fim_export extends \core\task\scheduled_task
             SELECT c.id, c.shortname, $contextpreload
             FROM {course} c
             INNER JOIN {context} x ON (c.id=x.instanceid AND x.contextlevel=" . CONTEXT_COURSE . ")
+            WHERE c.id > 1
         ");
 
         foreach ($courses as $course) {
