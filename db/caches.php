@@ -22,6 +22,7 @@ $definitions = array(
         'mode' => cache_store::MODE_APPLICATION,
         'ttl' => 14400,
         'staticacceleration' => true,
-        'staticaccelerationsize' => 10
+        'staticaccelerationsize' => 10,
+        'canuselocalstore' => true
     )
 );
