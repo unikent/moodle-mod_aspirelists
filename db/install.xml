@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<XMLDB PATH="mod/aspirelists/db" VERSION="20160304" COMMENT="XMLDB file for Aspirelists module"
+<XMLDB PATH="mod/aspirelists/db" VERSION="20160429" COMMENT="XMLDB file for Aspirelists module"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:noNamespaceSchemaLocation="../../../lib/xmldb/xmldb.xsd"
 >
@@ -42,6 +42,9 @@
       <KEYS>
         <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
       </KEYS>
+      <INDEXES>
+        <INDEX NAME="k_username" UNIQUE="false" FIELDS="username"/>
+      </INDEXES>
     </TABLE>
   </TABLES>
 </XMLDB>

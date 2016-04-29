@@ -95,5 +95,19 @@ function xmldb_aspirelists_upgrade($oldversion) {
         upgrade_mod_savepoint(true, 2016030600, 'aspirelists');
     }
 
+    if ($oldversion < 2016042900) {
+        // Define index k_username (not unique) to be added to aspirelists_fimexport_mv.
+        $table = new xmldb_table('aspirelists_fimexport_mv');
+        $index = new xmldb_index('k_username', XMLDB_INDEX_NOTUNIQUE, array('username'));
+
+        // Conditionally launch add index k_username.
+        if (!$dbman->index_exists($table, $index)) {
+            $dbman->add_index($table, $index);
+        }
+
+        // Aspirelists savepoint reached.
+        upgrade_mod_savepoint(true, 2016042900, 'aspirelists');
+    }
+
     return true;
 }
