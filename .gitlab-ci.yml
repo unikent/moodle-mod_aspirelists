@@ -1,4 +1,4 @@
-image: skylarkelty/moodle-gitlab
+image: skylarkelty/docker-gitlab
 
 cache:
     paths:
