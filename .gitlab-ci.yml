@@ -22,6 +22,9 @@ before_script:
     - echo $PLUGIN
     - pwd
     - ls -al
+    - ls -al moodle
+    - ls -al ci
+    - ls -al moodle-mod_aspirelists
     - curl -sS https://getcomposer.org/installer | php
     - php composer.phar create-project -n --no-dev --prefer-dist moodlerooms/moodle-plugin-ci ci ^1
     - export PATH="$(cd ci/bin; pwd):$(cd ci/vendor/bin; pwd):$PATH"
