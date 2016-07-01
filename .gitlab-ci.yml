@@ -14,7 +14,7 @@ stages:
     - checks
 
 before_script:
-    - apt-get install npm
+    - apt-get install -y npm
     - export MOODLE_BRANCH=MOODLE_31_STABLE
     - export DB=mysqli
     - export PLUGIN=`pwd`
