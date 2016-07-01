@@ -17,7 +17,6 @@ before_script:
     - export MOODLE_BRANCH=MOODLE_31_STABLE
     - export DB=mysqli
     - export PLUGIN=`pwd`
-    - pwd
     - cd ../..
     - rm -rf tmpbuild
     - mkdir tmpbuild
@@ -45,3 +44,28 @@ messdetect:
     stage: checks
     script:
         - moodle-plugin-ci phpmd
+
+codechecker:
+    stage: checks
+    script:
+        - moodle-plugin-ci codechecker
+
+csslint:
+    stage: checks
+    script:
+        - moodle-plugin-ci csslint
+
+shifter:
+    stage: checks
+    script:
+        - moodle-plugin-ci shifter
+
+jshint:
+    stage: checks
+    script:
+        - moodle-plugin-ci jshint
+
+validate:
+    stage: checks
+    script:
+        - moodle-plugin-ci validate
