@@ -2,7 +2,7 @@ image: skylarkelty/docker-gitlab
 
 cache:
     paths:
-        - vendor/
+        - $HOME/.composer/cache
 
 services:
     - mysql:latest
