@@ -19,7 +19,9 @@ before_script:
     - export PLUGIN=`pwd`
     - pwd
     - cd ..
+    - echo $PLUGIN
     - pwd
+    - ls -al
     - curl -sS https://getcomposer.org/installer | php
     - php composer.phar create-project -n --no-dev --prefer-dist moodlerooms/moodle-plugin-ci ci ^1
     - export PATH="$(cd ci/bin; pwd):$(cd ci/vendor/bin; pwd):$PATH"
