@@ -16,9 +16,7 @@ stages:
 before_script:
     - export MOODLE_BRANCH=MOODLE_31_STABLE
     - export DB=mysqli
-    - echo `pwd`
-    - cd ~
-    - echo `pwd`
+    - export PLUGIN=`pwd`
     - curl -sS https://getcomposer.org/installer | php
     - php composer.phar create-project -n --no-dev --prefer-dist moodlerooms/moodle-plugin-ci ci ^1
     - export PATH="$(cd ci/bin; pwd):$(cd ci/vendor/bin; pwd):$PATH"
