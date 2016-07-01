@@ -17,10 +17,13 @@ before_script:
     - export MOODLE_BRANCH=MOODLE_31_STABLE
     - export DB=mysqli
     - export PLUGIN=`pwd`
+    - pwd
     - cd ..
+    - pwd
     - curl -sS https://getcomposer.org/installer | php
     - php composer.phar create-project -n --no-dev --prefer-dist moodlerooms/moodle-plugin-ci ci ^1
     - export PATH="$(cd ci/bin; pwd):$(cd ci/vendor/bin; pwd):$PATH"
+    - ls -al
     - moodle-plugin-ci install --data /tmp --db-type mysqli --db-user root --db-pass moodle_ci_password --db-name moodle_ci --db-host mysql
 
 linter:
