@@ -50,20 +50,10 @@ codechecker:
     script:
         - moodle-plugin-ci codechecker
 
-csslint:
-    stage: checks
-    script:
-        - moodle-plugin-ci csslint
-
 shifter:
     stage: checks
     script:
         - moodle-plugin-ci shifter
-
-jshint:
-    stage: checks
-    script:
-        - moodle-plugin-ci jshint
 
 validate:
     stage: checks

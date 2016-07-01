@@ -1,5 +1,4 @@
 <?php
-
 // This file is part of Moodle - http://moodle.org/
 //
 // Moodle is free software: you can redistribute it and/or modify
@@ -26,9 +25,9 @@ defined('MOODLE_INTERNAL') || die;
 
  // This activity has not particular settings but the inherited from the generic
  // backup_activity_task so here there isn't any class definition, like the ones
- // existing in /backup/moodle2/backup_settingslib.php (activities section)
+ // existing in /backup/moodle2/backup_settingslib.php (activities section).
 
-require_once($CFG->dirroot . '/mod/aspirelists/backup/moodle2/backup_aspirelists_stepslib.php'); // Because it exists (must)
+require_once($CFG->dirroot . '/mod/aspirelists/backup/moodle2/backup_aspirelists_stepslib.php');
 
 /**
  * URL backup task that provides all the settings and steps to perform one
@@ -40,7 +39,7 @@ class backup_aspirelists_activity_task extends backup_activity_task {
      * Define (add) particular settings this activity can have
      */
     protected function define_my_settings() {
-        // No particular settings for this activity
+        // No particular settings for this activity.
     }
 
     /**
@@ -57,19 +56,19 @@ class backup_aspirelists_activity_task extends backup_activity_task {
     static public function encode_content_links($content) {
         global $CFG;
 
-        $base = preg_quote($CFG->wwwroot.'/mod/aspirelists','#');
+        $base = preg_quote($CFG->wwwroot.'/mod/aspirelists', '#');
 
-        //Access a list of all links in a course
+        // Access a list of all links in a course.
         $pattern = '#('.$base.'/index\.php\?id=)([0-9]+)#';
         $replacement = '$@ASPIRELISTINDEX*$2@$';
         $content = preg_replace($pattern, $replacement, $content);
 
-        //Access the link supplying a course module id
+        // Access the link supplying a course module id.
         $pattern = '#('.$base.'/view\.php\?id=)([0-9]+)#';
         $replacement = '$@ASPIRELISTVIEWBYID*$2@$';
         $content = preg_replace($pattern, $replacement, $content);
 
-        //Access the link supplying an instance id
+        // Access the link supplying an instance id.
         $pattern = '#('.$base.'/view\.php\?u=)([0-9]+)#';
         $replacement = '$@ASPIRELISTVIEWBYU*$2@$';
         $content = preg_replace($pattern, $replacement, $content);

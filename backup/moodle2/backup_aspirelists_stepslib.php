@@ -1,5 +1,4 @@
 <?php
-
 // This file is part of Moodle - http://moodle.org/
 //
 // Moodle is free software: you can redistribute it and/or modify
@@ -27,32 +26,22 @@
 defined('MOODLE_INTERNAL') || die;
 
  /**
- * Define the complete url structure for backup, with file and id annotations
- */
+  * Define the complete url structure for backup, with file and id annotations
+  */
 class backup_aspirelists_activity_structure_step extends backup_activity_structure_step {
 
     protected function define_structure() {
-
-        //the URL module stores no user info
-
-        // Define each element separated
+        // Define each element separated.
         $aspirelists = new backup_nested_element('aspirelists', array('id'), array(
             'name', 'intro', 'introformat', 'timemodified'));
 
-
-        // Build the tree
-        //nothing here for URLs
-
-        // Define sources
+        // Define sources.
         $aspirelists->set_source_table('aspirelists', array('id' => backup::VAR_ACTIVITYID));
 
-        // Define id annotations
-        //module has no id annotations
+        // Define file annotations.
+        $aspirelists->annotate_files('mod_aspirelists', 'intro', null);
 
-        // Define file annotations
-        $aspirelists->annotate_files('mod_aspirelists', 'intro', null); // This file area hasn't itemid
-
-        // Return the root element (url), wrapped into standard activity structure
+        // Return the root element (url), wrapped into standard activity structure.
         return $this->prepare_activity_structure($aspirelists);
 
     }

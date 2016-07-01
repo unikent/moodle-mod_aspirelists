@@ -22,11 +22,11 @@
  * @copyright  1999 onwards Martin Dougiamas (http://dougiamas.com)
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-require '../../config.php';
+require('../../config.php');
 
-$id = required_param('id', PARAM_INT); // course id
+$id = required_param('id', PARAM_INT);
 
-$course = $DB->get_record('course', array('id'=>$id), '*', MUST_EXIST);
+$course = $DB->get_record('course', array('id' => $id), '*', MUST_EXIST);
 
 require_course_login($course, true);
 $PAGE->set_pagelayout('incourse');
@@ -52,7 +52,7 @@ echo $OUTPUT->header();
 
 if (!$lists = get_all_instances_in_course('aspirelists', $course)) {
     notice(get_string('thereareno', 'moodle', $strlists), "$CFG->wwwroot/course/view.php?id=$course->id");
-    exit;
+    die;
 }
 
 $table = new html_table();
@@ -62,20 +62,19 @@ if ($course->format == "weeks") {
     $table->head  = array ($strweek, $strname, $strsummary, 'Category');
     $table->align = array ("center", "left", "left");
 } else if ($course->format == "topics") {
-        $table->head  = array ($strtopic, $strname, $strsummary, 'Category');
-        $table->align = array ("center", "left", "left", "left", "left");
-    } else {
+    $table->head  = array ($strtopic, $strname, $strsummary, 'Category');
+    $table->align = array ("center", "left", "left", "left", "left");
+} else {
     $table->head  = array ($strname, $strsummary, 'Category');
     $table->align = array ("left", "left", "left", "left");
 }
 
 foreach ($lists as $list) {
-
     if (!$list->visible) {
-        //Show dimmed if the mod is hidden
+        // Show dimmed if the mod is hidden.
         $link = "<a class=\"dimmed\" href=\"view.php?id=$list->coursemodule\">$list->name</a>";
     } else {
-        //Show normal if the mod is visible
+        // Show normal if the mod is visible.
         $link = "<a href=\"view.php?id=$list->coursemodule\">$list->name</a>";
     }
 

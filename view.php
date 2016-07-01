@@ -34,8 +34,7 @@ if ($id > 0) {
     if (!$readinglist = $DB->get_record('aspirelists', array('id' => $cm->instance), '*', MUST_EXIST)) {
         throw new \moodle_exception(get_string('cmunknown', 'error'));
     }
-} elseif ($listid > 0) {
-
+} else if ($listid > 0) {
     if (!$readinglist = $DB->get_record('aspirelists', array('id' => $listid), '*', MUST_EXIST)) {
         throw new \moodle_exception(get_string('cmunknown', 'error'));
     }
@@ -66,7 +65,7 @@ $PAGE->set_url($url);
 $PAGE->set_context($context);
 $PAGE->set_activity_record($readinglist);
 
-//Set page params and layout
+// Set page params and layout.
 $PAGE->set_title(format_string($readinglist->name));
 $PAGE->set_heading(format_string($readinglist->name));
 $PAGE->requires->css('/mod/aspirelists/styles/styles.css');
@@ -80,7 +79,7 @@ $event->add_record_snapshot('course', $course);
 $event->add_record_snapshot('aspirelists', $readinglist);
 $event->trigger();
 
-// Update 'viewed' state if required by completion system
+// Update 'viewed' state if required by completion system.
 $completion = new completion_info($course);
 $completion->set_module_viewed($cm);
 
@@ -94,7 +93,7 @@ if ($readinglist->category != 'all') {
     $category = explode('/', $readinglist->category);
 
     $url = \mod_aspirelists\core\API::CANTERBURY_URL;
-    if (strtolower($category[0]) == 'medway'){
+    if (strtolower($category[0]) == 'medway') {
         $url = \mod_aspirelists\core\API::MEDWAY_URL;
     }
 

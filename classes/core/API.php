@@ -40,16 +40,16 @@ class API extends \unikent\ReadingLists\API
      * Extract shortcodes.
      */
     public function extract_shortcodes($shortcode) {
-		$shortcode = strtolower($shortcode);
-		$matches = explode('/', $shortcode);
+        $shortcode = strtolower($shortcode);
+        $matches = explode('/', $shortcode);
 
-		return array_map(function($match) {
-		    if (strpos($match, ' ') !== false) {
-		        $match = explode(' ', $match);
-		        $match = $match[0];
-		    }
+        return array_map(function($match) {
+            if (strpos($match, ' ') !== false) {
+                $match = explode(' ', $match);
+                $match = $match[0];
+            }
 
-		    return trim($match);
-		}, $matches);
+            return trim($match);
+        }, $matches);
     }
 }
