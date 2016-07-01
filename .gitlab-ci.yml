@@ -22,7 +22,7 @@ before_script:
     - curl -sS https://getcomposer.org/installer | php
     - php composer.phar create-project -n --no-dev --prefer-dist moodlerooms/moodle-plugin-ci ci ^1
     - export PATH="$(cd ci/bin; pwd):$(cd ci/vendor/bin; pwd):$PATH"
-    - moodle-plugin-ci install --data /tmp --db-type mysqli --db-user root --db-pass moodle_ci_password --db-name moodle_ci
+    - moodle-plugin-ci install --data /tmp --db-type mysqli --db-user root --db-pass moodle_ci_password --db-name moodle_ci --db-host mysql
 
 linter:
     stage: checks
