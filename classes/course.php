@@ -78,6 +78,25 @@ class course {
     }
 
     /**
+     * Do we actually have a list?
+     * We only check one year back.
+     */
+    public function has_list() {
+        $lists = $this->get_lists();
+        if (!empty($lists)) {
+            return true;
+        }
+
+        $tp = (int)get_config('aspirelists', 'timeperiod') - 1;
+        $lastyearlists = $this->get_lists($tp);
+        if (!empty($lastyearlists)) {
+            return true;
+        }
+
+        return false;
+    }
+
+    /**
      * Is this year's list published?
      */
     public function is_published() {
@@ -88,10 +107,10 @@ class course {
 
         $tp = (int)get_config('aspirelists', 'timeperiod') - 1;
         $lastyearlists = $this->get_lists($tp);
-        if (!empty($lists)) {
+        if (!empty($lastyearlists)) {
             return false;
         }
 
-        return true;
+        return false;
     }
 }
